@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <algorithm>
 #include "_main.hxx"
 #include "vertices.hxx"
@@ -6,45 +7,44 @@
 #include "csr.hxx"
 #include "pagerank.hxx"
 
+using std::vector;
 using std::swap;
 
 
 
 
 template <class T>
-T pagerankTeleport(const vector<T>& r, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, T p) {
+T pagerankTeleport(const vector<T>& r, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p) {
   T a = (1-p)/N;
-  for (int u=0; u<N; u++)
+  for (; u<U; u++)
     if (vdata[u] == 0) a += p*r[u]/N;
   return a;
 }
 
 template <class T>
-void pagerankFactor(vector<T>& a, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, T p) {
-  for (int u=0; u<N; u++) {
+void pagerankFactor(vector<T>& a, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p) {
+  for (; u<U; u++) {
     int d = vdata[u];
     a[u] = d>0? p/d : 0;
   }
 }
 
 template <class T>
-void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, T c0) {
-  for (int v=0; v<N; v++)
+void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T c0) {
+  for (; v<V; v++)
     a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
 }
 
 template <class T>
-int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, T p, T E, int L) {
+int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L) {
   int l = 1;
-  T e0 = T();
   for (; l<L; l++) {
-    T c0 = pagerankTeleport(r, vfrom, efrom, vdata, N, p);
-    multiply(c, r, f);
-    pagerankCalculate(a, c, vfrom, efrom, vdata, N, c0);
-    T e1 = absError(a, r);
-    if (e1 < E || e1 == e0) break;
+    T c0 = pagerankTeleport(r, vfrom, efrom, vdata, v, V, N, p);
+    multiply(c, r, f, v, V-v);
+    pagerankCalculate(a, c, vfrom, efrom, vdata, v, V, N, c0);
+    T el = absError(a, r, v, V-v);
+    if (el < E) break;
     swap(a, r);
-    e0 = e1;
   }
   return l;
 }
@@ -53,8 +53,8 @@ template <class T>
 int pagerankMonolithicCore(vector<T>& a, vector<T>& r, vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, const vector<T> *q, T p, T E, int L) {
   if (q) copy(r, *q);
   else fill(r, T(1)/N);
-  pagerankFactor(f, vfrom, efrom, vdata, N, p);
-  return pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, N, p, E, L);
+  pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p);
+  return pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, 0, N, N, p, E, L);
 }
 
 

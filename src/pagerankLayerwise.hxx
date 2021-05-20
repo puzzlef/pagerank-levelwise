@@ -3,6 +3,7 @@
 #include "vertices.hxx"
 #include "edges.hxx"
 #include "csr.hxx"
+#include "components.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithic.hxx"
 
@@ -33,19 +34,21 @@ int pagerankLayerwiseCore(vector<T>& a, vector<T>& r, vector<T>& f, vector<T>& c
 // @param q initial ranks (optional)
 // @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
 // @returns {ranks, iterations, time}
-template <class G, class T=float>
-PagerankResult<T> pagerankLayerwise(const G& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+template <class G, class H, class T=float>
+PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
-  auto xc     = csr(xt);
-  auto& vfrom = xc.sourceOffsets;
-  auto& efrom = xc.destinationIndices;
-  auto vdata  = vertexData(xt);
-  int  N      = xt.order();
+  int  N = xt.order();
+  auto cs = components(x, xt);
+  auto ks = join(cs);
+  auto ns = transform(cs, [](const auto& c) { return c.size(); });
+  auto vfrom = sourceOffsets(xt, ks);
+  auto efrom = destinationIndices(xt, ks);
+  auto vdata = vertexData(xt, ks);
   vector<T> a(N), r(N), f(N), c(N);
   vector<T> *qc = q? new vector<T> : nullptr;
-  if (q) *qc = compressContainer(xt, *q);
-  float t = measureDuration([&]() { l = pagerankMonolithicCore(a, r, f, c, vfrom, efrom, vdata, N, qc, p, E, L); }, o.repeat);
-  return {decompressContainer(xt, a), l, t};
+  if (q) *qc = compressContainer(xt, *q, ks);
+  float t = measureDuration([&]() { l = pagerankLayerwiseCore(a, r, f, c, vfrom, efrom, vdata, N, qc, p, E, L); }, o.repeat);
+  return {decompressContainer(xt, a, ks), l, t};
 }

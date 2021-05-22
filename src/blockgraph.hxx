@@ -12,7 +12,6 @@ void blockgraph(H& a, const G& x, const C& comps) {
     for (int v : x.edges(u))
       if (c[u] != c[v]) a.addEdge(c[u], c[v]);
   }
-  return a;
 }
 
 template <class G, class C>

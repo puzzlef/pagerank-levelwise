@@ -36,7 +36,7 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 }
 
 template <class T>
-int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L) {
+int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L) {
   int l = 1;
   for (; l<L; l++) {
     T c0 = pagerankTeleport(r, vfrom, efrom, vdata, v, V, N, p);
@@ -47,14 +47,6 @@ int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vecto
     swap(a, r);
   }
   return l;
-}
-
-template <class T>
-int pagerankMonolithicCore(vector<T>& a, vector<T>& r, vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int N, const vector<T> *q, T p, T E, int L) {
-  if (q) copy(r, *q);
-  else fill(r, T(1)/N);
-  pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p);
-  return pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, 0, N, N, p, E, L);
 }
 
 
@@ -72,9 +64,14 @@ PagerankResult<T> pagerankMonolithic(const G& xt, const vector<T> *q=nullptr, Pa
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
   int  N     = xt.order();
-  vector<T> a(N), r(N), f(N), c(N);
-  vector<T> *qc = q? new vector<T> : nullptr;
-  if (q) *qc = compressContainer(xt, *q);
-  float t = measureDuration([&]() { l = pagerankMonolithicCore(a, r, f, c, vfrom, efrom, vdata, N, qc, p, E, L); }, o.repeat);
+  vector<T> a(N), r(N), c(N), f(N), qc;
+  if (q) qc = compressContainer(xt, *q);
+  float t = measureDurationMarked([&](auto mark) {
+    fill(a, T());
+    if (q) copy(r, qc);
+    else fill(r, T(1)/N);
+    mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); });
+    mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, 0, N, N, p, E, L); });
+  }, o.repeat);
   return {decompressContainer(xt, a), l, t};
 }

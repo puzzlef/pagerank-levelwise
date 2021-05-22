@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 #include "vertices.hxx"
 #include "edges.hxx"
 #include "csr.hxx"
@@ -10,6 +11,7 @@
 #include "pagerankMonolithic.hxx"
 
 using std::vector;
+using std::swap;
 
 
 
@@ -25,22 +27,15 @@ auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
 
 
 template <class T, class J>
-int pagerankLayerwiseLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L) {
+int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L) {
   int v = 0; float l = 0;
   for (int n : ns) {
-    int k = pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, v, v+n, N, p, E, L);
+    int k = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, v, v+n, N, p, E * (float(n)/N), L);
+    swap(a, r);
     l += k * (float(n)/N);
     v += n;
   }
   return int(l);
-}
-
-template <class T, class J>
-int pagerankLayerwiseCore(vector<T>& a, vector<T>& r, vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, const vector<T> *q, T p, T E, int L) {
-  if (q) copy(r, *q);
-  else fill(r, T(1)/N);
-  pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p);
-  return pagerankLayerwiseLoop(a, r, f, c, vfrom, efrom, vdata, ns, N, p, E, L);
 }
 
 
@@ -50,7 +45,7 @@ int pagerankLayerwiseCore(vector<T>& a, vector<T>& r, vector<T>& f, vector<T>& c
 // @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
 // @returns {ranks, iterations, time}
 template <class G, class H, class T=float>
-PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+PagerankResult<T> pagerankLevelwise(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
@@ -61,9 +56,14 @@ PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  vector<T> a(N), r(N), f(N), c(N);
-  vector<T> *qc = q? new vector<T> : nullptr;
-  if (q) *qc = compressContainer(xt, *q, ks);
-  float t = measureDuration([&]() { l = pagerankLayerwiseCore(a, r, f, c, vfrom, efrom, vdata, ns, N, qc, p, E, L); }, o.repeat);
+  vector<T> a(N), r(N), c(N), f(N), qc;
+  if (q) qc = compressContainer(xt, *q, ks);
+  float t = measureDurationMarked([&](auto mark) {
+    fill(a, T());
+    if (q) copy(r, qc);
+    else fill(r, T(1)/N);
+    mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); });
+    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, vdata, ns, N, p, E, L); });
+  }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

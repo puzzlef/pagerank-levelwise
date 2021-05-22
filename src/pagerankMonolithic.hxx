@@ -68,11 +68,10 @@ PagerankResult<T> pagerankMonolithic(const G& xt, const vector<T> *q=nullptr, Pa
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
-  auto xc     = csr(xt);
-  auto& vfrom = xc.sourceOffsets;
-  auto& efrom = xc.destinationIndices;
-  auto vdata  = vertexData(xt);
-  int  N      = xt.order();
+  auto vfrom = sourceOffsets(xt);
+  auto efrom = destinationIndices(xt);
+  auto vdata = vertexData(xt);
+  int  N     = xt.order();
   vector<T> a(N), r(N), f(N), c(N);
   vector<T> *qc = q? new vector<T> : nullptr;
   if (q) *qc = compressContainer(xt, *q);

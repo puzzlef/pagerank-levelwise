@@ -15,8 +15,10 @@ using std::vector;
 template <class T, class J>
 int pagerankLayerwiseLoop(vector<T>& a, vector<T>& r, const vector<T>& f, vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L) {
   int v = 0; float l = 0;
-  for (int n : ns)
-    l += pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, v, v+=n, N, p, E, L) * float(n)/float(N);
+  for (int n : ns) {
+    l += pagerankMonolithicLoop(a, r, f, c, vfrom, efrom, vdata, v, v+n, N, p, E, L) * (float(n)/N);
+    v += n;
+  }
   return int(l);
 }
 
@@ -41,6 +43,7 @@ PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=
   int  L = o.maxIterations, l;
   int  N = xt.order();
   auto cs = components(x, xt);
+  // auto cs = joinUntilSize(components(x, xt), o.minComponentSize);
   auto ks = join(cs);
   auto ns = transform(cs, [](const auto& c) { return c.size(); });
   auto vfrom = sourceOffsets(xt, ks);
@@ -49,6 +52,6 @@ PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=
   vector<T> a(N), r(N), f(N), c(N);
   vector<T> *qc = q? new vector<T> : nullptr;
   if (q) *qc = compressContainer(xt, *q, ks);
-  float t = measureDuration([&]() { l = pagerankLayerwiseCore(a, r, f, c, vfrom, efrom, vdata, N, qc, p, E, L); }, o.repeat);
+  float t = measureDuration([&]() { l = pagerankLayerwiseCore(a, r, f, c, vfrom, efrom, vdata, ns, N, qc, p, E, L); }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

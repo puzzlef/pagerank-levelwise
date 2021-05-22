@@ -7,3 +7,4 @@
 #include "mtx.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithic.hxx"
+#include "pagerankLayerwise.hxx"

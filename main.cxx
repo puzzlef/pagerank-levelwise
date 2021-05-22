@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include "src/main.hxx"
@@ -13,16 +14,18 @@ void runPagerank(const G& x, const H& xt, bool show) {
   vector<float> *init = nullptr;
 
   // Find pagerank using a single thread.
-  auto a1 = pagerankSeq(xt, init, {repeat});
+  auto a1 = pagerankMonolithic(xt, init, {repeat});
   auto e1 = absError(a1.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq\n", a1.time, a1.iterations, e1);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithic\n", a1.time, a1.iterations, e1);
   if (show) println(a1.ranks);
 
-  // Find pagerank accelerated using OpenMP.
-  auto a2 = pagerankOmp(xt, init, {repeat});
-  auto e2 = absError(a2.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankOmp\n", a2.time, a2.iterations, e2);
-  if (show) println(a2.ranks);
+  // Find pagerank component-wise in topologically-ordered fashion (layerwise).
+  for (int C=int(pow(10, ceil(log10(x.order())))); C>=1; C/=10) {
+    auto a2 = pagerankLayerwise(x, xt, init, {repeat, C});
+    auto e2 = absError(a2.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLayerwise [%.0e min-component-size]\n", a2.time, a2.iterations, e2, (double) C);
+    if (show) println(a2.ranks);
+  }
 }
 
 

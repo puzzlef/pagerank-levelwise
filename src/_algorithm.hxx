@@ -134,7 +134,12 @@ auto joinIf(const vector<vector<T>>& xs, F fn) {
 }
 
 template <class T>
-auto join(const vector<T>& xs) {
+auto joinUntilSize(const vector<vector<T>>& xs, int N) {
+  return joinIf(xs, [&](const auto& b, const auto& x) { return b.size()<N; });
+}
+
+template <class T>
+auto join(const vector<vector<T>>& xs) {
   vector<T> a;
   for (const auto& x : xs)
     a.insert(a.end(), x.begin(), x.end());
@@ -231,7 +236,7 @@ void fill(T *a, int N, const U& v) {
 
 template <class T, class U>
 void fill(vector<T>& a, const U& v) {
-  fill(a.data(), int(a.size()), v);
+  fill(a.begin(), a.end(), v);
 }
 
 template <class T, class U>

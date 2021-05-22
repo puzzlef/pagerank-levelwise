@@ -15,6 +15,7 @@ using std::count_if;
 using std::set_difference;
 using std::copy;
 using std::abs;
+using std::swap;
 
 
 
@@ -97,6 +98,23 @@ auto setDifference(J&& x, K&& y) {
   using T = typename iterator_traits<I>::value_type;
   vector<T> a; setDifference(a, x, y);
   return a;
+}
+
+
+
+
+// REORDER
+// -------
+// Ref: https://stackoverflow.com/a/22183350/1413259
+
+template <class T>
+void reorder(vector<T>& x, vector<int> is) {
+  for(int i=0, N=x.size(); i<N; i++) {
+    while(is[i] != is[is[i]]) {
+      swap(x[is[i]], x[is[is[i]]]);
+      swap(  is[i],    is[is[i]]);
+    }
+  }
 }
 
 

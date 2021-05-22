@@ -4,12 +4,24 @@
 #include "edges.hxx"
 #include "csr.hxx"
 #include "components.hxx"
+#include "blockgraph.hxx"
+#include "topologicalSort.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithic.hxx"
 
 using std::vector;
 
 
+
+
+template <class G, class H, class T>
+auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
+  auto a = joinUntilSize(components(x, xt), o.minComponentSize);
+  auto b = blockgraph(x, a);
+  auto bks = topologicalSort(b);
+  reorder(a, bks);
+  return a;
+}
 
 
 template <class T, class J>
@@ -43,7 +55,7 @@ PagerankResult<T> pagerankLayerwise(const G& x, const H& xt, const vector<T> *q=
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
   int  N = xt.order();
-  auto cs = joinUntilSize(components(x, xt), o.minComponentSize);
+  auto cs = pagerankComponents(x, xt, o);
   auto ks = join(cs);
   auto ns = transform(cs, [](const auto& c) { return c.size(); });
   auto vfrom = sourceOffsets(xt, ks);

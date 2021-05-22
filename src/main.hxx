@@ -4,6 +4,7 @@
 #include "vertices.hxx"
 #include "edges.hxx"
 #include "transpose.hxx"
+#include "deadEnds.hxx"
 #include "mtx.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithic.hxx"

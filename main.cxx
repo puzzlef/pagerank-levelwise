@@ -10,7 +10,7 @@ using namespace std;
 
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, bool show) {
-  int repeat = 5;
+  int repeat = 1;
   vector<float> *init = nullptr;
 
   // Find pagerank using a single thread.
@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
   bool  show = argc > 2;
   printf("Loading graph %s ...\n", file);
   auto x  = readMtx(file); println(x);
+  loopDeadEnds(x); print(x); printf(" (loopDeadEnds)\n");
   auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, show);
   printf("\n");

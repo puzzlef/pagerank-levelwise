@@ -65,6 +65,7 @@ function readLogLine(ln, data, state) {
       min_component_size: parseFloat(min_component_size||'0')
     });
   }
+  return state;
 }
 
 function readLog(pth) {

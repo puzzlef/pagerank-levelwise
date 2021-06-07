@@ -3,7 +3,7 @@ const os = require('os');
 
 const RGRAPH = /^Loading graph .*\/(.*?)\.mtx \.\.\./m;
 const RORDER = /^order: (\d+) size: (\d+) \{\}/m;
-const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[(.+?) min-component-size\])?/m;
+const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (.+)/m;
 
 
 

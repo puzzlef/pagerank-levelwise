@@ -45,11 +45,11 @@ auto pagerankComponentSizes(const G& w, const H& wt, const C& wcs, const G& x, c
 
 
 template <class T, class J>
-int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L) {
+int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L, bool ST) {
   int v = 0; float l = 0;
   for (int n : ns) {
     if (n<0) { v += -n; continue; }
-    l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, v, v+n, N, p, E * (float(n)/N), L) * (float(n)/N);
+    l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, v, v+n, N, p, E * (float(n)/N), L, ST) * (float(n)/N);
     swap(a, r);
     v += n;
   }
@@ -68,10 +68,11 @@ int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector
 // @returns {ranks, iterations, time}
 template <class G, class H, class T=float>
 PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
-  T    p = o.damping;
-  T    E = o.tolerance;
-  int  L = o.maxIterations, l;
-  int  N = xt.order();
+  T    p  = o.damping;
+  T    E  = o.tolerance;
+  int  L  = o.maxIterations, l;
+  bool ST = o.skipTeleport;
+  int  N  = xt.order();
   auto wcs = pagerankComponents(w, wt, o);
   auto xcs = pagerankComponents(x, xt, o);
   auto ns = pagerankComponentSizes(w, wt, wcs, x, xt, xcs);
@@ -86,7 +87,7 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); multiply(c, r, f); copy(a, r); });
-    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, vdata, ns, N, p, E, L); });
+    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, vdata, ns, N, p, E, L, ST); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

@@ -14,8 +14,9 @@ using std::swap;
 
 
 template <class T>
-T pagerankTeleport(const vector<T>& r, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p) {
+T pagerankTeleport(const vector<T>& r, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p, bool ST) {
   T a = (1-p)/N;
+  if (ST) return a;
   for (; u<U; u++)
     if (vdata[u] == 0) a += p*r[u]/N;
   return a;
@@ -36,10 +37,10 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 }
 
 template <class T>
-int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L) {
+int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L, bool ST) {
   int l = 1;
   for (; l<L; l++) {
-    T c0 = pagerankTeleport(r, vfrom, efrom, vdata, v, V, N, p);
+    T c0 = pagerankTeleport(r, vfrom, efrom, vdata, v, V, N, p, ST);
     multiply(c, r, f, v, V-v);
     pagerankCalculate(a, c, vfrom, efrom, vdata, v, V, N, c0);
     T el = l1Norm(a, r, v, V-v);
@@ -57,9 +58,10 @@ int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vecto
 // @returns {ranks, iterations, time}
 template <class G, class T=float>
 PagerankResult<T> pagerankMonolithic(const G& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
-  T    p = o.damping;
-  T    E = o.tolerance;
-  int  L = o.maxIterations, l;
+  T    p  = o.damping;
+  T    E  = o.tolerance;
+  int  L  = o.maxIterations, l;
+  bool ST = o.skipTeleport;
   auto vfrom = sourceOffsets(xt);
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
@@ -71,7 +73,7 @@ PagerankResult<T> pagerankMonolithic(const G& xt, const vector<T> *q=nullptr, Pa
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); });
-    mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, 0, N, N, p, E, L); });
+    mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, 0, N, N, p, E, L, ST); });
   }, o.repeat);
   return {decompressContainer(xt, a), l, t};
 }

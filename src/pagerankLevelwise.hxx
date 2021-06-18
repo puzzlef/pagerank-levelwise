@@ -16,9 +16,9 @@ using std::swap;
 
 
 
-template <class G, class H, class T>
-auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
-  auto a = joinUntilSize(components(x, xt), MIN_COMPONENT_SIZE_PR);
+template <class G, class H>
+auto pagerankComponents(const G& x, const H& xt) {
+  auto a = components(x, xt);
   auto b = blockgraph(x, a);
   auto bks = topologicalSort(b);
   reorder(a, bks);
@@ -27,7 +27,7 @@ auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
 
 
 template <class G, class H, class C>
-auto pagerankComponentSizes(const G& w, const H& wt, const C& wcs, const G& x, const H& xt, const C& xcs) {
+auto pagerankWaves(const G& w, const H& wt, const C& wcs, const G& x, const H& xt, const C& xcs) {
   int W = wcs.size();
   int X = xcs.size();
   auto b = blockgraph(x, xcs);
@@ -38,20 +38,46 @@ auto pagerankComponentSizes(const G& w, const H& wt, const C& wcs, const G& x, c
     dfsDo(b, u, [&](int v) { dirty[v] = true; });
   }
   vector<int> a(X);
-  for (int i=0; i<X; i++)
-    a[i] = dirty[i]? xcs[i].size() : -xcs[i].size();
+  for (int i=0; i<X; i++) {
+    int n = xcs[i].size();
+    a[i] = dirty[i]? n:-n;
+  }
+  return a;
+}
+
+
+template <class C>
+auto pagerankGroupComponents(const C& cs, const vector<int>& ws, int CS) {
+  vector<int> is, js;
+  for (int i=0; i<cs.size(); i++) {
+    if (ws[i]>=0) is.push_back(i);
+    else js.push_back(i);
+  }
+  auto a = joinAtUntilSize(cs, is, CS);
+  a.push_back(joinAt(cs, js));
+  return a;
+}
+
+
+template <class C>
+auto pagerankGroupWaves(const C& cs) {
+  vector<int> a;
+  for (int i=0; i<cs.size()-1; i++)
+    a.push_back(cs[i].size());
+  a.push_back(-cs.back().size());
   return a;
 }
 
 
 template <class T, class J>
-int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, J&& ns, int N, T p, T E, int L) {
-  int v = 0; float l = 0;
+int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, J&& ns, int N, T p, T E, int L) {
+  float l = 0;
   for (int n : ns) {
-    if (n<0) { v += -n; continue; }
-    l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, vdata, v, v+n, N, p, E * (float(n)/N), L) * (float(n)/N);
+    float nN = float(n)/N;
+    if (n<=0) { v += -n; continue; }
+    l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, i, n, N, p, E*nN, L) * nN;
     swap(a, r);
-    v += n;
+    i += n;
   }
   swap(a, r);
   return int(l);
@@ -74,8 +100,10 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
   int  N = xt.order();
   auto wcs = pagerankComponents(w, wt, o);
   auto xcs = pagerankComponents(x, xt, o);
-  auto ns = pagerankComponentSizes(w, wt, wcs, x, xt, xcs);
-  auto ks = join(xcs);
+  auto ws = pagerankWaves(w, wt, wcs, x, xt, xcs);
+  auto cs = pagerankGroupComponents(xcs, ws, o.minComputeSize);
+  auto ns = pagerankGroupWaves(cs);
+  auto ks = join(cs);
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
@@ -86,7 +114,7 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); multiply(c, r, f); copy(a, r); });
-    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, vdata, ns, N, p, E, L); });
+    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, i, ns, N, p, E, L); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

@@ -93,6 +93,36 @@ auto join(const vector<vector<T>>& xs) {
 
 
 
+// JOIN-AT
+// -------
+
+template <class T, class J, class F>
+auto joinAtIf(const vector<vector<T>>& xs, J&& is, F fn) {
+  vector<vector<T>> a;
+  for (int i : is) {
+    auto& b = a.back();
+    if (a.empty() || !fn(b, x[i])) a.push_back(x[i]);
+    else b.insert(b.end(), x[i].begin(), x[i].end());
+  }
+  return a;
+}
+
+template <class T, class J>
+auto joinAtUntilSize(const vector<vector<T>>& xs, J&& is, int N) {
+  return joinAtIf(xs, is, [&](const auto& b, const auto& x) { return b.size()<N; });
+}
+
+template <class T, class J>
+auto joinAt(const vector<vector<T>>& xs, J&& is) {
+  vector<T> a;
+  for (int i : is)
+    a.insert(a.end(), x[i].begin(), x[i].end());
+  return a;
+}
+
+
+
+
 // GATHER
 // ------
 

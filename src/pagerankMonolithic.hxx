@@ -14,14 +14,6 @@ using std::swap;
 
 
 template <class T>
-T pagerankTeleport(const vector<T>& r, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p) {
-  T a = (1-p)/N;
-  for (; u<U; u++)
-    if (vdata[u] == 0) a += p*r[u]/N;
-  return a;
-}
-
-template <class T>
 void pagerankFactor(vector<T>& a, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int u, int U, int N, T p) {
   for (; u<U; u++) {
     int d = vdata[u];
@@ -37,9 +29,9 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 
 template <class T>
 int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int v, int V, int N, T p, T E, int L) {
+  T c0 = (1-p)/N;
   int l = 1;
   for (; l<L; l++) {
-    T c0 = pagerankTeleport(r, vfrom, efrom, vdata, v, V, N, p);
     multiply(c, r, f, v, V-v);
     pagerankCalculate(a, c, vfrom, efrom, vdata, v, V, N, c0);
     T el = l1Norm(a, r, v, V-v);

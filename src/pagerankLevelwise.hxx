@@ -74,7 +74,7 @@ int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector
   float l = 0;
   for (int n : ns) {
     float nN = float(n)/N;
-    if (n<=0) { v += -n; continue; }
+    if (n<=0) { i += -n; continue; }
     l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, i, n, N, p, E*nN, L) * nN;
     swap(a, r);
     i += n;
@@ -98,8 +98,8 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
   int  N = xt.order();
-  auto wcs = pagerankComponents(w, wt, o);
-  auto xcs = pagerankComponents(x, xt, o);
+  auto wcs = pagerankComponents(w, wt);
+  auto xcs = pagerankComponents(x, xt);
   auto ws = pagerankWaves(w, wt, wcs, x, xt, xcs);
   auto cs = pagerankGroupComponents(xcs, ws, o.minComputeSize);
   auto ns = pagerankGroupWaves(cs);
@@ -113,8 +113,8 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
     fill(a, T());
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
-    mark([&] { pagerankFactor(f, vfrom, efrom, vdata, 0, N, N, p); multiply(c, r, f); copy(a, r); });
-    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, i, ns, N, p, E, L); });
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, r, f); copy(a, r); });
+    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

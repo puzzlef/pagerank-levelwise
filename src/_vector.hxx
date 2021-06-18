@@ -101,8 +101,8 @@ auto joinAtIf(const vector<vector<T>>& xs, J&& is, F fn) {
   vector<vector<T>> a;
   for (int i : is) {
     auto& b = a.back();
-    if (a.empty() || !fn(b, x[i])) a.push_back(x[i]);
-    else b.insert(b.end(), x[i].begin(), x[i].end());
+    if (a.empty() || !fn(b, xs[i])) a.push_back(xs[i]);
+    else b.insert(b.end(), xs[i].begin(), xs[i].end());
   }
   return a;
 }
@@ -116,7 +116,7 @@ template <class T, class J>
 auto joinAt(const vector<vector<T>>& xs, J&& is) {
   vector<T> a;
   for (int i : is)
-    a.insert(a.end(), x[i].begin(), x[i].end());
+    a.insert(a.end(), xs[i].begin(), xs[i].end());
   return a;
 }
 

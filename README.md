@@ -1,8 +1,8 @@
-Performance of standard (monolithic) vs topologically-ordered components
-(levelwise) PageRank ([pull], [CSR]).
+Performance of standard (**monolithic**) vs topologically-ordered components
+(**levelwise**) PageRank ([pull], [CSR], [comp-50]).
 
 This experiment was for comparing performance between:
-1. Find pagerank with standard algorithm (**monolithic** ).
+1. Find pagerank with standard algorithm (**monolithic**).
 2. Find pagerank in topologically-ordered components fashion (**levelwise**).
 
 Both approaches were attempted on different types of graphs, running each
@@ -10,7 +10,7 @@ approach 5 times per graph to get a good time measure. **Levelwise** pagerank
 is the [STIC-D algorithm], without **ICD** optimizations (using single-thread).
 On average, **levelwise** pagerank faster than **monolithic** pagerank.
 
-All outputs are saved in [out/](out/) and a small part of the output is listed
+All outputs are saved in [out](out/) and a small part of the output is listed
 here. The input data used for this experiment is available at ["graphs"] (for
 small ones), and the [SuiteSparse Matrix Collection].
 
@@ -88,8 +88,9 @@ $ ...
 
 [![](https://i.imgur.com/ewKOeWS.jpg)](https://www.youtube.com/watch?v=eBW0s125f-Y)
 
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 ["graphs"]: https://github.com/puzzlef/graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
+[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[comp-50]: https://github.com/puzzlef/pagerank-levelwise-adjust-component-size

@@ -1,5 +1,5 @@
 Performance of standard (**monolithic**) vs topologically-ordered components
-(**levelwise**) PageRank ([pull], [CSR], [compute-10]).
+(**levelwise**) PageRank ([pull], [CSR], [skip-teleport], [compute-10]).
 
 This experiment was for comparing performance between:
 1. Find pagerank with standard algorithm (**monolithic**).
@@ -8,7 +8,7 @@ This experiment was for comparing performance between:
 Both approaches were attempted on different types of graphs, running each
 approach 5 times per graph to get a good time measure. **Levelwise** pagerank
 is the [STIC-D algorithm], without **ICD** optimizations (using single-thread).
-On average, **levelwise** pagerank is faster than the **monolithic** approach.
+On average, **levelwise** pagerank is **faster** than the *monolithic* approach.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. All [charts] are also included below, generated from [sheets]. The input
@@ -44,6 +44,9 @@ $ ...
 # ...
 ```
 
+[![](https://i.imgur.com/TqrzS48.gif)][sheets]
+[![](https://i.imgur.com/bROelWZ.gif)][sheets]
+
 <br>
 <br>
 
@@ -61,12 +64,11 @@ $ ...
 
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
-[monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
-[levelwise]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 ["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[skip-teleport]: https://github.com/puzzlef/pagerank-levelwise-skip-teleport
 [compute-10]: https://github.com/puzzlef/pagerank-levelwise-adjust-compute-size
 [branches]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise/branches
-[charts]: https://photos.app.goo.gl/KgBUFkTrHGB4WBfs9
-[sheets]: https://docs.google.com/spreadsheets/d/10KhCjLln713-qWsQMURTQKmQsniTO0xwGzNeQkuV3sE/edit?usp=sharing
+[charts]: https://photos.app.goo.gl/9wFk82NncJ7gUhxC9
+[sheets]: https://docs.google.com/spreadsheets/d/1qVLU0PTUl-PglezkSmPe7PwQHOvCgBGTSTclfg71B5Q/edit?usp=sharing

@@ -25,6 +25,21 @@ $ ...
 
 # ...
 #
+# Loading graph /home/subhajit/data/web-Stanford.mtx ...
+# order: 281903 size: 2312497 {}
+# order: 281903 size: 2312669 {} (loopDeadEnds)
+# order: 281903 size: 2312669 {} (transposeWithDegree)
+# [00395.793 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [00244.404 ms; 054 iters.] [4.3718e-06 err.] pagerankLevelwise
+#
+# ...
+#
+# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+# order: 4847571 size: 68993773 {}
+# order: 4847571 size: 69532892 {} (loopDeadEnds)
+# order: 4847571 size: 69532892 {} (transposeWithDegree)
+# [12915.615 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [10037.996 ms; 048 iters.] [4.7744e-06 err.] pagerankLevelwise
 #
 # ...
 ```

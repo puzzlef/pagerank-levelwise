@@ -47,13 +47,13 @@ auto pagerankWaves(const G& w, const H& wt, const C& wcs, const G& x, const H& x
 
 
 template <class C>
-auto pagerankGroupComponents(const C& cs, const vector<int>& ws, int CS) {
+auto pagerankGroupComponents(const C& cs, const vector<int>& ws) {
   vector<int> is, js;
   for (int i=0; i<cs.size(); i++) {
     if (ws[i]>=0) is.push_back(i);
     else js.push_back(i);
   }
-  auto a = joinAtUntilSize(cs, is, CS);
+  auto a = joinAtUntilSize(cs, is, MIN_COMPUTE_SIZE_PR);
   a.push_back(joinAt(cs, js));
   return a;
 }
@@ -101,7 +101,7 @@ PagerankResult<T> pagerankLevelwise(const G& w, const H& wt, const G& x, const H
   auto wcs = pagerankComponents(w, wt);
   auto xcs = pagerankComponents(x, xt);
   auto ws = pagerankWaves(w, wt, wcs, x, xt, xcs);
-  auto cs = pagerankGroupComponents(xcs, ws, o.minComputeSize);
+  auto cs = pagerankGroupComponents(xcs, ws);
   auto ns = pagerankGroupWaves(cs);
   auto ks = join(cs);
   auto vfrom = sourceOffsets(xt, ks);

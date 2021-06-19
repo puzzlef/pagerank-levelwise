@@ -3,7 +3,7 @@ const os = require('os');
 
 const RGRAPH = /^Loading graph .*\/(.*?)\.mtx \.\.\./m;
 const RORDER = /^order: (\d+) size: (\d+) \{\}/m;
-const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[(.+?) min-component-size\])?/m;
+const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[(.+?) min-compute-size\])?/m;
 
 
 
@@ -53,7 +53,7 @@ function readLogLine(ln, data, state) {
     state.size  = parseFloat(size);
   }
   else if (RRESLT.test(ln)) {
-    var [, time, iterations, error, technique, min_component_size] = RRESLT.exec(ln);
+    var [, time, iterations, error, technique, min_compute_size] = RRESLT.exec(ln);
     data.get(state.graph).push({
       graph: state.graph,
       order: state.order,
@@ -62,7 +62,7 @@ function readLogLine(ln, data, state) {
       iterations: parseFloat(iterations),
       error:      parseFloat(error),
       technique:  technique,
-      min_component_size: parseFloat(min_component_size||'0')
+      min_compute_size: parseFloat(min_compute_size||'0')
     });
   }
   return state;

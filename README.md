@@ -1,5 +1,5 @@
-Comparing various min. component sizes for topologically-ordered components
-(levelwise) PageRank ([pull], [CSR]).
+Comparing various **min. component sizes** for topologically-ordered components
+(**levelwise**) PageRank ([pull], [CSR]).
 
 This experiment was for comparing performance between:
 1. Find **levelwise** pagerank using **min. component size** from `1` - `1E+7`.
@@ -8,12 +8,15 @@ Each **min. component size** was attempted on different types of graphs,
 running each size 5 times per graph to get a good time measure. **Levelwise**
 pagerank is the [STIC-D algorithm], without **ICD** optimizations (using
 single-thread). Although there is no clear winner, it appears a
-**min. component size** of `50` would be a good choice.
+**min. component size** of `50` would be a good choice. Note that *levelwise*
+approach does not make use of *SIMD instructions* which are available on all
+modern hardware.
 
-All outputs are saved in [out/](out/) and a small part of the output is listed
-here. All [charts] are also included below, generated from [sheets]. The input
+All outputs are saved in [out](out/) and a small part of the output is listed
+here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -88,7 +91,7 @@ $ ...
 ## References
 
 - [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
-- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](http://snap.stanford.edu/class/cs246-videos-2019/lec9_190205-cs246-720.mp4)
+- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
 
 <br>
@@ -96,10 +99,12 @@ $ ...
 
 [![](https://i.imgur.com/1VFZdqh.jpg)](https://www.youtube.com/watch?v=vbXTZlJ5fHU)
 
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
+[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
+[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [charts]: https://photos.app.goo.gl/KveUUSpamrPKPmvY6
 [sheets]: https://docs.google.com/spreadsheets/d/1cdH3LURJo4KfflTF0grHtICUsaEmDHxKGy4Vti4eZc8/edit?usp=sharing
-["graphs"]: https://github.com/puzzlef/graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com

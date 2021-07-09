@@ -1,11 +1,11 @@
-Checking the performance benefit of [levelwise] PageRank when teleport
-calculation is skipped ([pull], [CSR]).
+Checking the performance benefit of [levelwise] PageRank when **teleport**
+**calculation** is **skipped** ([pull], [CSR]).
 
 This experiment was for comparing performance between:
 1. Find [monolithic] pagerank.
-2. Find [monolithic] pagerank, skipping teleport.
+2. Find [monolithic] pagerank, **skipping teleport**.
 3. Find [levelwise] pagerank.
-4. Find [levelwise] pagerank, skipping teleport.
+4. Find [levelwise] pagerank, **skipping teleport**.
 
 Each approache was attempted on different types of graphs, running each
 approach 5 times per graph to get a good time measure. **Levelwise** pagerank
@@ -18,7 +18,8 @@ certain *web graphs*.
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -53,8 +54,8 @@ $ ...
 # ...
 ```
 
-[![](https://i.postimg.cc/vmQdBhrx/time.gif)][sheets]
-[![](https://i.postimg.cc/YCNHMZWw/iterations.gif)][sheets]
+[![](https://i.imgur.com/9WLLXVu.gif)][sheets]
+[![](https://i.imgur.com/X6iObce.gif)][sheets]
 
 <br>
 <br>
@@ -63,7 +64,7 @@ $ ...
 ## References
 
 - [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
-- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](http://snap.stanford.edu/class/cs246-videos-2019/lec9_190205-cs246-720.mp4)
+- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
 
 <br>
@@ -71,12 +72,14 @@ $ ...
 
 [![](https://i.postimg.cc/PJbvkh18/aaa.jpg)](https://www.youtube.com/watch?v=SoiKp2oSUl0)
 
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
+[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
+[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+["graphs"]: https://github.com/puzzlef/graphs
 [monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 [levelwise]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/9QnAES4iRXg5pDd17
 [sheets]: https://docs.google.com/spreadsheets/d/1EoVQpZ-lTAHOHNKhpD-1wi3G8-m0ojdA0Qt1qoNCLu4/edit?usp=sharing
-["graphs"]: https://github.com/puzzlef/graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs

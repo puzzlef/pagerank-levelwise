@@ -14,7 +14,7 @@ display(FileLink(out))
 !echo ""
 
 # Run
-!g++ -O3 main.cxx
+!g++ -O3 $src/main.cxx
 !stdbuf --output=L ./a.out $inp/min-1DeadEnd.mtx      2>&1 | tee -a "$out"
 !stdbuf --output=L ./a.out $inp/min-2SCC.mtx          2>&1 | tee -a "$out"
 !stdbuf --output=L ./a.out $inp/min-4SCC.mtx          2>&1 | tee -a "$out"

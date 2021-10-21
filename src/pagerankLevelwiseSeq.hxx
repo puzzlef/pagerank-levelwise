@@ -52,7 +52,7 @@ template <class G, class H, class T=float>
 PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
-  int  L = o.maxIterations, l;
+  int  L = o.maxIterations, l = 0;
   int  N = xt.order();
   auto cs = sortedComponents(x, xt);
   auto ns = pagerankLevelwiseWaves(cs);

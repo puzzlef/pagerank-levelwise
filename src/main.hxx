@@ -11,6 +11,7 @@
 #include "components.hxx"
 #include "topologicalSort.hxx"
 #include "deadEnds.hxx"
+#include "selfLoop.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithicSeq.hxx"
 #include "pagerankLevelwiseSeq.hxx"

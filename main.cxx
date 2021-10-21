@@ -23,7 +23,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
     auto a1 = pagerankMonolithicSeq(xt, init, {repeat, damping});
     auto e1 = l1Norm(a1.ranks, a0.ranks);
     printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeq [damping=%.2f]\n", a1.time, a1.iterations, e1, damping);
-    auto a2 = pagerankLevelwiseSeq(xt, init, {repeat, damping});
+    auto a2 = pagerankLevelwiseSeq(x, xt, init, {repeat, damping});
     auto e2 = l1Norm(a2.ranks, a0.ranks);
     printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeq [damping=%.2f]\n", a2.time, a2.iterations, e2, damping);
   }
@@ -35,6 +35,10 @@ int main(int argc, char **argv) {
   int repeat = argc>2? stoi(argv[2]) : 5;
   printf("Loading graph %s ...\n", file);
   auto x  = readMtx(file); println(x);
+  // Handle dead ends with loop strategy (alternatives: loop-all, remove).
+  selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
+  print(x); printf(" (selfLoopDeadEnds)\n");
+  // Transpose graph after handling dead ends.
   auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, repeat);
   printf("\n");

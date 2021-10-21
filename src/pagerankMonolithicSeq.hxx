@@ -31,17 +31,32 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 
 
 
+// PAGERANK-ERROR
+// --------------
+
+template <class T>
+T pagerankError(const vector<T>& x, const vector<T>& y, int i, int N, int EF) {
+  switch (EF) {
+    case 1:  return l1Norm(x, y, i, N);
+    case 2:  return l2Norm(x, y, i, N);
+    default: return liNorm(x, y, i, N);
+  }
+}
+
+
+
+
 // PAGERANK-LOOP
 // --------------
 
 template <class T>
-int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L) {
+int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L, int EF) {
   T  c0 = (1-p)/N;
   int l = 1;
   for (; l<L; l++) {
     multiply(c, r, f, i, n);
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
-    T el = l1Norm(a, r, i, n);
+    T el = pagerankError(a, r, i, n, EF);
     if (el < E) break;
     swap(a, r);
   }
@@ -59,6 +74,7 @@ PagerankResult<T> pagerankMonolithicSeq(const H& xt, const vector<T> *q=nullptr,
   T    p  = o.damping;
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
+  int  EF = o.toleranceNorm;
   auto vfrom = sourceOffsets(xt);
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
@@ -70,7 +86,7 @@ PagerankResult<T> pagerankMonolithicSeq(const H& xt, const vector<T> *q=nullptr,
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L); });
+    mark([&] { l = pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L, EF); });
   }, o.repeat);
   return {decompressContainer(xt, a), l, t};
 }

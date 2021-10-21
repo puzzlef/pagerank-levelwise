@@ -1,5 +1,5 @@
 Comparing the effect of using different **functions** for
-**convergence check**, with PageRank ([pull], [CSR]).
+**convergence check**, with Levelwise PageRank ([pull], [CSR]).
 
 `TODO!`
 

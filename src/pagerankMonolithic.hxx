@@ -29,6 +29,11 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 }
 
 
+
+
+// PAGERANK-LOOP
+// --------------
+
 template <class T>
 int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L) {
   T  c0 = (1-p)/N;
@@ -51,17 +56,18 @@ int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vecto
 // @returns {ranks, iterations, time}
 template <class H, class T=float>
 PagerankResult<T> pagerankMonolithic(const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
-  T    p = o.damping;
-  T    E = o.tolerance;
-  int  L = o.maxIterations, l;
+  T    p  = o.damping;
+  T    E  = o.tolerance;
+  int  L  = o.maxIterations, l = 0;
   auto vfrom = sourceOffsets(xt);
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
   int  N     = xt.order();
-  vector<T> a(N), r(N), c(N), f(N);
+  vector<T> a(N), r(N), c(N), f(N), qc;
+  if (q) qc = compressContainer(xt, *q);
   float t = measureDurationMarked([&](auto mark) {
     fill(a, T());
-    if (q) r = compressContainer(xt, *q);
+    if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
     mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L); });

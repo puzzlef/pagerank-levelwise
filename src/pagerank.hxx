@@ -8,15 +8,6 @@ using std::move;
 
 
 
-// CONFIG
-// ------
-
-// For levelwise pagerank
-#define MIN_COMPUTE_SIZE_PR 10
-
-
-
-
 // PAGERANK-OPTIONS
 // ----------------
 

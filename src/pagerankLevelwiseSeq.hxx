@@ -6,7 +6,7 @@
 #include "csr.hxx"
 #include "components.hxx"
 #include "pagerank.hxx"
-#include "pagerankMonolithic.hxx"
+#include "pagerankMonolithicSeq.hxx"
 
 using std::vector;
 using std::swap;
@@ -28,12 +28,12 @@ auto pagerankLevelwiseWaves(const vector2d<int>& cs) {
 // --------------
 
 template <class T, class J>
-int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, J&& ns, int N, T p, T E, int L) {
+int pagerankLevelwiseSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, J&& ns, int N, T p, T E, int L) {
   float l = 0;
   for (int n : ns) {
     float nN = float(n)/N;
     if (n<=0) { i += -n; continue; }
-    l += pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, i, n, N, p, E*nN, L) * nN;
+    l += pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, i, n, N, p, E*nN, L) * nN;
     swap(a, r);
     i += n;
   }
@@ -49,7 +49,7 @@ int pagerankLevelwiseLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector
 // @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
 // @returns {ranks, iterations, time}
 template <class G, class H, class T=float>
-PagerankResult<T> pagerankLevelwise(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
@@ -67,7 +67,7 @@ PagerankResult<T> pagerankLevelwise(const G& x, const H& xt, const vector<T> *q=
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankLevelwiseLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L); });
+    mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

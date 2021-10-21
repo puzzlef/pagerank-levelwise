@@ -1,5 +1,5 @@
 Comparing the effect of using different values of **damping factor**,
-with PageRank ([pull], [CSR]).
+with Levelwise PageRank ([pull], [CSR]).
 
 `TODO!`
 

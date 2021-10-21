@@ -1,4 +1,4 @@
-# https://www.kaggle.com/wolfram77/puzzlef-pagerank-levelwise-adjust-tolerance-function
+# https://www.kaggle.com/wolfram77/puzzlef-pagerank-levelwise-adjust-tolerance-functi
 import os
 from IPython.display import FileLink
 src="pagerank-levelwise-adjust-tolerance-function"

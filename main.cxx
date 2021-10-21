@@ -14,15 +14,18 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   vector<float> *init = nullptr;
 
   // Find pagerank using default damping factor 0.85.
-  auto a1 = pagerankMonolithicSeq(xt, init, {repeat});
-  auto e1 = absError(a1.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerank\n", a1.time, a1.iterations, e1);
+  auto a0 = pagerankMonolithicSeq(xt, init, {repeat});
+  auto e0 = l1Norm(a0.ranks, a0.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeq\n", a0.time, a0.iterations, e0);
 
   // Find pagerank using custom damping factors.
   for (float damping=1.0f; damping>0.45f; damping-=0.05f) {
-    auto a2 = pagerankMonolithicSeq(xt, init, {repeat, damping});
-    auto e2 = absError(a2.ranks, a1.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerank [damping=%.2f]\n", a2.time, a2.iterations, e2, damping);
+    auto a1 = pagerankMonolithicSeq(xt, init, {repeat, damping});
+    auto e1 = l1Norm(a1.ranks, a0.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeq [damping=%.2f]\n", a1.time, a1.iterations, e1, damping);
+    auto a2 = pagerankLevelwiseSeq(xt, init, {repeat, damping});
+    auto e2 = l1Norm(a2.ranks, a0.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeq [damping=%.2f]\n", a2.time, a2.iterations, e2, damping);
   }
 }
 

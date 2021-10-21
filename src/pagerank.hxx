@@ -8,6 +8,18 @@ using std::move;
 
 
 
+// CONFIG
+// ------
+
+// For levelwise pagerank
+#define MIN_COMPUTE_SIZE_PR 10
+
+
+
+
+// PAGERANK-OPTIONS
+// ----------------
+
 template <class T>
 struct PagerankOptions {
   int repeat;
@@ -19,6 +31,11 @@ struct PagerankOptions {
   repeat(repeat), damping(damping), tolerance(tolerance), maxIterations(maxIterations) {}
 };
 
+
+
+
+// PAGERANK-RESULT
+// ---------------
 
 template <class T>
 struct PagerankResult {

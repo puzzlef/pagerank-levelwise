@@ -60,6 +60,7 @@ int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const ve
     if (el < E) break;
     swap(a, r);
   }
+  printf("pagerankMonolithicSeqLoop: i=%03d n=%03d N=%03d l=%03d\n", i, n, N, l);
   return l;
 }
 

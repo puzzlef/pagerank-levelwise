@@ -55,12 +55,12 @@ int main(int argc, char **argv) {
   char *file = argv[1];
   int repeat = argc>2? stoi(argv[2]) : 5;
   printf("Loading graph %s ...\n", file);
-  auto x  = readMtx(file); println(x);
+  auto x  = readMtx(file); write(cout, x, true);
   // Handle dead ends with loop strategy (alternatives: loop-all, remove).
   selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
-  print(x); printf(" (selfLoopDeadEnds)\n");
+  write(cout, x, true); printf(" (selfLoopDeadEnds)\n");
   // Transpose graph after handling dead ends.
-  auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
+  auto xt = transposeWithDegree(x); write(cout, xt, true); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, repeat);
   printf("\n");
   return 0;

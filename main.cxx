@@ -22,7 +22,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
 
   // Find pagerank using custom tolerance.
   for (int i=0; i<=20; i++) {
-    float tolerance = pow(10.0f, -i/2) / (i&1? 2:1);
+    float tolerance = 1e-6; // pow(10.0f, -i/2) / (i&1? 2:1);
 
     // Find pagerank using L1 norm for convergence check.
     auto a1 = pagerankMonolithicSeq(xt, init, {repeat, tolerance, L1});
@@ -47,15 +47,16 @@ void runPagerank(const G& x, const H& xt, int repeat) {
     auto a6 = pagerankLevelwiseSeq(x, xt, init, {repeat, tolerance, Li});
     auto e6 = l1Norm(a6.ranks, a0.ranks);
     printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranLevelwiseSeqLiNorm [tolerance=%.0e]\n", a6.time, a6.iterations, e6, tolerance);
+    break;
   }
 }
 
 
 int main(int argc, char **argv) {
   char *file = argv[1];
-  int repeat = argc>2? stoi(argv[2]) : 5;
+  int repeat = argc>2? stoi(argv[2]) : 1;
   printf("Loading graph %s ...\n", file);
-  auto x  = readMtx(file); write(cout, x, true);
+  auto x  = readMtx(file); write(cout, x, true); cout << "\n";
   // Handle dead ends with loop strategy (alternatives: loop-all, remove).
   selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
   write(cout, x, true); printf(" (selfLoopDeadEnds)\n");

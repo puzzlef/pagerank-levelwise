@@ -67,12 +67,13 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
+  printf("pagerankLevelwiseSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
-    fill(a, T());
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
+    copy(a, r);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
     mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L, EF); });
   }, o.repeat);

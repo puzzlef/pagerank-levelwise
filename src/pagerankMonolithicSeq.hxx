@@ -54,13 +54,14 @@ int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const ve
   T  c0 = (1-p)/N;
   int l = 1;
   for (; l<L; l++) {
-    multiply(c, r, f, i, n);
+    multiply(c, r, f, 0, N); // (c, r, f, i, n)
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
     T el = pagerankError(a, r, i, n, EF);
+    printf("pagerankMonolithicSeqLoop: a="); println(a);
     if (el < E) break;
     swap(a, r);
   }
-  printf("pagerankMonolithicSeqLoop: i=%03d n=%03d N=%03d l=%03d\n", i, n, N, l);
+  printf("pagerankMonolithicSeqLoop: i=%03d n=%03d N=%03d E=%.4e l=%03d\n", i, n, N, E, l);
   return l;
 }
 
@@ -76,16 +77,18 @@ PagerankResult<T> pagerankMonolithicSeq(const H& xt, const vector<T> *q=nullptr,
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
+  auto ks    = vertices(xt);
   auto vfrom = sourceOffsets(xt);
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
   int  N     = xt.order();
+  printf("pagerankMonolithicSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q);
   float t = measureDurationMarked([&](auto mark) {
-    fill(a, T());
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
+    copy(a, r);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
     mark([&] { l = pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L, EF); });
   }, o.repeat);

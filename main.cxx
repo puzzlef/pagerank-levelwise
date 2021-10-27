@@ -13,7 +13,7 @@ using namespace std;
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
   enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
-  vector<float> *init = nullptr;
+  vector<double> *init = nullptr;
 
   // Find pagerank using default tolerance 10^-6, L1-norm.
   auto a0 = pagerankMonolithicSeq(xt, init, {repeat});

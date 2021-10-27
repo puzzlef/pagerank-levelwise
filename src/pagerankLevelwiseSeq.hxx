@@ -39,7 +39,7 @@ int pagerankLevelwiseSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vec
   for (int n : ns) {
     if (n<=0) { i += -n; continue; }
     T np = T(n)/N, En = EF<=2? E*np : E;
-    fill(r, i, n, (1-sum(r, 0, i))/(N-i));
+    // fill(r, i, n, (1-sum(r, 0, i))/(N-i));  // progressive ranks initialization
     l += pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, i, n, N, p, En, L, EF)*np;
     swap(a, r);
     i += n;

@@ -54,10 +54,9 @@ int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const ve
   T  c0 = (1-p)/N;
   int l = 1;
   for (; l<L; l++) {
-    multiply(c, r, f, 0, N); // (c, r, f, i, n)
+    multiply(c, r, f, i, n);
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
     T el = pagerankError(a, r, i, n, EF);
-    printf("pagerankMonolithicSeqLoop: a="); println(a);
     if (el < E) break;
     swap(a, r);
   }

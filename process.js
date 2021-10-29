@@ -3,8 +3,8 @@ const os = require('os');
 const path = require('path');
 
 const RGRAPH = /^Loading graph .*\/(.*?)\.mtx \.\.\./m;
-const RORDER = /^order: (\d+) size: (\d+) \{\}/m;
-const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[tolerance=(.+?)\])?/m;
+const RORDER = /^order: (\d+) size: (\d+) \{\}?/m;
+const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[tolerance=(.+?)\])/m;
 
 
 

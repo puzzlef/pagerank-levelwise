@@ -1,5 +1,5 @@
-Analysing the effect of using **different values of tolerance**,
-with Levelwise PageRank ([pull], [CSR]).
+Finding suitable number of *monolithic PageRank iterations* for
+**initialization of ranks** with Levelwise PageRank ([pull], [CSR]).
 
 `TODO!`
 

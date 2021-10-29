@@ -39,7 +39,6 @@ int pagerankLevelwiseSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vec
   for (int n : ns) {
     if (n<=0) { i += -n; continue; }
     T np = T(n)/N, En = EF<=2? E*np : E;
-    // fill(r, i, n, (1-sum(r, 0, i))/(N-i));  // progressive ranks initialization
     l += pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, i, n, N, p, En, L, EF)*np;
     swap(a, r);
     i += n;
@@ -60,6 +59,7 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   T    p  = o.damping;
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
+  int  LM = o.monolithicIterations;
   int  EF = o.toleranceNorm;
   int  N  = xt.order();
   auto cs = sortedComponents(x, xt);
@@ -68,7 +68,6 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  printf("pagerankLevelwiseSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
@@ -76,7 +75,8 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
     else fill(r, T(1)/N);
     copy(a, r);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L, EF); });
+    mark([&] { l += pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, 0, N,  N, p, E, LM, EF); swap(a, r); });
+    mark([&] { l += pagerankLevelwiseSeqLoop (a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L,  EF); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

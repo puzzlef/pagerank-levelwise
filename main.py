@@ -6,7 +6,7 @@ inp="/kaggle/input/graphs"
 out="{}.txt".format(src)
 !printf "" > "$out"
 display(FileLink(out))
-!ulimit -s unlimited && echo ""
+!echo ""
 
 # Download program
 !rm -rf $src
@@ -15,7 +15,7 @@ display(FileLink(out))
 
 # Run
 !g++ -O3 $src/main.cxx
-!stdbuf --output=L ./a.out $inp/min-1DeadEnd.mtx      2>&1 | tee -a "$out"
-!stdbuf --output=L ./a.out $inp/min-2SCC.mtx          2>&1 | tee -a "$out"
-!stdbuf --output=L ./a.out $inp/min-4SCC.mtx          2>&1 | tee -a "$out"
-!stdbuf --output=L ./a.out $inp/min-NvgraphEx.mtx     2>&1 | tee -a "$out"
+!ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-1DeadEnd.mtx      2>&1 | tee -a "$out"
+!ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-2SCC.mtx          2>&1 | tee -a "$out"
+!ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-4SCC.mtx          2>&1 | tee -a "$out"
+!ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-NvgraphEx.mtx     2>&1 | tee -a "$out"

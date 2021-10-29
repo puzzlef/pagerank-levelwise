@@ -35,9 +35,9 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   auto e3 = l1Norm(a3.ranks, a0.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL2Norm\n", a3.time, a3.iterations, e3);
   for (int LM=0; LM<=16; ++LM) {
-    auto a4 = pagerankLevelwiseSeq(x, xt, init, {repeat, L2});
+    auto a4 = pagerankLevelwiseSeq(x, xt, init, {repeat, L2, LM});
     auto e4 = l1Norm(a4.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL2Norm [monolithic-iterations=%.0e]\n", a4.time, a4.iterations, e4, LM);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL2Norm [monolithic-iterations=%d]\n", a4.time, a4.iterations, e4, LM);
   }
 
   // Find pagerank using L∞ norm for convergence check.
@@ -45,9 +45,9 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   auto e5 = l1Norm(a5.ranks, a0.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranMonolithicSeqLiNorm\n", a5.time, a5.iterations, e5);
   for (int LM=0; LM<=16; ++LM) {
-    auto a6 = pagerankLevelwiseSeq(x, xt, init, {repeat, Li});
+    auto a6 = pagerankLevelwiseSeq(x, xt, init, {repeat, Li, LM});
     auto e6 = l1Norm(a6.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranLevelwiseSeqLiNorm [monolithic-iterations=%.0e]\n", a6.time, a6.iterations, e6, LM);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranLevelwiseSeqLiNorm [monolithic-iterations=%d]\n", a6.time, a6.iterations, e6, LM);
   }
 }
 
@@ -56,12 +56,12 @@ int main(int argc, char **argv) {
   char *file = argv[1];
   int repeat = argc>2? stoi(argv[2]) : 1;
   printf("Loading graph %s ...\n", file);
-  auto x  = readMtx(file); write(cout, x, true); cout << "\n";
+  auto x  = readMtx(file); println(x);
   // Handle dead ends with loop strategy (alternatives: loop-all, remove).
   selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
-  write(cout, x, true); printf(" (selfLoopDeadEnds)\n");
+  print(x); printf(" (selfLoopDeadEnds)\n");
   // Transpose graph after handling dead ends.
-  auto xt = transposeWithDegree(x); write(cout, xt, true); printf(" (transposeWithDegree)\n");
+  auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, repeat);
   printf("\n");
   return 0;

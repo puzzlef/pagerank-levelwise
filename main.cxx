@@ -14,7 +14,7 @@ template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
   typedef PagerankInit Init;
   enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
-  vector<double> *init = nullptr;
+  vector<float> *init = nullptr;
 
   // Find pagerank using default options.
   auto a0 = pagerankMonolithicSeq(xt, init, {repeat});
@@ -57,12 +57,12 @@ int main(int argc, char **argv) {
   char *file = argv[1];
   int repeat = argc>2? stoi(argv[2]) : 1;
   printf("Loading graph %s ...\n", file);
-  auto x  = readMtx(file); write(cout, x, true); cout << "\n";
+  auto x  = readMtx(file); println(x);
   // Handle dead ends with loop strategy (alternatives: loop-all, remove).
   selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
-  write(cout, x, true); printf(" (selfLoopDeadEnds)\n");
+  print(x); printf(" (selfLoopDeadEnds)\n");
   // Transpose graph after handling dead ends.
-  auto xt = transposeWithDegree(x); write(cout, xt, true); printf(" (transposeWithDegree)\n");
+  auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, repeat);
   printf("\n");
   return 0;

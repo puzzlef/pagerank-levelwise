@@ -70,7 +70,7 @@ void pagerankInitializeRemaining(vector<T>& a, int i, int n) {
 }
 
 template <class G, class T>
-void pagerankInitialize(const vector<T>& a, const G& x, const vector2d<int> cs, const PagerankOptions<T>& o) {
+void pagerankInitialize(vector<T>& a, const G& x, const vector2d<int> cs, const PagerankOptions<T>& o) {
   typedef PagerankInit Init;
   switch (o.initialization) {
     default: pagerankInitializeDefault(a); break;
@@ -125,9 +125,9 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   auto vdata = vertexData(xt, ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
+  else { qc = vector<T>(N); pagerankInitialize(qc, x, cs, o); }
   float t = measureDurationMarked([&](auto mark) {
-    if (q) copy(r, qc);
-    else pagerankInitialize(r, x, cs, o);
+    copy(r, qc);  // initialize once!
     copy(a, r);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
     mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L, EF, IF); });

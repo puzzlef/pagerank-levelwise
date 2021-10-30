@@ -12,41 +12,43 @@ using namespace std;
 
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
+  typedef PagerankInit Init;
   enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
   vector<double> *init = nullptr;
 
-  // Find pagerank using default tolerance 10^-6, L1-norm.
+  // Find pagerank using default options.
   auto a0 = pagerankMonolithicSeq(xt, init, {repeat});
   auto e0 = l1Norm(a0.ranks, a0.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeq\n", a0.time, a0.iterations, e0);
 
-  // Find pagerank using custom tolerance.
-  for (int i=0; i<=20; i++) {
-    float tolerance = pow(10.0f, -i/2) / (i&1? 2:1);
-
-    // Find pagerank using L1 norm for convergence check.
-    auto a1 = pagerankMonolithicSeq(xt, init, {repeat, tolerance, L1});
-    auto e1 = l1Norm(a1.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL1Norm [tolerance=%.0e]\n", a1.time, a1.iterations, e1, tolerance);
-    auto a2 = pagerankLevelwiseSeq(x, xt, init, {repeat, tolerance, L1});
+  // Find pagerank using L1 norm for convergence check.
+  auto a1 = pagerankMonolithicSeq(xt, init, {repeat, L1});
+  auto e1 = l1Norm(a1.ranks, a0.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL1Norm\n", a1.time, a1.iterations, e1);
+  for (int IF=0; IF<=3; ++IF) {
+    auto a2 = pagerankLevelwiseSeq(x, xt, init, {repeat, L1, pagerankInit(IF)});
     auto e2 = l1Norm(a2.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL1Norm [tolerance=%.0e]\n", a2.time, a2.iterations, e2, tolerance);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL1Norm [initialization=%s]\n", a2.time, a2.iterations, e2, stringify(pagerankInit(IF)));
+  }
 
-    // Find pagerank using L2 norm for convergence check.
-    auto a3 = pagerankMonolithicSeq(xt, init, {repeat, tolerance, L2});
-    auto e3 = l1Norm(a3.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL2Norm [tolerance=%.0e]\n", a3.time, a3.iterations, e3, tolerance);
-    auto a4 = pagerankLevelwiseSeq(x, xt, init, {repeat, tolerance, L2});
+  // Find pagerank using L2 norm for convergence check.
+  auto a3 = pagerankMonolithicSeq(xt, init, {repeat, L2});
+  auto e3 = l1Norm(a3.ranks, a0.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL2Norm\n", a3.time, a3.iterations, e3);
+  for (int IF=0; IF<=3; ++IF) {
+    auto a4 = pagerankLevelwiseSeq(x, xt, init, {repeat, L2, pagerankInit(IF)});
     auto e4 = l1Norm(a4.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL2Norm [tolerance=%.0e]\n", a4.time, a4.iterations, e4, tolerance);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwiseSeqL2Norm [initialization=%s]\n", a4.time, a4.iterations, e4, stringify(pagerankInit(IF)));
+  }
 
-    // Find pagerank using L∞ norm for convergence check.
-    auto a5 = pagerankMonolithicSeq(xt, init, {repeat, tolerance, Li});
-    auto e5 = l1Norm(a5.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranMonolithicSeqLiNorm [tolerance=%.0e]\n", a5.time, a5.iterations, e5, tolerance);
-    auto a6 = pagerankLevelwiseSeq(x, xt, init, {repeat, tolerance, Li});
+  // Find pagerank using L∞ norm for convergence check.
+  auto a5 = pagerankMonolithicSeq(xt, init, {repeat, Li});
+  auto e5 = l1Norm(a5.ranks, a0.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranMonolithicSeqLiNorm\n", a5.time, a5.iterations, e5);
+  for (int IF=0; IF<=3; ++IF) {
+    auto a6 = pagerankLevelwiseSeq(x, xt, init, {repeat, Li, pagerankInit(IF)});
     auto e6 = l1Norm(a6.ranks, a0.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranLevelwiseSeqLiNorm [tolerance=%.0e]\n", a6.time, a6.iterations, e6, tolerance);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pageranLevelwiseSeqLiNorm [initialization=%s]\n", a6.time, a6.iterations, e6, stringify(pagerankInit(IF)));
   }
 }
 

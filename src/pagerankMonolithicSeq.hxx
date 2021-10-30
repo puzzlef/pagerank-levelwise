@@ -52,15 +52,14 @@ T pagerankError(const vector<T>& x, const vector<T>& y, int i, int N, int EF) {
 template <class T>
 int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L, int EF) {
   T  c0 = (1-p)/N;
-  int l = 1;
-  for (; l<L; l++) {
+  int l = 0;
+  for (; l<L; ++l) {
     multiply(c, r, f, i, n);
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
     T el = pagerankError(a, r, i, n, EF);
-    if (el < E) break;
+    if (el < E) { ++l; break; }
     swap(a, r);
   }
-  printf("pagerankMonolithicSeqLoop: i=%03d n=%03d N=%03d E=%.4e l=%03d\n", i, n, N, E, l);
   return l;
 }
 
@@ -81,7 +80,6 @@ PagerankResult<T> pagerankMonolithicSeq(const H& xt, const vector<T> *q=nullptr,
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
   int  N     = xt.order();
-  printf("pagerankMonolithicSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q);
   float t = measureDurationMarked([&](auto mark) {

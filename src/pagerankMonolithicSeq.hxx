@@ -81,7 +81,6 @@ PagerankResult<T> pagerankMonolithicSeq(const H& xt, const vector<T> *q=nullptr,
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
   int  N     = xt.order();
-  printf("pagerankMonolithicSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q);
   float t = measureDurationMarked([&](auto mark) {

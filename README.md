@@ -1,4 +1,4 @@
-Analysing the effect of using **different values of tolerance**,
+Analysing the effect of using **different error measurement functions**,
 with Levelwise PageRank ([pull], [CSR]).
 
 `TODO!`

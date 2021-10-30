@@ -68,7 +68,6 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  printf("pagerankLevelwiseSeq: ks="); println(ks);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {

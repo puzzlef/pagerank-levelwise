@@ -1,5 +1,7 @@
 #pragma once
+#include <cstdint>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include "vertices.hxx"
 #include "edges.hxx"
@@ -8,6 +10,7 @@
 #include "pagerank.hxx"
 #include "pagerankMonolithicSeq.hxx"
 
+using std::map;
 using std::vector;
 using std::swap;
 
@@ -30,17 +33,29 @@ inline T pagerankLevelwiseError(T E, int n, int N, int EF) {
 
 
 
+// PAGERANK-STATISTICS
+// -------------------
+
+void pagerankPrintStatistics(map<int, int64_t>& cn, map<int, int64_t>& cl) {
+  for (auto [c, n] : cn)
+    printf("component-size: %d, component-count: %zu, component-iterations: %zu\n", c, n, cl[c]);
+}
+
+
+
+
 // PAGERANK-LOOP
 // --------------
 
 template <class T, class J>
-int pagerankLevelwiseSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, J&& ns, int N, T p, T E, int L, int EF) {
+int pagerankLevelwiseSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, J&& ns, int N, T p, T E, int L, int EF, map<int, int64_t>& cn, map<int, int64_t>& cl) {
   float l = 0;
   for (int n : ns) {
     if (n<=0) { i += -n; continue; }
     T np = T(n)/N, En = EF<=2? E*np : E;
-    // fill(r, i, n, (1-sum(r, 0, i))/(N-i));  // progressive ranks initialization
-    l += pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, i, n, N, p, En, L, EF)*np;
+    int k = pagerankMonolithicSeqLoop(a, r, c, f, vfrom, efrom, i, n, N, p, En, L, EF);
+    cn[n] += 1; cl[n] += k;  // update component statictics!
+    l += k*np;
     swap(a, r);
     i += n;
   }
@@ -68,14 +83,17 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
+  map<int, int64_t> cn, cl;
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
+    cn.clear(); cl.clear();  // Clear statistics!
     if (q) copy(r, qc);
     else fill(r, T(1)/N);
     copy(a, r);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L, EF); });
+    mark([&] { l = pagerankLevelwiseSeqLoop(a, r, c, f, vfrom, efrom, 0, ns, N, p, E, L, EF, cn, cl); });
   }, o.repeat);
+  pagerankPrintStatistics(cn, cl);
   return {decompressContainer(xt, a, ks), l, t};
 }

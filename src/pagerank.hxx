@@ -1,7 +1,10 @@
 #pragma once
+#include <cstdint>
+#include <map>
 #include <vector>
 #include <utility>
 
+using std::map;
 using std::vector;
 using std::move;
 

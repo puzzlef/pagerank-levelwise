@@ -4,7 +4,8 @@ const path = require('path');
 
 const RGRAPH = /^Loading graph .*\/(.*?)\.mtx \.\.\./m;
 const RORDER = /^order: (\d+) size: (\d+) \{\}?/m;
-const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[tolerance=(.+?)\])/m;
+const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)/m;
+const RSTATS = /^component-size: (\d+), component-count: (\d+), component-iterations: (\d+)/m;
 
 
 
@@ -43,7 +44,9 @@ function writeCsv(pth, rows) {
 // -----
 
 function readLogLine(ln, data, state) {
-  if (RGRAPH.test(ln)) {
+  var time = 0, iterations = 0, error = 0, technique = '';
+  var componentSize = 0, componentCount = 0, componentIterations = 0;
+if (RGRAPH.test(ln)) {
     var [, graph] = RGRAPH.exec(ln);
     if (!data.has(graph)) data.set(graph, []);
     state = {graph};
@@ -54,17 +57,23 @@ function readLogLine(ln, data, state) {
     state.size  = parseFloat(size);
   }
   else if (RRESLT.test(ln)) {
-    var [, time, iterations, error, technique, tolerance] = RRESLT.exec(ln);
-    data.get(state.graph).push({
-      graph: state.graph,
-      order: state.order,
-      size:  state.size,
+    var [, time, iterations, error, technique] = RRESLT.exec(ln);
+    data.get(state.graph).push(Object.assign({}, state, {
       time:       parseFloat(time),
       iterations: parseFloat(iterations),
       error:      parseFloat(error),
       technique:  technique,
-      tolerance:  parseFloat(tolerance||'0')
-    });
+      componentSize, componentCount, componentIterations
+    }));
+  }
+  else if (RSTATS.test(ln)) {
+    var [, componentSize, componentCount, componentIterations] = RSTATS.exec(ln);
+    data.get(state.graph).push(Object.assign({}, state, {
+      time, iterations, error, technique,
+      componentSize:       parseFloat(componentSize),
+      componentCount:      parseFloat(componentCount),
+      componentIterations: parseFloat(componentIterations)
+    }));
   }
   return state;
 }
@@ -85,6 +94,17 @@ function readLog(pth) {
 // PROCESS-*
 // ---------
 
+function processTechnique(data) {
+  for (var [, rows] of data) {
+    var technique = '';
+    for (var i=rows.length-1; i>=0; --i) {
+      var r = rows[i];
+      technique = r.technique||technique;
+      r.technique = technique;
+    }
+  }
+  return data;
+}
 
 function processCsv(data) {
   var a = [];
@@ -100,7 +120,7 @@ function processCsv(data) {
 // ----
 
 function main(cmd, log, out) {
-  var data = readLog(log);
+  var data = processTechnique(readLog(log));
   if (path.extname(out)==='') cmd += '-dir';
   switch (cmd) {
     case 'csv':

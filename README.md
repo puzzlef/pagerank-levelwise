@@ -1,7 +1,5 @@
 Comparing the effect of using different **functions** for
-**convergence check**, with Levelwise PageRank ([pull], [CSR]).
-
-`TODO!`
+**convergence check**, with **Levelwise PageRank** ([pull], [CSR]).
 
 This experiment was for comparing the performance between:
 1. Find pagerank using **L1 norm** for convergence check.
@@ -21,19 +19,12 @@ is calculated as `max(|rₙ - sₙ|)`, or as the *maximum* of *absolute errors*.
 
 This experiment was for comparing the performance between PageRank computation
 with *L1, L2* and *L∞ norms* as convergence check, for *damping factor
-`α = 0.85`, and *tolerance* `τ = 10⁻⁶`. The PageRank algorithm used here is
-the *standard power-iteration (pull)* based PageRank. The rank of a vertex in
-an iteration is calculated as `c₀ + αΣrₙ/dₙ`, where `c₀` is the *common*
-*teleport contribution*, `α` is the *damping factor*, `rₙ` is the
-*previous rank of vertex* with an incoming edge, `dₙ` is the *out-degree*
-of the incoming-edge vertex, and `N` is the *total number of vertices*
-in the graph. The *common teleport contribution* `c₀`, calculated as
-`(1-α)/N + αΣrₙ/N` , includes the *contribution due to a teleport from*
-*any vertex* in the graph due to the damping factor `(1-α)/N`, and
-*teleport from dangling vertices* (with *no outgoing edges*) in the
-graph `αΣrₙ/N`. This is because a random surfer jumps to a random page
-upon visiting a page with *no links*, in order to avoid the *rank-sink*
-effect.
+`α = 0.85`, and *tolerance* `τ = 10⁻⁶`. Since *Levelwise PageRank*
+requires the *absence of dead ends* (teleport-based dead end handling
+strategy does not work), before performing any PageRank computation,
+**self-loops** are added to *dead ends*. **Monolithic PageRank** computation
+is also performed, which is used for performance comparison and error
+measurement.
 
 All *seventeen* graphs used in this experiment are stored in the
 *MatrixMarket (.mtx)* file format, and obtained from the *SuiteSparse*
@@ -43,10 +34,7 @@ All *seventeen* graphs used in this experiment are stored in the
 *coPapersCiteseer, coPapersDBLP, indochina-2004, italy_osm,*
 *great-britain_osm, germany_osm, asia_osm*. The experiment is implemented
 in *C++*, and compiled using *GCC 9* with *optimization level 3 (-O3)*.
-The system used is a *Dell PowerEdge R740 Rack server* with two *Intel*
-*Xeon Silver 4116 CPUs @ 2.10GHz*, *128GB DIMM DDR4 Synchronous Registered*
-*(Buffered) 2666 MHz (8x16GB) DRAM*, and running *CentOS Linux release*
-*7.9.2009 (Core)*. the execution time of each test case is measured using
+The execution time of each test case is measured using
 *std::chrono::high_performance_timer*. This is done *5 times* for each
 test case, and timings are *averaged (AM)*. The *iterations* taken with
 each test case is also measured. `500` is the *maximum iterations* allowed.
@@ -63,6 +51,8 @@ and finally *L1 norm*. Thus, when comparing two or more approaches for an
 iterative algorithm, it is important to ensure that all of them use the same
 error function as convergence check (and the same parameter values). This
 would help ensure a level ground for a good relative performance comparison.
+It is also observed that *Levelwise PageRank* comverges faster than
+*Monolithic PageRank* in most cases.
 
 Also note in below charts that PageRank computation with **L∞ norm** as
 convergence check **completes in a single iteration for all the road**
@@ -75,8 +65,7 @@ value of `10⁻⁶`.
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection]. This experiment was done with guidance
-from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
+the [SuiteSparse Matrix Collection].
 
 <br>
 
@@ -88,29 +77,42 @@ $ ...
 
 # ...
 #
-# Loading graph /home/subhajit/data/web-Stanford.mtx ...
+# Loading graph /kaggle/input/graphs/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
-# order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00457.972 ms; 063 iters.] [0.0000e+00 err.] pagerankL1Norm
-# [00319.613 ms; 044 iters.] [3.6018e-05 err.] pagerankL2Norm
-# [00298.079 ms; 041 iters.] [6.1306e-05 err.] pagerankLiNorm
+# order: 281903 size: 2312669 {} (selfLoopDeadEnds)
+# order: 281903 size: 2312669 {} (transposeWithDegree)
+# [00464.522 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+# [00334.191 ms; 061 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+# [00318.081 ms; 044 iters.] [3.6049e-05 err.] pagerankMonolithicSeqL2Norm
+# [00252.807 ms; 047 iters.] [9.3213e-05 err.] pagerankLevelwiseSeqL2Norm
+# [00299.334 ms; 041 iters.] [6.1639e-05 err.] pagerankMonolithicSeqLiNorm
+# [00154.913 ms; 023 iters.] [8.8077e-02 err.] pagerankLevelwiseSeqLiNorm
 #
 # ...
 #
-# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+# Loading graph /kaggle/input/graphs/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
-# order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [14178.771 ms; 051 iters.] [0.0000e+00 err.] pagerankL1Norm
-# [06703.683 ms; 024 iters.] [4.4204e-04 err.] pagerankL2Norm
-# [04735.651 ms; 017 iters.] [1.7652e-03 err.] pagerankLiNorm
+# order: 4847571 size: 69532892 {} (selfLoopDeadEnds)
+# order: 4847571 size: 69532892 {} (transposeWithDegree)
+# [16359.787 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+# [13256.489 ms; 047 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+# [08485.205 ms; 031 iters.] [5.8270e-04 err.] pagerankMonolithicSeqL2Norm
+# [06404.363 ms; 026 iters.] [7.7020e-04 err.] pagerankLevelwiseSeqL2Norm
+# [07606.579 ms; 028 iters.] [1.0223e-03 err.] pagerankMonolithicSeqLiNorm
+# [04042.529 ms; 012 iters.] [2.9828e-01 err.] pagerankLevelwiseSeqLiNorm
 #
 # ...
 ```
 
-[![](https://i.imgur.com/b8Ov3fB.png)][sheetp]
-[![](https://i.imgur.com/7QWPhho.png)][sheetp]
-[![](https://i.imgur.com/Gr5C43h.png)][sheetp]
-[![](https://i.imgur.com/tEkTXCj.png)][sheetp]
+[![](https://i.imgur.com/yArpSFJ.png)][sheetp]
+[![](https://i.imgur.com/eGYTtoA.png)][sheetp]
+[![](https://i.imgur.com/tIXHciJ.png)][sheetp]
+[![](https://i.imgur.com/05p0Vj7.png)][sheetp]
+
+[![](https://i.imgur.com/3zmoua6.png)][sheetp]
+[![](https://i.imgur.com/24N5TaZ.png)][sheetp]
+[![](https://i.imgur.com/tlKUkCv.png)][sheetp]
+[![](https://i.imgur.com/A6QN9sN.png)][sheetp]
 
 <br>
 <br>
@@ -118,6 +120,7 @@ $ ...
 
 ## References
 
+- [STIC-D: Algorithmic Techniques For Efficient Parallel Pagerank Computation on Real-World Graphs](https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs)
 - [RAPIDS nvGraph NVIDIA graph library][nvGraph]
 - [How to check for Page Rank convergence?][L∞ norm]
 - [L0 Norm, L1 Norm, L2 Norm & L-Infinity Norm](https://montjoile.medium.com/l0-norm-l1-norm-l2-norm-l-infinity-norm-7a7d18a4f40c)
@@ -130,8 +133,6 @@ $ ...
 
 [![](https://i.imgur.com/BnCiig7.jpg)](https://www.youtube.com/watch?v=04Uv44DRJAU)
 
-[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
-[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
 [nvGraph]: https://github.com/rapidsai/nvgraph
@@ -140,6 +141,6 @@ $ ...
 [L1 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L154
 [L2 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L149
 [L∞ norm]: https://stackoverflow.com/a/29321153/1413259
-[charts]: https://photos.app.goo.gl/WpPKW5ZRj8qHJkPN8
-[sheets]: https://docs.google.com/spreadsheets/d/1TpoKE-WkbKvnym5zvm4-0CL-n5nRkxQkSM7f9qFKeLo/edit?usp=sharing
-[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSN6xnlxOz8u4PMYxUbxP01qFq8lrYa6IC8DH2pYFGkMmWD4-BB4jdk4e3Cp9Yh_GUG5SzF5OG7ZSex/pubhtml
+[charts]: https://photos.app.goo.gl/oVojYnFDJ6TwXftq5
+[sheets]: https://docs.google.com/spreadsheets/d/1JSmTIvhGadE4NAHQtLkwzDhJIhGkvlFKyRMr8uua8lo/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTkVlY-Ur_q_wM6bgxXIxv9Vf_IGW4PJ8eIOYf0lCgDSwo71eXhkyi4LlokdUd81m10TWu8vDwd8lYj/pubhtml

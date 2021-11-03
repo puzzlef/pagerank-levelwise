@@ -8,6 +8,9 @@ using std::move;
 
 
 
+// PAGERANK-OPTIONS
+// ----------------
+
 template <class T>
 struct PagerankOptions {
   int repeat;
@@ -16,10 +19,15 @@ struct PagerankOptions {
   T   tolerance;
   int maxIterations;
 
-  PagerankOptions(int repeat=1, int minComputeSize=0, T damping=0.85, T tolerance=1e-6, int maxIterations=500) :
+  PagerankOptions(int repeat=1, int minComputeSize=1, T damping=0.85, T tolerance=1e-6, int maxIterations=500) :
   repeat(repeat), minComputeSize(minComputeSize), damping(damping), tolerance(tolerance), maxIterations(maxIterations) {}
 };
 
+
+
+
+// PAGERANK-RESULT
+// ---------------
 
 template <class T>
 struct PagerankResult {

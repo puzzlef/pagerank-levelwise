@@ -14,10 +14,12 @@ using std::swap;
 
 
 
-auto pagerankLevelwiseWaves(const vector2d<int>& cs) {
+auto pagerankLevelwiseWaves(const vector2d<int>& cs, int CM) {
   vector<int> a;
-  for (const auto& c : cs)
-    a.push_back(c.size());
+  for (const auto& c : cs) {
+    if (a.empty() || a.back()>=CM) a.push_back(c.size());
+    else a.back() += c.size();
+  }
   return a;
 }
 
@@ -60,9 +62,10 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
+  int  CM = o.minComponentSize;
   int  N  = xt.order();
   auto cs = sortedComponents(x, xt);
-  auto ns = pagerankLevelwiseWaves(cs);
+  auto ns = pagerankLevelwiseWaves(cs, CM);
   auto ks = join(cs);
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);

@@ -1,6 +1,8 @@
 Comparing various **min. compute sizes** for topologically-ordered components
 ([levelwise]) PageRank ([pull], [CSR]).
 
+`TODO!`
+
 This experiment was for comparing performance between [levelwise] pagerank
 with various **min. compute size**, ranging from `1` - `1E+7`. Here,
 **min. compute size** is the minimum no. nodes of each pagerank compute using

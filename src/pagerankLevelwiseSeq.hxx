@@ -62,7 +62,7 @@ PagerankResult<T> pagerankLevelwiseSeq(const G& x, const H& xt, const vector<T> 
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
-  int  CM = o.minComponentSize;
+  int  CM = o.minComputeSize;
   int  N  = xt.order();
   auto cs = sortedComponents(x, xt);
   auto ns = pagerankLevelwiseWaves(cs, CM);

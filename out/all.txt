@@ -1,81 +1,81 @@
-Loading graph /kaggle/input/graphs/min-1DeadEnd.mtx ...
+Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 order: 5 size: 6 {}
 order: 5 size: 7 {} (selfLoopDeadEnds)
 order: 5 size: 7 {} (transposeWithDegree)
-[00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00000.001 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
 [00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 5, component-iterations: 90
-[00000.031 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL1Norm
-[00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL2Norm
+[00000.014 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL1Norm
+[00000.001 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 5, component-iterations: 90
-[00000.002 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL2Norm
-[00000.000 ms; 004 iters.] [0.0000e+00 err.] pageranMonolithicSeqLiNorm
+[00000.006 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL2Norm
+[00000.001 ms; 004 iters.] [0.0000e+00 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 5, component-iterations: 80
-[00000.001 ms; 016 iters.] [5.1499e-06 err.] pageranLevelwiseSeqLiNorm
+[00000.005 ms; 016 iters.] [5.1499e-06 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/min-2SCC.mtx ...
+Loading graph /home/subhajit/data/min-2SCC.mtx ...
 order: 8 size: 12 {}
 order: 8 size: 12 {} (selfLoopDeadEnds)
 order: 8 size: 12 {} (transposeWithDegree)
-[00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00000.001 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00000.003 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 4, component-count: 2, component-iterations: 94
-[00000.003 ms; 047 iters.] [1.8018e-06 err.] pagerankLevelwiseSeqL1Norm
-[00000.001 ms; 038 iters.] [1.4308e-06 err.] pagerankMonolithicSeqL2Norm
+[00000.010 ms; 047 iters.] [1.8018e-06 err.] pagerankLevelwiseSeqL1Norm
+[00000.003 ms; 038 iters.] [1.4308e-06 err.] pagerankMonolithicSeqL2Norm
 component-size: 4, component-count: 2, component-iterations: 89
-[00000.002 ms; 044 iters.] [3.6339e-06 err.] pagerankLevelwiseSeqL2Norm
-[00000.001 ms; 037 iters.] [1.1235e-06 err.] pageranMonolithicSeqLiNorm
+[00000.006 ms; 044 iters.] [3.6339e-06 err.] pagerankLevelwiseSeqL2Norm
+[00000.002 ms; 037 iters.] [1.1235e-06 err.] pageranMonolithicSeqLiNorm
 component-size: 4, component-count: 2, component-iterations: 81
-[00000.002 ms; 040 iters.] [1.7359e-05 err.] pageranLevelwiseSeqLiNorm
+[00000.004 ms; 040 iters.] [1.7359e-05 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/min-4SCC.mtx ...
+Loading graph /home/subhajit/data/min-4SCC.mtx ...
 order: 21 size: 35 {}
 order: 21 size: 35 {} (selfLoopDeadEnds)
 order: 21 size: 35 {} (transposeWithDegree)
-[00000.005 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00000.004 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00000.015 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00000.013 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 4, component-count: 2, component-iterations: 102
 component-size: 5, component-count: 1, component-iterations: 18
 component-size: 8, component-count: 1, component-iterations: 69
-[00000.011 ms; 050 iters.] [3.1604e-06 err.] pagerankLevelwiseSeqL1Norm
-[00000.004 ms; 041 iters.] [1.1181e-06 err.] pagerankMonolithicSeqL2Norm
+[00000.034 ms; 050 iters.] [3.1604e-06 err.] pagerankLevelwiseSeqL1Norm
+[00000.013 ms; 041 iters.] [1.1181e-06 err.] pagerankMonolithicSeqL2Norm
 component-size: 4, component-count: 2, component-iterations: 96
 component-size: 5, component-count: 1, component-iterations: 17
 component-size: 8, component-count: 1, component-iterations: 63
-[00000.006 ms; 046 iters.] [7.8121e-06 err.] pagerankLevelwiseSeqL2Norm
-[00000.004 ms; 040 iters.] [1.6365e-06 err.] pageranMonolithicSeqLiNorm
+[00000.026 ms; 046 iters.] [7.8121e-06 err.] pagerankLevelwiseSeqL2Norm
+[00000.012 ms; 040 iters.] [1.6365e-06 err.] pageranMonolithicSeqLiNorm
 component-size: 4, component-count: 2, component-iterations: 76
 component-size: 5, component-count: 1, component-iterations: 15
 component-size: 8, component-count: 1, component-iterations: 53
-[00000.005 ms; 038 iters.] [4.7296e-05 err.] pageranLevelwiseSeqLiNorm
+[00000.017 ms; 038 iters.] [4.7296e-05 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/min-NvgraphEx.mtx ...
+Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
 order: 6 size: 10 {}
 order: 6 size: 11 {} (selfLoopDeadEnds)
 order: 6 size: 11 {} (transposeWithDegree)
-[00000.001 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00000.003 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 1, component-iterations: 75
 component-size: 2, component-count: 1, component-iterations: 14
 component-size: 3, component-count: 1, component-iterations: 63
-[00000.004 ms; 048 iters.] [3.2734e-06 err.] pagerankLevelwiseSeqL1Norm
-[00000.000 ms; 016 iters.] [4.7943e-07 err.] pagerankMonolithicSeqL2Norm
+[00000.022 ms; 048 iters.] [3.2734e-06 err.] pagerankLevelwiseSeqL1Norm
+[00000.003 ms; 016 iters.] [4.7943e-07 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 1, component-iterations: 75
 component-size: 2, component-count: 1, component-iterations: 14
 component-size: 3, component-count: 1, component-iterations: 60
-[00000.004 ms; 047 iters.] [5.4792e-06 err.] pagerankLevelwiseSeqL2Norm
-[00000.001 ms; 016 iters.] [4.7943e-07 err.] pageranMonolithicSeqLiNorm
+[00000.013 ms; 047 iters.] [5.4792e-06 err.] pagerankLevelwiseSeqL2Norm
+[00000.002 ms; 016 iters.] [4.7943e-07 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 1, component-iterations: 64
 component-size: 2, component-count: 1, component-iterations: 13
 component-size: 3, component-count: 1, component-iterations: 54
-[00000.003 ms; 042 iters.] [1.4970e-05 err.] pageranLevelwiseSeqLiNorm
+[00000.012 ms; 042 iters.] [1.4970e-05 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/web-Stanford.mtx ...
+Loading graph /home/subhajit/data/web-Stanford.mtx ...
 order: 281903 size: 2312497 {}
 order: 281903 size: 2312669 {} (selfLoopDeadEnds)
 order: 281903 size: 2312669 {} (transposeWithDegree)
-[00568.102 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00568.061 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00522.113 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00538.851 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 26396, component-iterations: 65679
 component-size: 2, component-count: 1131, component-iterations: 36319
 component-size: 3, component-count: 296, component-iterations: 14223
@@ -301,8 +301,8 @@ component-size: 2095, component-count: 1, component-iterations: 81
 component-size: 3099, component-count: 1, component-iterations: 32
 component-size: 4888, component-count: 1, component-iterations: 40
 component-size: 150532, component-count: 1, component-iterations: 63
-[00313.654 ms; 052 iters.] [4.4304e-06 err.] pagerankLevelwiseSeqL1Norm
-[00401.633 ms; 044 iters.] [3.6202e-05 err.] pagerankMonolithicSeqL2Norm
+[00286.070 ms; 052 iters.] [4.4304e-06 err.] pagerankLevelwiseSeqL1Norm
+[00383.446 ms; 044 iters.] [3.6202e-05 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 26396, component-iterations: 65679
 component-size: 2, component-count: 1131, component-iterations: 35975
 component-size: 3, component-count: 296, component-iterations: 13710
@@ -528,8 +528,8 @@ component-size: 2095, component-count: 1, component-iterations: 62
 component-size: 3099, component-count: 1, component-iterations: 24
 component-size: 4888, component-count: 1, component-iterations: 33
 component-size: 150532, component-count: 1, component-iterations: 45
-[00228.527 ms; 039 iters.] [4.9055e-05 err.] pagerankLevelwiseSeqL2Norm
-[00366.492 ms; 041 iters.] [6.1780e-05 err.] pageranMonolithicSeqLiNorm
+[00220.128 ms; 039 iters.] [4.9055e-05 err.] pagerankLevelwiseSeqL2Norm
+[00358.049 ms; 041 iters.] [6.1780e-05 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 26396, component-iterations: 52763
 component-size: 2, component-count: 1131, component-iterations: 3223
 component-size: 3, component-count: 296, component-iterations: 1330
@@ -755,14 +755,14 @@ component-size: 2095, component-count: 1, component-iterations: 26
 component-size: 3099, component-count: 1, component-iterations: 7
 component-size: 4888, component-count: 1, component-iterations: 7
 component-size: 150532, component-count: 1, component-iterations: 38
-[00164.521 ms; 023 iters.] [2.6175e-02 err.] pageranLevelwiseSeqLiNorm
+[00155.376 ms; 023 iters.] [2.6175e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/web-BerkStan.mtx ...
+Loading graph /home/subhajit/data/web-BerkStan.mtx ...
 order: 685230 size: 7600595 {}
 order: 685230 size: 7605339 {} (selfLoopDeadEnds)
 order: 685230 size: 7605339 {} (transposeWithDegree)
-[01103.800 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[01107.820 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[01031.515 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[01028.673 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 102637, component-iterations: 529256
 component-size: 2, component-count: 1695, component-iterations: 52902
 component-size: 3, component-count: 729, component-iterations: 29080
@@ -1086,8 +1086,8 @@ component-size: 5389, component-count: 1, component-iterations: 56
 component-size: 12380, component-count: 1, component-iterations: 67
 component-size: 26235, component-count: 1, component-iterations: 59
 component-size: 334857, component-count: 1, component-iterations: 66
-[00924.217 ms; 051 iters.] [3.5825e-06 err.] pagerankLevelwiseSeqL1Norm
-[00746.435 ms; 043 iters.] [4.9767e-05 err.] pagerankMonolithicSeqL2Norm
+[00861.769 ms; 051 iters.] [3.5825e-06 err.] pagerankLevelwiseSeqL1Norm
+[00672.578 ms; 043 iters.] [4.9767e-05 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 102637, component-iterations: 529256
 component-size: 2, component-count: 1695, component-iterations: 52219
 component-size: 3, component-count: 729, component-iterations: 27984
@@ -1411,8 +1411,8 @@ component-size: 5389, component-count: 1, component-iterations: 36
 component-size: 12380, component-count: 1, component-iterations: 59
 component-size: 26235, component-count: 1, component-iterations: 51
 component-size: 334857, component-count: 1, component-iterations: 48
-[00704.662 ms; 039 iters.] [4.7057e-05 err.] pagerankLevelwiseSeqL2Norm
-[00645.519 ms; 037 iters.] [1.4812e-04 err.] pageranMonolithicSeqLiNorm
+[00634.745 ms; 039 iters.] [4.7057e-05 err.] pagerankLevelwiseSeqL2Norm
+[00578.809 ms; 037 iters.] [1.4812e-04 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 102637, component-iterations: 198517
 component-size: 2, component-count: 1695, component-iterations: 2360
 component-size: 3, component-count: 729, component-iterations: 1305
@@ -1736,14 +1736,14 @@ component-size: 5389, component-count: 1, component-iterations: 5
 component-size: 12380, component-count: 1, component-iterations: 39
 component-size: 26235, component-count: 1, component-iterations: 40
 component-size: 334857, component-count: 1, component-iterations: 37
-[00469.418 ms; 022 iters.] [1.2699e-01 err.] pageranLevelwiseSeqLiNorm
+[00420.578 ms; 022 iters.] [1.2699e-01 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/web-Google.mtx ...
+Loading graph /home/subhajit/data/web-Google.mtx ...
 order: 916428 size: 5105039 {}
 order: 916428 size: 5282013 {} (selfLoopDeadEnds)
 order: 916428 size: 5282013 {} (transposeWithDegree)
-[01744.050 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[01750.025 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[01844.318 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[01653.163 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 399605, component-iterations: 9950151
 component-size: 2, component-count: 4169, component-iterations: 165013
 component-size: 3, component-count: 1877, component-iterations: 74461
@@ -1839,8 +1839,8 @@ component-size: 313, component-count: 1, component-iterations: 49
 component-size: 459, component-count: 1, component-iterations: 56
 component-size: 968, component-count: 1, component-iterations: 82
 component-size: 434818, component-count: 1, component-iterations: 54
-[00919.192 ms; 040 iters.] [3.4262e-06 err.] pagerankLevelwiseSeqL1Norm
-[01152.623 ms; 040 iters.] [6.8788e-05 err.] pagerankMonolithicSeqL2Norm
+[00871.777 ms; 040 iters.] [3.4262e-06 err.] pagerankLevelwiseSeqL1Norm
+[01205.262 ms; 040 iters.] [6.8788e-05 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 399605, component-iterations: 9950138
 component-size: 2, component-count: 4169, component-iterations: 162246
 component-size: 3, component-count: 1877, component-iterations: 71517
@@ -1936,8 +1936,8 @@ component-size: 313, component-count: 1, component-iterations: 43
 component-size: 459, component-count: 1, component-iterations: 44
 component-size: 968, component-count: 1, component-iterations: 66
 component-size: 434818, component-count: 1, component-iterations: 33
-[00698.694 ms; 030 iters.] [1.0207e-04 err.] pagerankLevelwiseSeqL2Norm
-[00988.551 ms; 036 iters.] [1.5091e-04 err.] pageranMonolithicSeqLiNorm
+[00645.452 ms; 030 iters.] [1.0207e-04 err.] pagerankLevelwiseSeqL2Norm
+[00952.781 ms; 036 iters.] [1.5091e-04 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 399605, component-iterations: 479698
 component-size: 2, component-count: 4169, component-iterations: 11410
 component-size: 3, component-count: 1877, component-iterations: 3734
@@ -2033,14 +2033,14 @@ component-size: 313, component-count: 1, component-iterations: 9
 component-size: 459, component-count: 1, component-iterations: 7
 component-size: 968, component-count: 1, component-iterations: 17
 component-size: 434818, component-count: 1, component-iterations: 30
-[00412.702 ms; 015 iters.] [1.0463e+00 err.] pageranLevelwiseSeqLiNorm
+[00379.470 ms; 015 iters.] [1.0463e+00 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/web-NotreDame.mtx ...
+Loading graph /home/subhajit/data/web-NotreDame.mtx ...
 order: 325729 size: 1497134 {}
 order: 325729 size: 1684922 {} (selfLoopDeadEnds)
 order: 325729 size: 1684922 {} (transposeWithDegree)
-[00235.462 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00236.639 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00229.127 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00221.304 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 202462, component-iterations: 10294868
 component-size: 2, component-count: 325, component-iterations: 9435
 component-size: 3, component-count: 89, component-iterations: 3320
@@ -2155,8 +2155,8 @@ component-size: 3572, component-count: 1, component-iterations: 50
 component-size: 3579, component-count: 1, component-iterations: 50
 component-size: 12563, component-count: 1, component-iterations: 34
 component-size: 53968, component-count: 1, component-iterations: 54
-[00265.955 ms; 049 iters.] [4.5532e-06 err.] pagerankLevelwiseSeqL1Norm
-[00177.024 ms; 039 iters.] [1.4660e-05 err.] pagerankMonolithicSeqL2Norm
+[00235.958 ms; 049 iters.] [4.5532e-06 err.] pagerankLevelwiseSeqL1Norm
+[00163.109 ms; 039 iters.] [1.4660e-05 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 202462, component-iterations: 10294868
 component-size: 2, component-count: 325, component-iterations: 9333
 component-size: 3, component-count: 89, component-iterations: 3196
@@ -2271,8 +2271,8 @@ component-size: 3572, component-count: 1, component-iterations: 37
 component-size: 3579, component-count: 1, component-iterations: 37
 component-size: 12563, component-count: 1, component-iterations: 30
 component-size: 53968, component-count: 1, component-iterations: 43
-[00275.601 ms; 046 iters.] [1.1359e-05 err.] pagerankLevelwiseSeqL2Norm
-[00166.369 ms; 036 iters.] [2.8773e-05 err.] pageranMonolithicSeqLiNorm
+[00247.676 ms; 046 iters.] [1.1359e-05 err.] pagerankLevelwiseSeqL2Norm
+[00144.530 ms; 036 iters.] [2.8773e-05 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 202462, component-iterations: 226909
 component-size: 2, component-count: 325, component-iterations: 776
 component-size: 3, component-count: 89, component-iterations: 303
@@ -2387,44 +2387,44 @@ component-size: 3572, component-count: 1, component-iterations: 16
 component-size: 3579, component-count: 1, component-iterations: 16
 component-size: 12563, component-count: 1, component-iterations: 22
 component-size: 53968, component-count: 1, component-iterations: 30
-[00056.057 ms; 008 iters.] [8.6438e-02 err.] pageranLevelwiseSeqLiNorm
+[00051.590 ms; 008 iters.] [8.6438e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/soc-Slashdot0811.mtx ...
+Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
 order: 77360 size: 905468 {}
 order: 77360 size: 905512 {} (selfLoopDeadEnds)
 order: 77360 size: 905512 {} (transposeWithDegree)
-[00108.723 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00107.074 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00100.348 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00100.053 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 6484, component-iterations: 421964
 component-size: 2, component-count: 207, component-iterations: 12572
 component-size: 3, component-count: 24, component-iterations: 1384
 component-size: 4, component-count: 5, component-iterations: 261
 component-size: 5, component-count: 3, component-iterations: 165
 component-size: 70355, component-count: 1, component-iterations: 52
-[00102.450 ms; 053 iters.] [4.3610e-06 err.] pagerankLevelwiseSeqL1Norm
-[00057.412 ms; 030 iters.] [3.7255e-04 err.] pagerankMonolithicSeqL2Norm
+[00095.510 ms; 053 iters.] [4.3610e-06 err.] pagerankLevelwiseSeqL1Norm
+[00053.836 ms; 030 iters.] [3.7255e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 6484, component-iterations: 421984
 component-size: 2, component-count: 207, component-iterations: 12133
 component-size: 3, component-count: 24, component-iterations: 1304
 component-size: 4, component-count: 5, component-iterations: 241
 component-size: 5, component-count: 3, component-iterations: 151
 component-size: 70355, component-count: 1, component-iterations: 26
-[00055.562 ms; 029 iters.] [4.5350e-04 err.] pagerankLevelwiseSeqL2Norm
-[00042.130 ms; 022 iters.] [1.4508e-03 err.] pageranMonolithicSeqLiNorm
+[00052.784 ms; 029 iters.] [4.5350e-04 err.] pagerankLevelwiseSeqL2Norm
+[00040.012 ms; 022 iters.] [1.4508e-03 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 6484, component-iterations: 9334
 component-size: 2, component-count: 207, component-iterations: 254
 component-size: 3, component-count: 24, component-iterations: 45
 component-size: 4, component-count: 5, component-iterations: 11
 component-size: 5, component-count: 3, component-iterations: 7
 component-size: 70355, component-count: 1, component-iterations: 19
-[00035.351 ms; 017 iters.] [2.1403e-02 err.] pageranLevelwiseSeqLiNorm
+[00033.867 ms; 017 iters.] [2.1403e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/soc-Slashdot0902.mtx ...
+Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
 order: 82168 size: 948464 {}
 order: 82168 size: 952191 {} (selfLoopDeadEnds)
 order: 82168 size: 952191 {} (transposeWithDegree)
-[00117.452 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00117.856 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00111.416 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00111.357 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 10307, component-iterations: 696838
 component-size: 2, component-count: 216, component-iterations: 12361
 component-size: 3, component-count: 24, component-iterations: 1280
@@ -2432,8 +2432,8 @@ component-size: 4, component-count: 7, component-iterations: 352
 component-size: 5, component-count: 2, component-iterations: 103
 component-size: 6, component-count: 2, component-iterations: 115
 component-size: 71307, component-count: 1, component-iterations: 55
-[00117.159 ms; 056 iters.] [4.4455e-06 err.] pagerankLevelwiseSeqL1Norm
-[00079.769 ms; 039 iters.] [1.3764e-04 err.] pagerankMonolithicSeqL2Norm
+[00109.385 ms; 056 iters.] [4.4455e-06 err.] pagerankLevelwiseSeqL1Norm
+[00074.989 ms; 039 iters.] [1.3764e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 10307, component-iterations: 696864
 component-size: 2, component-count: 216, component-iterations: 11918
 component-size: 3, component-count: 24, component-iterations: 1211
@@ -2441,8 +2441,8 @@ component-size: 4, component-count: 7, component-iterations: 327
 component-size: 5, component-count: 2, component-iterations: 94
 component-size: 6, component-count: 2, component-iterations: 104
 component-size: 71307, component-count: 1, component-iterations: 31
-[00072.686 ms; 035 iters.] [3.6067e-04 err.] pagerankLevelwiseSeqL2Norm
-[00074.697 ms; 037 iters.] [2.0138e-04 err.] pageranMonolithicSeqLiNorm
+[00071.864 ms; 035 iters.] [3.6067e-04 err.] pagerankLevelwiseSeqL2Norm
+[00071.182 ms; 037 iters.] [2.0138e-04 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 10307, component-iterations: 26656
 component-size: 2, component-count: 216, component-iterations: 279
 component-size: 3, component-count: 24, component-iterations: 51
@@ -2450,14 +2450,14 @@ component-size: 4, component-count: 7, component-iterations: 16
 component-size: 5, component-count: 2, component-iterations: 5
 component-size: 6, component-count: 2, component-iterations: 5
 component-size: 71307, component-count: 1, component-iterations: 22
-[00042.816 ms; 019 iters.] [3.7863e-02 err.] pageranLevelwiseSeqLiNorm
+[00040.904 ms; 019 iters.] [3.7863e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/soc-Epinions1.mtx ...
+Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
 order: 75888 size: 508837 {}
 order: 75888 size: 524384 {} (selfLoopDeadEnds)
 order: 75888 size: 524384 {} (transposeWithDegree)
-[00091.606 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00091.252 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00086.599 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00086.793 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 41121, component-iterations: 1095909
 component-size: 2, component-count: 813, component-iterations: 28737
 component-size: 3, component-count: 164, component-iterations: 6436
@@ -2469,8 +2469,8 @@ component-size: 8, component-count: 6, component-iterations: 257
 component-size: 9, component-count: 2, component-iterations: 84
 component-size: 15, component-count: 1, component-iterations: 37
 component-size: 32223, component-count: 1, component-iterations: 64
-[00080.178 ms; 042 iters.] [5.3989e-06 err.] pagerankLevelwiseSeqL1Norm
-[00063.842 ms; 041 iters.] [7.4303e-05 err.] pagerankMonolithicSeqL2Norm
+[00073.627 ms; 042 iters.] [5.3989e-06 err.] pagerankLevelwiseSeqL1Norm
+[00060.258 ms; 041 iters.] [7.4303e-05 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 41121, component-iterations: 1095906
 component-size: 2, component-count: 813, component-iterations: 28566
 component-size: 3, component-count: 164, component-iterations: 6204
@@ -2482,8 +2482,8 @@ component-size: 8, component-count: 6, component-iterations: 239
 component-size: 9, component-count: 2, component-iterations: 78
 component-size: 15, component-count: 1, component-iterations: 33
 component-size: 32223, component-count: 1, component-iterations: 44
-[00063.985 ms; 034 iters.] [7.7361e-05 err.] pagerankLevelwiseSeqL2Norm
-[00053.213 ms; 034 iters.] [2.6806e-04 err.] pageranMonolithicSeqLiNorm
+[00059.278 ms; 034 iters.] [7.7361e-05 err.] pagerankLevelwiseSeqL2Norm
+[00049.973 ms; 034 iters.] [2.6806e-04 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 41121, component-iterations: 92654
 component-size: 2, component-count: 813, component-iterations: 3614
 component-size: 3, component-count: 164, component-iterations: 1122
@@ -2495,44 +2495,44 @@ component-size: 8, component-count: 6, component-iterations: 44
 component-size: 9, component-count: 2, component-iterations: 14
 component-size: 15, component-count: 1, component-iterations: 11
 component-size: 32223, component-count: 1, component-iterations: 30
-[00031.898 ms; 014 iters.] [5.6306e-02 err.] pageranLevelwiseSeqLiNorm
+[00029.756 ms; 014 iters.] [5.6306e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/coAuthorsDBLP.mtx ...
+Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
 order: 299067 size: 1955352 {}
 order: 299067 size: 1955352 {} (selfLoopDeadEnds)
 order: 299067 size: 1955352 {} (transposeWithDegree)
-[00304.721 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00297.116 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00295.002 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00286.940 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 299067, component-count: 1, component-iterations: 45
-[00289.710 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[00148.986 ms; 022 iters.] [4.7959e-04 err.] pagerankMonolithicSeqL2Norm
+[00274.586 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[00141.497 ms; 022 iters.] [4.7959e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 299067, component-count: 1, component-iterations: 22
-[00145.393 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm
-[00125.116 ms; 018 iters.] [1.1653e-03 err.] pageranMonolithicSeqLiNorm
+[00132.324 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm
+[00123.299 ms; 018 iters.] [1.1653e-03 err.] pageranMonolithicSeqLiNorm
 component-size: 299067, component-count: 1, component-iterations: 18
-[00116.474 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm
+[00110.013 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/coAuthorsCiteseer.mtx ...
+Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
 order: 227320 size: 1628268 {}
 order: 227320 size: 1628268 {} (selfLoopDeadEnds)
 order: 227320 size: 1628268 {} (transposeWithDegree)
-[00249.846 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00244.404 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00214.756 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00214.076 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 227320, component-count: 1, component-iterations: 48
-[00259.356 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[00127.618 ms; 023 iters.] [5.0506e-04 err.] pagerankMonolithicSeqL2Norm
+[00214.313 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[00103.254 ms; 023 iters.] [5.0506e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 227320, component-count: 1, component-iterations: 23
-[00117.974 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm
-[00084.104 ms; 016 iters.] [2.1821e-03 err.] pageranMonolithicSeqLiNorm
+[00099.898 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm
+[00072.891 ms; 016 iters.] [2.1821e-03 err.] pageranMonolithicSeqLiNorm
 component-size: 227320, component-count: 1, component-iterations: 16
-[00080.815 ms; 016 iters.] [2.1821e-03 err.] pageranLevelwiseSeqLiNorm
+[00069.501 ms; 016 iters.] [2.1821e-03 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/soc-LiveJournal1.mtx ...
+Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 order: 4847571 size: 68993773 {}
 order: 4847571 size: 69532892 {} (selfLoopDeadEnds)
 order: 4847571 size: 69532892 {} (transposeWithDegree)
-[20535.203 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[20986.029 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[19316.379 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[18875.180 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 947776, component-iterations: 39730772
 component-size: 2, component-count: 16875, component-iterations: 597283
 component-size: 3, component-count: 3280, component-iterations: 137329
@@ -2601,8 +2601,8 @@ component-size: 106, component-count: 1, component-iterations: 55
 component-size: 110, component-count: 1, component-iterations: 50
 component-size: 114, component-count: 1, component-iterations: 26
 component-size: 3828682, component-count: 1, component-iterations: 49
-[16917.414 ms; 047 iters.] [4.8171e-06 err.] pagerankLevelwiseSeqL1Norm
-[11426.467 ms; 031 iters.] [5.9191e-04 err.] pagerankMonolithicSeqL2Norm
+[15807.206 ms; 047 iters.] [4.8171e-06 err.] pagerankLevelwiseSeqL1Norm
+[10436.275 ms; 031 iters.] [5.9191e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 947776, component-iterations: 39733251
 component-size: 2, component-count: 16875, component-iterations: 591678
 component-size: 3, component-count: 3280, component-iterations: 131941
@@ -2671,8 +2671,8 @@ component-size: 106, component-count: 1, component-iterations: 47
 component-size: 110, component-count: 1, component-iterations: 43
 component-size: 114, component-count: 1, component-iterations: 11
 component-size: 3828682, component-count: 1, component-iterations: 22
-[08289.421 ms; 026 iters.] [6.5848e-04 err.] pagerankLevelwiseSeqL2Norm
-[09984.313 ms; 028 iters.] [1.0350e-03 err.] pageranMonolithicSeqLiNorm
+[07044.903 ms; 026 iters.] [6.5848e-04 err.] pagerankLevelwiseSeqL2Norm
+[09348.305 ms; 028 iters.] [1.0350e-03 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 947776, component-iterations: 958014
 component-size: 2, component-count: 16875, component-iterations: 17022
 component-size: 3, component-count: 3280, component-iterations: 3293
@@ -2741,44 +2741,44 @@ component-size: 106, component-count: 1, component-iterations: 3
 component-size: 110, component-count: 1, component-iterations: 4
 component-size: 114, component-count: 1, component-iterations: 1
 component-size: 3828682, component-count: 1, component-iterations: 16
-[05096.788 ms; 012 iters.] [4.1008e-01 err.] pageranLevelwiseSeqLiNorm
+[05154.868 ms; 012 iters.] [4.1008e-01 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/coPapersCiteseer.mtx ...
+Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
 order: 434102 size: 32073440 {}
 order: 434102 size: 32073440 {} (selfLoopDeadEnds)
 order: 434102 size: 32073440 {} (transposeWithDegree)
-[02619.632 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[02597.114 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[02438.936 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[02476.139 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 434102, component-count: 1, component-iterations: 51
-[02594.938 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[01017.371 ms; 020 iters.] [1.5959e-03 err.] pagerankMonolithicSeqL2Norm
+[02425.732 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[00960.880 ms; 020 iters.] [1.5959e-03 err.] pagerankMonolithicSeqL2Norm
 component-size: 434102, component-count: 1, component-iterations: 20
-[01047.515 ms; 020 iters.] [1.5959e-03 err.] pagerankLevelwiseSeqL2Norm
-[00272.449 ms; 005 iters.] [4.6209e-02 err.] pageranMonolithicSeqLiNorm
+[00970.671 ms; 020 iters.] [1.5959e-03 err.] pagerankLevelwiseSeqL2Norm
+[00243.942 ms; 005 iters.] [4.6209e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 434102, component-count: 1, component-iterations: 5
-[00252.618 ms; 005 iters.] [4.6209e-02 err.] pageranLevelwiseSeqLiNorm
+[00242.485 ms; 005 iters.] [4.6209e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/coPapersDBLP.mtx ...
+Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
 order: 540486 size: 30491458 {}
 order: 540486 size: 30491458 {} (selfLoopDeadEnds)
 order: 540486 size: 30491458 {} (transposeWithDegree)
-[02557.085 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[02564.239 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[03898.209 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[03396.638 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 540486, component-count: 1, component-iterations: 49
-[02572.545 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[00989.081 ms; 019 iters.] [1.8790e-03 err.] pagerankMonolithicSeqL2Norm
+[02638.153 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[00933.482 ms; 019 iters.] [1.8790e-03 err.] pagerankMonolithicSeqL2Norm
 component-size: 540486, component-count: 1, component-iterations: 19
-[00993.392 ms; 019 iters.] [1.8790e-03 err.] pagerankLevelwiseSeqL2Norm
-[00361.091 ms; 007 iters.] [2.9599e-02 err.] pageranMonolithicSeqLiNorm
+[00920.103 ms; 019 iters.] [1.8790e-03 err.] pagerankLevelwiseSeqL2Norm
+[00348.306 ms; 007 iters.] [2.9599e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 540486, component-count: 1, component-iterations: 7
-[00370.098 ms; 007 iters.] [2.9599e-02 err.] pageranLevelwiseSeqLiNorm
+[00366.758 ms; 007 iters.] [2.9599e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/indochina-2004.mtx ...
+Loading graph /home/subhajit/data/indochina-2004.mtx ...
 order: 7414866 size: 194109311 {}
 order: 7414866 size: 195418438 {} (selfLoopDeadEnds)
 order: 7414866 size: 195418438 {} (transposeWithDegree)
-[21963.787 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[21732.342 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[20359.482 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[20654.891 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 1, component-count: 1698304, component-iterations: 84265673
 component-size: 2, component-count: 15930, component-iterations: 681100
 component-size: 3, component-count: 5187, component-iterations: 241863
@@ -3615,8 +3615,8 @@ component-size: 10084, component-count: 1, component-iterations: 52
 component-size: 17774, component-count: 1, component-iterations: 25
 component-size: 39283, component-count: 1, component-iterations: 58
 component-size: 3806327, component-count: 1, component-iterations: 55
-[17360.250 ms; 051 iters.] [3.7575e-06 err.] pagerankLevelwiseSeqL1Norm
-[13723.709 ms; 036 iters.] [1.0443e-04 err.] pagerankMonolithicSeqL2Norm
+[16527.916 ms; 051 iters.] [3.7575e-06 err.] pagerankLevelwiseSeqL1Norm
+[13417.104 ms; 036 iters.] [1.0443e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 1, component-count: 1698304, component-iterations: 84265890
 component-size: 2, component-count: 15930, component-iterations: 665408
 component-size: 3, component-count: 5187, component-iterations: 231236
@@ -4453,8 +4453,8 @@ component-size: 10084, component-count: 1, component-iterations: 40
 component-size: 17774, component-count: 1, component-iterations: 21
 component-size: 39283, component-count: 1, component-iterations: 45
 component-size: 3806327, component-count: 1, component-iterations: 34
-[11904.089 ms; 038 iters.] [7.6403e-05 err.] pagerankLevelwiseSeqL2Norm
-[11761.324 ms; 031 iters.] [2.8189e-04 err.] pageranMonolithicSeqLiNorm
+[10849.832 ms; 038 iters.] [7.6403e-05 err.] pagerankLevelwiseSeqL2Norm
+[10837.289 ms; 031 iters.] [2.8189e-04 err.] pageranMonolithicSeqLiNorm
 component-size: 1, component-count: 1698304, component-iterations: 1726983
 component-size: 2, component-count: 15930, component-iterations: 16238
 component-size: 3, component-count: 5187, component-iterations: 5327
@@ -5291,64 +5291,64 @@ component-size: 10084, component-count: 1, component-iterations: 7
 component-size: 17774, component-count: 1, component-iterations: 7
 component-size: 39283, component-count: 1, component-iterations: 14
 component-size: 3806327, component-count: 1, component-iterations: 25
-[05522.428 ms; 013 iters.] [2.1951e-01 err.] pageranLevelwiseSeqLiNorm
+[05017.890 ms; 013 iters.] [2.1951e-01 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/italy_osm.mtx ...
+Loading graph /home/subhajit/data/italy_osm.mtx ...
 order: 6686493 size: 14027956 {}
 order: 6686493 size: 14027956 {} (selfLoopDeadEnds)
 order: 6686493 size: 14027956 {} (transposeWithDegree)
-[05870.979 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[05859.518 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[07651.815 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[05894.702 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 6686493, component-count: 1, component-iterations: 62
-[04578.825 ms; 062 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[01921.448 ms; 020 iters.] [6.6533e-04 err.] pagerankMonolithicSeqL2Norm
+[04292.976 ms; 062 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[01813.783 ms; 020 iters.] [6.6533e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 6686493, component-count: 1, component-iterations: 20
-[01484.332 ms; 020 iters.] [6.6533e-04 err.] pagerankLevelwiseSeqL2Norm
-[00104.757 ms; 001 iters.] [3.7949e-02 err.] pageranMonolithicSeqLiNorm
+[01349.024 ms; 020 iters.] [6.6533e-04 err.] pagerankLevelwiseSeqL2Norm
+[00108.166 ms; 001 iters.] [3.7949e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 6686493, component-count: 1, component-iterations: 1
-[00084.129 ms; 001 iters.] [3.7949e-02 err.] pageranLevelwiseSeqLiNorm
+[00095.185 ms; 001 iters.] [3.7949e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/great-britain_osm.mtx ...
+Loading graph /home/subhajit/data/great-britain_osm.mtx ...
 order: 7733822 size: 16313034 {}
 order: 7733822 size: 16313034 {} (selfLoopDeadEnds)
 order: 7733822 size: 16313034 {} (transposeWithDegree)
-[10383.955 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[10037.559 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[08298.517 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[08286.173 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 7733822, component-count: 1, component-iterations: 67
-[07059.714 ms; 067 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[03337.665 ms; 023 iters.] [8.1479e-04 err.] pagerankMonolithicSeqL2Norm
+[05993.113 ms; 067 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[02843.606 ms; 023 iters.] [8.1479e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 7733822, component-count: 1, component-iterations: 23
-[02387.874 ms; 023 iters.] [8.1479e-04 err.] pagerankLevelwiseSeqL2Norm
-[00162.531 ms; 001 iters.] [7.9313e-02 err.] pageranMonolithicSeqLiNorm
+[02063.752 ms; 023 iters.] [8.1479e-04 err.] pagerankLevelwiseSeqL2Norm
+[00136.084 ms; 001 iters.] [7.9313e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 7733822, component-count: 1, component-iterations: 1
-[00119.074 ms; 001 iters.] [7.9313e-02 err.] pageranLevelwiseSeqLiNorm
+[00106.447 ms; 001 iters.] [7.9313e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/germany_osm.mtx ...
+Loading graph /home/subhajit/data/germany_osm.mtx ...
 order: 11548845 size: 24738362 {}
 order: 11548845 size: 24738362 {} (selfLoopDeadEnds)
 order: 11548845 size: 24738362 {} (transposeWithDegree)
-[19094.521 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[16588.643 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[13144.586 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[13085.339 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 11548845, component-count: 1, component-iterations: 65
-[11397.757 ms; 065 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[05606.176 ms; 021 iters.] [9.4033e-04 err.] pagerankMonolithicSeqL2Norm
+[08660.410 ms; 065 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[04115.063 ms; 021 iters.] [9.4033e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 11548845, component-count: 1, component-iterations: 21
-[03559.131 ms; 021 iters.] [9.4033e-04 err.] pagerankLevelwiseSeqL2Norm
-[00311.643 ms; 001 iters.] [6.8887e-02 err.] pageranMonolithicSeqLiNorm
+[02851.920 ms; 021 iters.] [9.4033e-04 err.] pagerankLevelwiseSeqL2Norm
+[00216.366 ms; 001 iters.] [6.8887e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 11548845, component-count: 1, component-iterations: 1
-[00188.641 ms; 001 iters.] [6.8887e-02 err.] pageranLevelwiseSeqLiNorm
+[00155.688 ms; 001 iters.] [6.8887e-02 err.] pageranLevelwiseSeqLiNorm
 
-Loading graph /kaggle/input/graphs/asia_osm.mtx ...
+Loading graph /home/subhajit/data/asia_osm.mtx ...
 order: 11950757 size: 25423206 {}
 order: 11950757 size: 25423206 {} (selfLoopDeadEnds)
 order: 11950757 size: 25423206 {} (transposeWithDegree)
-[13506.400 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[14300.677 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[10052.722 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[09858.307 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 component-size: 11950757, component-count: 1, component-iterations: 63
-[09809.432 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-[04646.232 ms; 019 iters.] [8.4545e-04 err.] pagerankMonolithicSeqL2Norm
+[07666.502 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+[02975.552 ms; 019 iters.] [8.4545e-04 err.] pagerankMonolithicSeqL2Norm
 component-size: 11950757, component-count: 1, component-iterations: 19
-[03259.012 ms; 019 iters.] [8.4545e-04 err.] pagerankLevelwiseSeqL2Norm
-[00245.698 ms; 001 iters.] [4.3758e-02 err.] pageranMonolithicSeqLiNorm
+[02303.212 ms; 019 iters.] [8.4545e-04 err.] pagerankLevelwiseSeqL2Norm
+[00175.158 ms; 001 iters.] [4.3758e-02 err.] pageranMonolithicSeqLiNorm
 component-size: 11950757, component-count: 1, component-iterations: 1
-[00181.100 ms; 001 iters.] [4.3758e-02 err.] pageranLevelwiseSeqLiNorm
+[00143.650 ms; 001 iters.] [4.3758e-02 err.] pageranLevelwiseSeqLiNorm

@@ -117,73 +117,50 @@ $ ...
 
 # ...
 #
-# Loading graph /home/subhajit/data/web-Stanford.mtx ...
-# order: 281903 size: 2312497 {}
-# order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00422.797 ms; 063 iters.] [0.0000e+00 err.] pagerank
-# [00007.232 ms; 001 iters.] [6.0894e-01 err.] pagerankL1Norm [tolerance=1e+00]
-# [00007.219 ms; 001 iters.] [6.0894e-01 err.] pagerankL2Norm [tolerance=1e+00]
-# [00007.290 ms; 001 iters.] [6.0894e-01 err.] pagerankLiNorm [tolerance=1e+00]
-# [00013.929 ms; 002 iters.] [3.3244e-01 err.] pagerankL1Norm [tolerance=5e-01]
-# [00007.227 ms; 001 iters.] [6.0894e-01 err.] pagerankL2Norm [tolerance=5e-01]
-# [00007.238 ms; 001 iters.] [6.0894e-01 err.] pagerankLiNorm [tolerance=5e-01]
-# [00034.029 ms; 005 iters.] [9.4240e-02 err.] pagerankL1Norm [tolerance=1e-01]
-# [00007.210 ms; 001 iters.] [6.0894e-01 err.] pagerankL2Norm [tolerance=1e-01]
-# [00007.349 ms; 001 iters.] [6.0894e-01 err.] pagerankLiNorm [tolerance=1e-01]
-# [00040.713 ms; 006 iters.] [6.9689e-02 err.] pagerankL1Norm [tolerance=5e-02]
-# [00007.246 ms; 001 iters.] [6.0894e-01 err.] pagerankL2Norm [tolerance=5e-02]
-# [00007.233 ms; 001 iters.] [6.0894e-01 err.] pagerankLiNorm [tolerance=5e-02]
-# [00081.089 ms; 012 iters.] [1.6086e-02 err.] pagerankL1Norm [tolerance=1e-02]
-# [00020.607 ms; 003 iters.] [1.9915e-01 err.] pagerankL2Norm [tolerance=1e-02]
-# [00020.676 ms; 003 iters.] [1.9915e-01 err.] pagerankLiNorm [tolerance=1e-02]
-# [00101.054 ms; 015 iters.] [8.5030e-03 err.] pagerankL1Norm [tolerance=5e-03]
-# [00027.407 ms; 004 iters.] [1.3228e-01 err.] pagerankL2Norm [tolerance=5e-03]
-# [00020.672 ms; 003 iters.] [1.9915e-01 err.] pagerankLiNorm [tolerance=5e-03]
-# [00154.549 ms; 023 iters.] [1.7352e-03 err.] pagerankL1Norm [tolerance=1e-03]
-# [00047.428 ms; 007 iters.] [5.2610e-02 err.] pagerankL2Norm [tolerance=1e-03]
-# [00040.745 ms; 006 iters.] [6.9689e-02 err.] pagerankLiNorm [tolerance=1e-03]
-# [00181.434 ms; 027 iters.] [8.1235e-04 err.] pagerankL1Norm [tolerance=5e-04]
-# [00060.830 ms; 009 iters.] [3.1849e-02 err.] pagerankL2Norm [tolerance=5e-04]
-# [00040.944 ms; 006 iters.] [6.9689e-02 err.] pagerankLiNorm [tolerance=5e-04]
-# [00241.445 ms; 036 iters.] [1.5340e-04 err.] pagerankL1Norm [tolerance=1e-04]
-# [00114.457 ms; 017 iters.] [5.6468e-03 err.] pagerankL2Norm [tolerance=1e-04]
-# [00087.461 ms; 013 iters.] [1.2954e-02 err.] pagerankLiNorm [tolerance=1e-04]
-# [00268.354 ms; 040 iters.] [7.4190e-05 err.] pagerankL1Norm [tolerance=5e-05]
-# [00134.240 ms; 020 iters.] [3.1039e-03 err.] pagerankL2Norm [tolerance=5e-05]
-# [00114.528 ms; 017 iters.] [5.6468e-03 err.] pagerankLiNorm [tolerance=5e-05]
-# [00328.363 ms; 049 iters.] [1.3774e-05 err.] pagerankL1Norm [tolerance=1e-05]
-# [00201.158 ms; 030 iters.] [4.6385e-04 err.] pagerankL2Norm [tolerance=1e-05]
-# [00181.756 ms; 027 iters.] [8.1235e-04 err.] pagerankLiNorm [tolerance=1e-05]
-# [00355.525 ms; 053 iters.] [6.1334e-06 err.] pagerankL1Norm [tolerance=5e-06]
-# [00227.883 ms; 034 iters.] [2.2126e-04 err.] pagerankL2Norm [tolerance=5e-06]
-# [00208.412 ms; 031 iters.] [3.8458e-04 err.] pagerankLiNorm [tolerance=5e-06]
-# [00422.065 ms; 063 iters.] [0.0000e+00 err.] pagerankL1Norm [tolerance=1e-06]
-# [00294.168 ms; 044 iters.] [3.6018e-05 err.] pagerankL2Norm [tolerance=1e-06]
-# [00275.266 ms; 041 iters.] [6.1306e-05 err.] pagerankLiNorm [tolerance=1e-06]
-# [00448.916 ms; 067 iters.] [6.3236e-07 err.] pagerankL1Norm [tolerance=5e-07]
-# [00321.751 ms; 048 iters.] [1.7339e-05 err.] pagerankL2Norm [tolerance=5e-07]
-# [00302.102 ms; 045 iters.] [2.9406e-05 err.] pagerankLiNorm [tolerance=5e-07]
-# [00516.339 ms; 077 iters.] [1.1385e-06 err.] pagerankL1Norm [tolerance=1e-07]
-# [00388.001 ms; 058 iters.] [2.4505e-06 err.] pagerankL2Norm [tolerance=1e-07]
-# [00368.500 ms; 055 iters.] [3.9247e-06 err.] pagerankLiNorm [tolerance=1e-07]
-# [00562.078 ms; 084 iters.] [1.2488e-06 err.] pagerankL1Norm [tolerance=5e-08]
-# [00414.634 ms; 062 iters.] [9.2167e-07 err.] pagerankL2Norm [tolerance=5e-08]
-# [00395.889 ms; 059 iters.] [1.2932e-06 err.] pagerankLiNorm [tolerance=5e-08]
-# [03337.923 ms; 500 iters.] [1.2680e-06 err.] pagerankL1Norm [tolerance=1e-08]
-# [00484.968 ms; 072 iters.] [1.1465e-06 err.] pagerankL2Norm [tolerance=1e-08]
-# [00469.444 ms; 070 iters.] [1.0973e-06 err.] pagerankLiNorm [tolerance=1e-08]
-# [03331.529 ms; 500 iters.] [1.2680e-06 err.] pagerankL1Norm [tolerance=5e-09]
-# [00555.127 ms; 083 iters.] [1.2008e-06 err.] pagerankL2Norm [tolerance=5e-09]
-# [00488.407 ms; 073 iters.] [1.0328e-06 err.] pagerankLiNorm [tolerance=5e-09]
-# [03334.091 ms; 500 iters.] [1.2680e-06 err.] pagerankL1Norm [tolerance=1e-09]
-# [03332.581 ms; 500 iters.] [1.2680e-06 err.] pagerankL2Norm [tolerance=1e-09]
-# [03337.859 ms; 500 iters.] [1.2680e-06 err.] pagerankLiNorm [tolerance=1e-09]
-# [03333.502 ms; 500 iters.] [1.2680e-06 err.] pagerankL1Norm [tolerance=5e-10]
-# [03326.985 ms; 500 iters.] [1.2680e-06 err.] pagerankL2Norm [tolerance=5e-10]
-# [03335.266 ms; 500 iters.] [1.2680e-06 err.] pagerankLiNorm [tolerance=5e-10]
-# [03335.210 ms; 500 iters.] [1.2680e-06 err.] pagerankL1Norm [tolerance=1e-10]
-# [03329.489 ms; 500 iters.] [1.2680e-06 err.] pagerankL2Norm [tolerance=1e-10]
-# [03337.096 ms; 500 iters.] [1.2680e-06 err.] pagerankLiNorm [tolerance=1e-10]
+# Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
+# order: 75888 size: 508837 {}
+# order: 75888 size: 524384 {} (selfLoopDeadEnds)
+# order: 75888 size: 524384 {} (transposeWithDegree)
+# [00086.599 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+# [00086.793 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+# component-size: 1, component-count: 41121, component-iterations: 1095909
+# component-size: 2, component-count: 813, component-iterations: 28737
+# component-size: 3, component-count: 164, component-iterations: 6436
+# component-size: 4, component-count: 47, component-iterations: 2169
+# component-size: 5, component-count: 24, component-iterations: 965
+# component-size: 6, component-count: 5, component-iterations: 227
+# component-size: 7, component-count: 1, component-iterations: 61
+# component-size: 8, component-count: 6, component-iterations: 257
+# component-size: 9, component-count: 2, component-iterations: 84
+# component-size: 15, component-count: 1, component-iterations: 37
+# component-size: 32223, component-count: 1, component-iterations: 64
+# [00073.627 ms; 042 iters.] [5.3989e-06 err.] pagerankLevelwiseSeqL1Norm
+# [00060.258 ms; 041 iters.] [7.4303e-05 err.] pagerankMonolithicSeqL2Norm
+# component-size: 1, component-count: 41121, component-iterations: 1095906
+# component-size: 2, component-count: 813, component-iterations: 28566
+# component-size: 3, component-count: 164, component-iterations: 6204
+# component-size: 4, component-count: 47, component-iterations: 2070
+# component-size: 5, component-count: 24, component-iterations: 910
+# component-size: 6, component-count: 5, component-iterations: 212
+# component-size: 7, component-count: 1, component-iterations: 55
+# component-size: 8, component-count: 6, component-iterations: 239
+# component-size: 9, component-count: 2, component-iterations: 78
+# component-size: 15, component-count: 1, component-iterations: 33
+# component-size: 32223, component-count: 1, component-iterations: 44
+# [00059.278 ms; 034 iters.] [7.7361e-05 err.] pagerankLevelwiseSeqL2Norm
+# [00049.973 ms; 034 iters.] [2.6806e-04 err.] pageranMonolithicSeqLiNorm
+# component-size: 1, component-count: 41121, component-iterations: 92654
+# component-size: 2, component-count: 813, component-iterations: 3614
+# component-size: 3, component-count: 164, component-iterations: 1122
+# component-size: 4, component-count: 47, component-iterations: 374
+# component-size: 5, component-count: 24, component-iterations: 174
+# component-size: 6, component-count: 5, component-iterations: 30
+# component-size: 7, component-count: 1, component-iterations: 2
+# component-size: 8, component-count: 6, component-iterations: 44
+# component-size: 9, component-count: 2, component-iterations: 14
+# component-size: 15, component-count: 1, component-iterations: 11
+# component-size: 32223, component-count: 1, component-iterations: 30
+# [00029.756 ms; 014 iters.] [5.6306e-02 err.] pageranLevelwiseSeqLiNorm
 #
 # ...
 ```

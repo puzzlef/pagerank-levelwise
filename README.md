@@ -60,63 +60,63 @@ $ ...
 
 # ...
 #
-# Loading graph /kaggle/input/graphs/web-Stanford.mtx ...
+# Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312669 {} (selfLoopDeadEnds)
 # order: 281903 size: 2312669 {} (transposeWithDegree)
-# [00565.144 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-# [04354.025 ms; 500 iters.] [1.1830e+00 err.] pagerankMonolithicSeq [damping=1.00]
-# [02435.416 ms; 386 iters.] [8.6363e-01 err.] pagerankLevelwiseSeq [damping=1.00]
-# [01728.458 ms; 192 iters.] [3.3431e-01 err.] pagerankMonolithicSeq [damping=0.95]
-# [00949.649 ms; 160 iters.] [3.3431e-01 err.] pagerankLevelwiseSeq [damping=0.95]
-# [00859.024 ms; 096 iters.] [1.3513e-01 err.] pagerankMonolithicSeq [damping=0.90]
-# [00493.052 ms; 082 iters.] [1.3513e-01 err.] pagerankLevelwiseSeq [damping=0.90]
-# [00551.814 ms; 063 iters.] [2.0306e-07 err.] pagerankMonolithicSeq [damping=0.85]
-# [00340.078 ms; 055 iters.] [4.6983e-06 err.] pagerankLevelwiseSeq [damping=0.85]
-# [00402.486 ms; 047 iters.] [1.0810e-01 err.] pagerankMonolithicSeq [damping=0.80]
-# [00260.337 ms; 043 iters.] [1.0811e-01 err.] pagerankLevelwiseSeq [damping=0.80]
-# [00339.356 ms; 037 iters.] [2.0043e-01 err.] pagerankMonolithicSeq [damping=0.75]
-# [00207.280 ms; 033 iters.] [2.0043e-01 err.] pagerankLevelwiseSeq [damping=0.75]
-# [00257.971 ms; 030 iters.] [2.8262e-01 err.] pagerankMonolithicSeq [damping=0.70]
-# [00197.141 ms; 030 iters.] [2.8262e-01 err.] pagerankLevelwiseSeq [damping=0.70]
-# [00230.176 ms; 025 iters.] [3.5705e-01 err.] pagerankMonolithicSeq [damping=0.65]
-# [00168.131 ms; 026 iters.] [3.5705e-01 err.] pagerankLevelwiseSeq [damping=0.65]
-# [00193.289 ms; 021 iters.] [4.2546e-01 err.] pagerankMonolithicSeq [damping=0.60]
-# [00124.856 ms; 020 iters.] [4.2546e-01 err.] pagerankLevelwiseSeq [damping=0.60]
-# [00162.019 ms; 018 iters.] [4.8941e-01 err.] pagerankMonolithicSeq [damping=0.55]
-# [00105.452 ms; 017 iters.] [4.8941e-01 err.] pagerankLevelwiseSeq [damping=0.55]
-# [00144.451 ms; 016 iters.] [5.5069e-01 err.] pagerankMonolithicSeq [damping=0.50]
-# [00107.506 ms; 017 iters.] [5.5069e-01 err.] pagerankLevelwiseSeq [damping=0.50]
+# [00413.935 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+# [03321.036 ms; 500 iters.] [1.1830e+00 err.] pagerankMonolithicSeq [damping=1.00]
+# [01995.664 ms; 386 iters.] [8.6363e-01 err.] pagerankLevelwiseSeq [damping=1.00]
+# [01256.598 ms; 192 iters.] [3.3431e-01 err.] pagerankMonolithicSeq [damping=0.95]
+# [00761.530 ms; 160 iters.] [3.3431e-01 err.] pagerankLevelwiseSeq [damping=0.95]
+# [00629.869 ms; 096 iters.] [1.3513e-01 err.] pagerankMonolithicSeq [damping=0.90]
+# [00393.066 ms; 082 iters.] [1.3513e-01 err.] pagerankLevelwiseSeq [damping=0.90]
+# [00409.312 ms; 063 iters.] [2.0306e-07 err.] pagerankMonolithicSeq [damping=0.85]
+# [00264.667 ms; 055 iters.] [4.6983e-06 err.] pagerankLevelwiseSeq [damping=0.85]
+# [00305.375 ms; 047 iters.] [1.0810e-01 err.] pagerankMonolithicSeq [damping=0.80]
+# [00205.093 ms; 043 iters.] [1.0811e-01 err.] pagerankLevelwiseSeq [damping=0.80]
+# [00239.792 ms; 037 iters.] [2.0043e-01 err.] pagerankMonolithicSeq [damping=0.75]
+# [00162.889 ms; 033 iters.] [2.0043e-01 err.] pagerankLevelwiseSeq [damping=0.75]
+# [00197.437 ms; 030 iters.] [2.8262e-01 err.] pagerankMonolithicSeq [damping=0.70]
+# [00150.736 ms; 030 iters.] [2.8262e-01 err.] pagerankLevelwiseSeq [damping=0.70]
+# [00162.177 ms; 025 iters.] [3.5705e-01 err.] pagerankMonolithicSeq [damping=0.65]
+# [00129.267 ms; 026 iters.] [3.5705e-01 err.] pagerankLevelwiseSeq [damping=0.65]
+# [00137.687 ms; 021 iters.] [4.2546e-01 err.] pagerankMonolithicSeq [damping=0.60]
+# [00099.487 ms; 020 iters.] [4.2546e-01 err.] pagerankLevelwiseSeq [damping=0.60]
+# [00122.985 ms; 018 iters.] [4.8941e-01 err.] pagerankMonolithicSeq [damping=0.55]
+# [00088.685 ms; 017 iters.] [4.8941e-01 err.] pagerankLevelwiseSeq [damping=0.55]
+# [00106.585 ms; 016 iters.] [5.5069e-01 err.] pagerankMonolithicSeq [damping=0.50]
+# [00085.601 ms; 017 iters.] [5.5069e-01 err.] pagerankLevelwiseSeq [damping=0.50]
 #
 # ...
 #
-# Loading graph /kaggle/input/graphs/soc-LiveJournal1.mtx ...
+# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 69532892 {} (selfLoopDeadEnds)
 # order: 4847571 size: 69532892 {} (transposeWithDegree)
-# [28066.938 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-# [127157.523 ms; 500 iters.] [1.5027e+00 err.] pagerankMonolithicSeq [damping=1.00]
-# [112915.125 ms; 441 iters.] [9.5421e-01 err.] pagerankLevelwiseSeq [damping=1.00]
-# [36115.203 ms; 151 iters.] [3.4072e-01 err.] pagerankMonolithicSeq [damping=0.95]
-# [31519.363 ms; 131 iters.] [3.4073e-01 err.] pagerankLevelwiseSeq [damping=0.95]
-# [19913.568 ms; 084 iters.] [1.1537e-01 err.] pagerankMonolithicSeq [damping=0.90]
-# [20730.768 ms; 086 iters.] [1.1538e-01 err.] pagerankLevelwiseSeq [damping=0.90]
-# [13316.350 ms; 058 iters.] [1.4498e-07 err.] pagerankMonolithicSeq [damping=0.85]
-# [11115.467 ms; 047 iters.] [4.0831e-06 err.] pagerankLevelwiseSeq [damping=0.85]
-# [10020.139 ms; 044 iters.] [8.3088e-02 err.] pagerankMonolithicSeq [damping=0.80]
-# [08212.763 ms; 035 iters.] [8.3088e-02 err.] pagerankLevelwiseSeq [damping=0.80]
-# [08084.128 ms; 035 iters.] [1.5136e-01 err.] pagerankMonolithicSeq [damping=0.75]
-# [09463.857 ms; 038 iters.] [1.5136e-01 err.] pagerankLevelwiseSeq [damping=0.75]
-# [06537.513 ms; 028 iters.] [2.1045e-01 err.] pagerankMonolithicSeq [damping=0.70]
-# [05473.422 ms; 023 iters.] [2.1045e-01 err.] pagerankLevelwiseSeq [damping=0.70]
-# [05601.135 ms; 024 iters.] [2.6569e-01 err.] pagerankMonolithicSeq [damping=0.65]
-# [04862.319 ms; 020 iters.] [2.6569e-01 err.] pagerankLevelwiseSeq [damping=0.65]
-# [04721.308 ms; 020 iters.] [3.1422e-01 err.] pagerankMonolithicSeq [damping=0.60]
-# [04351.185 ms; 018 iters.] [3.1422e-01 err.] pagerankLevelwiseSeq [damping=0.60]
-# [04276.395 ms; 018 iters.] [3.5880e-01 err.] pagerankMonolithicSeq [damping=0.55]
-# [05087.242 ms; 020 iters.] [3.5880e-01 err.] pagerankLevelwiseSeq [damping=0.55]
-# [03600.754 ms; 015 iters.] [3.9532e-01 err.] pagerankMonolithicSeq [damping=0.50]
-# [03543.240 ms; 014 iters.] [3.9532e-01 err.] pagerankLevelwiseSeq [damping=0.50]
+# [14849.229 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+# [132531.172 ms; 500 iters.] [1.5027e+00 err.] pagerankMonolithicSeq [damping=1.00]
+# [124651.750 ms; 441 iters.] [9.5421e-01 err.] pagerankLevelwiseSeq [damping=1.00]
+# [37465.320 ms; 151 iters.] [3.4072e-01 err.] pagerankMonolithicSeq [damping=0.95]
+# [33996.082 ms; 131 iters.] [3.4073e-01 err.] pagerankLevelwiseSeq [damping=0.95]
+# [23698.520 ms; 084 iters.] [1.1537e-01 err.] pagerankMonolithicSeq [damping=0.90]
+# [25438.498 ms; 086 iters.] [1.1538e-01 err.] pagerankLevelwiseSeq [damping=0.90]
+# [15372.076 ms; 058 iters.] [1.4498e-07 err.] pagerankMonolithicSeq [damping=0.85]
+# [13778.573 ms; 047 iters.] [4.0831e-06 err.] pagerankLevelwiseSeq [damping=0.85]
+# [12635.385 ms; 044 iters.] [8.3088e-02 err.] pagerankMonolithicSeq [damping=0.80]
+# [11039.472 ms; 035 iters.] [8.3088e-02 err.] pagerankLevelwiseSeq [damping=0.80]
+# [11112.011 ms; 035 iters.] [1.5136e-01 err.] pagerankMonolithicSeq [damping=0.75]
+# [13110.716 ms; 038 iters.] [1.5136e-01 err.] pagerankLevelwiseSeq [damping=0.75]
+# [08859.578 ms; 028 iters.] [2.1045e-01 err.] pagerankMonolithicSeq [damping=0.70]
+# [06935.414 ms; 023 iters.] [2.1045e-01 err.] pagerankLevelwiseSeq [damping=0.70]
+# [06759.742 ms; 024 iters.] [2.6569e-01 err.] pagerankMonolithicSeq [damping=0.65]
+# [05089.345 ms; 020 iters.] [2.6569e-01 err.] pagerankLevelwiseSeq [damping=0.65]
+# [05259.400 ms; 020 iters.] [3.1422e-01 err.] pagerankMonolithicSeq [damping=0.60]
+# [06107.679 ms; 018 iters.] [3.1422e-01 err.] pagerankLevelwiseSeq [damping=0.60]
+# [05073.656 ms; 018 iters.] [3.5880e-01 err.] pagerankMonolithicSeq [damping=0.55]
+# [06011.300 ms; 020 iters.] [3.5880e-01 err.] pagerankLevelwiseSeq [damping=0.55]
+# [04309.695 ms; 015 iters.] [3.9532e-01 err.] pagerankMonolithicSeq [damping=0.50]
+# [05140.188 ms; 014 iters.] [3.9532e-01 err.] pagerankLevelwiseSeq [damping=0.50]
 #
 # ...
 ```

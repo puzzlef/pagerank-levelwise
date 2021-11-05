@@ -77,29 +77,29 @@ $ ...
 
 # ...
 #
-# Loading graph /kaggle/input/graphs/web-Stanford.mtx ...
+# Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312669 {} (selfLoopDeadEnds)
 # order: 281903 size: 2312669 {} (transposeWithDegree)
-# [00464.522 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-# [00334.191 ms; 061 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-# [00318.081 ms; 044 iters.] [3.6049e-05 err.] pagerankMonolithicSeqL2Norm
-# [00252.807 ms; 047 iters.] [9.3213e-05 err.] pagerankLevelwiseSeqL2Norm
-# [00299.334 ms; 041 iters.] [6.1639e-05 err.] pagerankMonolithicSeqLiNorm
-# [00154.913 ms; 023 iters.] [8.8077e-02 err.] pagerankLevelwiseSeqLiNorm
+# [00419.108 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+# [00312.380 ms; 061 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+# [00295.878 ms; 044 iters.] [3.6049e-05 err.] pagerankMonolithicSeqL2Norm
+# [00239.817 ms; 047 iters.] [9.3213e-05 err.] pagerankLevelwiseSeqL2Norm
+# [00273.373 ms; 041 iters.] [6.1639e-05 err.] pagerankMonolithicSeqLiNorm
+# [00146.234 ms; 023 iters.] [8.8077e-02 err.] pagerankLevelwiseSeqLiNorm
 #
 # ...
 #
-# Loading graph /kaggle/input/graphs/soc-LiveJournal1.mtx ...
+# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 69532892 {} (selfLoopDeadEnds)
 # order: 4847571 size: 69532892 {} (transposeWithDegree)
-# [16359.787 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-# [13256.489 ms; 047 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
-# [08485.205 ms; 031 iters.] [5.8270e-04 err.] pagerankMonolithicSeqL2Norm
-# [06404.363 ms; 026 iters.] [7.7020e-04 err.] pagerankLevelwiseSeqL2Norm
-# [07606.579 ms; 028 iters.] [1.0223e-03 err.] pagerankMonolithicSeqLiNorm
-# [04042.529 ms; 012 iters.] [2.9828e-01 err.] pagerankLevelwiseSeqLiNorm
+# [14686.639 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+# [11326.479 ms; 047 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm
+# [07233.524 ms; 031 iters.] [5.8270e-04 err.] pagerankMonolithicSeqL2Norm
+# [06280.905 ms; 026 iters.] [7.7020e-04 err.] pagerankLevelwiseSeqL2Norm
+# [06593.834 ms; 028 iters.] [1.0223e-03 err.] pagerankMonolithicSeqLiNorm
+# [03809.542 ms; 012 iters.] [2.9828e-01 err.] pagerankLevelwiseSeqLiNorm
 #
 # ...
 ```

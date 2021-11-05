@@ -55,7 +55,7 @@ $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
 
-# Loading graph /kaggle/input/graphs/min-1DeadEnd.mtx ...
+# Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 # order: 5 size: 6 {
 #   1 -> 2 4 5
 #   2 -> 3
@@ -77,39 +77,39 @@ $ ...
 #   4 -> 1
 #   5 -> 1 4
 # } (transposeWithDegree)
+#
+# ...
+#
 # pagerankMonolithicSeq: ks={ 1 2 3 4 5 }
 # pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e-06 l=004
-# [00000.015 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-# pagerankMonolithicSeq: ks={ 1 2 3 4 5 }
-# pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e+00 l=001
-# [00000.001 ms; 001 iters.] [5.6355e-01 err.] pagerankMonolithicSeqL1Norm [tolerance=1e+00]
+# [00000.004 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm [tolerance=1e-06]
 # pagerankLevelwiseSeq: ks={ 1 4 5 2 3 }
-# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=2.0000e-01 l=005
-# [00000.008 ms; 001 iters.] [1.1476e+00 err.] pagerankLevelwiseSeqL1Norm [tolerance=1e+00]
+# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=2.0000e-07 l=082
+# [00000.034 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL1Norm [tolerance=1e-06]
 # pagerankMonolithicSeq: ks={ 1 2 3 4 5 }
-# pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e+00 l=001
-# [00000.001 ms; 001 iters.] [5.6355e-01 err.] pagerankMonolithicSeqL2Norm [tolerance=1e+00]
+# pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e-06 l=004
+# [00000.005 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL2Norm [tolerance=1e-06]
 # pagerankLevelwiseSeq: ks={ 1 4 5 2 3 }
-# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=2.0000e-01 l=001
-# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=2.0000e-01 l=005
-# [00000.008 ms; 001 iters.] [1.1476e+00 err.] pagerankLevelwiseSeqL2Norm [tolerance=1e+00]
+# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=2.0000e-07 l=002
+# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=2.0000e-07 l=082
+# [00000.035 ms; 018 iters.] [1.0139e-06 err.] pagerankLevelwiseSeqL2Norm [tolerance=1e-06]
 # pagerankMonolithicSeq: ks={ 1 2 3 4 5 }
-# pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e+00 l=001
-# [00000.001 ms; 001 iters.] [5.6355e-01 err.] pageranMonolithicSeqLiNorm [tolerance=1e+00]
+# pagerankMonolithicSeqLoop: i=000 n=005 N=005 E=1.0000e-06 l=004
+# [00000.005 ms; 004 iters.] [0.0000e+00 err.] pageranMonolithicSeqLiNorm [tolerance=1e-06]
 # pagerankLevelwiseSeq: ks={ 1 4 5 2 3 }
-# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=1.0000e+00 l=001
-# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=1.0000e+00 l=001
-# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=1.0000e+00 l=001
-# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=1.0000e+00 l=001
-# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=1.0000e+00 l=001
-# [00000.007 ms; 001 iters.] [7.9022e-01 err.] pageranLevelwiseSeqLiNorm [tolerance=1e+00]
+# pagerankMonolithicSeqLoop: i=000 n=001 N=005 E=1.0000e-06 l=002
+# pagerankMonolithicSeqLoop: i=001 n=001 N=005 E=1.0000e-06 l=002
+# pagerankMonolithicSeqLoop: i=002 n=001 N=005 E=1.0000e-06 l=002
+# pagerankMonolithicSeqLoop: i=003 n=001 N=005 E=1.0000e-06 l=002
+# pagerankMonolithicSeqLoop: i=004 n=001 N=005 E=1.0000e-06 l=072
+# [00000.032 ms; 016 iters.] [5.1499e-06 err.] pageranLevelwiseSeqLiNorm [tolerance=1e-06]
 #
 # ...
 ```

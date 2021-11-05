@@ -1,345 +1,440 @@
-Loading graph /kaggle/input/graphs/min-1DeadEnd.mtx ...
+Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 order: 5 size: 6 {}
 order: 5 size: 7 {} (selfLoopDeadEnds)
 order: 5 size: 7 {} (transposeWithDegree)
 [00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
 [00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00000.001 ms; 018 iters.] [1.0133e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00000.001 ms; 016 iters.] [1.0729e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00000.001 ms; 017 iters.] [1.1921e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00000.001 ms; 018 iters.] [1.1325e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00000.003 ms; 018 iters.] [1.0133e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00000.002 ms; 016 iters.] [1.0729e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00000.003 ms; 017 iters.] [1.1921e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00000.003 ms; 018 iters.] [1.1325e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
 [00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL2Norm
-[00000.001 ms; 018 iters.] [1.0133e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00000.001 ms; 016 iters.] [1.0729e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00000.001 ms; 017 iters.] [1.1921e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00000.001 ms; 018 iters.] [1.1325e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00000.004 ms; 018 iters.] [1.0133e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00000.003 ms; 016 iters.] [1.0729e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00000.003 ms; 017 iters.] [1.1921e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00000.003 ms; 018 iters.] [1.1325e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
 [00000.000 ms; 004 iters.] [0.0000e+00 err.] pageranMonolithicSeqLiNorm
-[00000.001 ms; 016 iters.] [5.2452e-06 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00000.001 ms; 014 iters.] [5.3644e-06 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00000.001 ms; 015 iters.] [4.9472e-06 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00000.001 ms; 016 iters.] [5.5432e-06 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00000.003 ms; 016 iters.] [5.2452e-06 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00000.002 ms; 014 iters.] [5.3644e-06 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00000.002 ms; 015 iters.] [4.9472e-06 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00000.003 ms; 016 iters.] [5.5432e-06 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/min-2SCC.mtx ...
+Loading graph /home/subhajit/data/min-2SCC.mtx ...
 order: 8 size: 12 {}
 order: 8 size: 12 {} (selfLoopDeadEnds)
 order: 8 size: 12 {} (transposeWithDegree)
 [00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00000.001 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00000.002 ms; 047 iters.] [1.8049e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00000.002 ms; 046 iters.] [4.9248e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00000.002 ms; 048 iters.] [4.9882e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00000.002 ms; 048 iters.] [1.6633e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00000.001 ms; 038 iters.] [1.4454e-06 err.] pagerankMonolithicSeqL2Norm
-[00000.002 ms; 044 iters.] [3.6657e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00000.002 ms; 044 iters.] [7.4953e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00000.002 ms; 046 iters.] [9.9577e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00000.002 ms; 045 iters.] [3.2112e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00000.001 ms; 037 iters.] [1.1325e-06 err.] pageranMonolithicSeqLiNorm
-[00000.002 ms; 040 iters.] [1.7382e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00000.002 ms; 039 iters.] [2.7452e-05 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00000.002 ms; 041 iters.] [3.4984e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00000.002 ms; 041 iters.] [1.5803e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00000.004 ms; 047 iters.] [1.8049e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00000.004 ms; 046 iters.] [4.9248e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00000.004 ms; 048 iters.] [4.9882e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00000.004 ms; 048 iters.] [1.6633e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00000.002 ms; 038 iters.] [1.4454e-06 err.] pagerankMonolithicSeqL2Norm
+[00000.005 ms; 044 iters.] [3.6657e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00000.004 ms; 044 iters.] [7.4953e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00000.005 ms; 046 iters.] [9.9577e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00000.005 ms; 045 iters.] [3.2112e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00000.002 ms; 037 iters.] [1.1325e-06 err.] pageranMonolithicSeqLiNorm
+[00000.003 ms; 040 iters.] [1.7382e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00000.003 ms; 039 iters.] [2.7452e-05 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00000.003 ms; 041 iters.] [3.4984e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00000.003 ms; 041 iters.] [1.5803e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/min-4SCC.mtx ...
+Loading graph /home/subhajit/data/min-4SCC.mtx ...
 order: 21 size: 35 {}
 order: 21 size: 35 {} (selfLoopDeadEnds)
 order: 21 size: 35 {} (transposeWithDegree)
 [00000.005 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
 [00000.004 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
 [00000.007 ms; 050 iters.] [3.1218e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00000.033 ms; 057 iters.] [5.6233e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00000.009 ms; 053 iters.] [4.7432e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00000.009 ms; 052 iters.] [2.3339e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00000.007 ms; 041 iters.] [1.1362e-06 err.] pagerankMonolithicSeqL2Norm
-[00000.010 ms; 046 iters.] [7.7849e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00000.013 ms; 053 iters.] [1.2969e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00000.005 ms; 049 iters.] [1.1786e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00000.006 ms; 048 iters.] [7.6508e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00000.008 ms; 040 iters.] [1.6391e-06 err.] pageranMonolithicSeqLiNorm
-[00000.004 ms; 038 iters.] [4.7235e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00000.008 ms; 057 iters.] [5.6233e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00000.007 ms; 053 iters.] [4.7432e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00000.007 ms; 052 iters.] [2.3339e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00000.004 ms; 041 iters.] [1.1362e-06 err.] pagerankMonolithicSeqL2Norm
+[00000.008 ms; 046 iters.] [7.7849e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00000.009 ms; 053 iters.] [1.2969e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00000.008 ms; 049 iters.] [1.1786e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00000.008 ms; 048 iters.] [7.6508e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00000.004 ms; 040 iters.] [1.6391e-06 err.] pageranMonolithicSeqLiNorm
+[00000.005 ms; 038 iters.] [4.7235e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
 [00000.005 ms; 045 iters.] [8.3529e-05 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00000.009 ms; 041 iters.] [8.3911e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00000.009 ms; 040 iters.] [4.3963e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00000.005 ms; 041 iters.] [8.3911e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00000.005 ms; 040 iters.] [4.3963e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/min-NvgraphEx.mtx ...
+Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
 order: 6 size: 10 {}
 order: 6 size: 11 {} (selfLoopDeadEnds)
 order: 6 size: 11 {} (transposeWithDegree)
 [00000.001 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00000.001 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00000.004 ms; 048 iters.] [3.2187e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00000.004 ms; 056 iters.] [4.6901e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00000.004 ms; 054 iters.] [4.4107e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00000.005 ms; 050 iters.] [2.4587e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00000.003 ms; 048 iters.] [3.2187e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00000.003 ms; 056 iters.] [4.6901e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00000.002 ms; 054 iters.] [4.4107e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00000.003 ms; 050 iters.] [2.4587e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
 [00000.001 ms; 016 iters.] [4.8429e-07 err.] pagerankMonolithicSeqL2Norm
-[00000.004 ms; 047 iters.] [5.4277e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00000.005 ms; 054 iters.] [6.4895e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00000.005 ms; 052 iters.] [7.5251e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00000.005 ms; 049 iters.] [4.2059e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00000.003 ms; 047 iters.] [5.4277e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00000.003 ms; 054 iters.] [6.4895e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00000.003 ms; 052 iters.] [7.5251e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00000.003 ms; 049 iters.] [4.2059e-06 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
 [00000.000 ms; 016 iters.] [4.8429e-07 err.] pageranMonolithicSeqLiNorm
-[00000.004 ms; 042 iters.] [1.4920e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00000.004 ms; 049 iters.] [2.0798e-05 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00000.004 ms; 047 iters.] [2.6554e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00000.003 ms; 043 iters.] [1.8630e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00000.002 ms; 042 iters.] [1.4920e-05 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00000.002 ms; 049 iters.] [2.0798e-05 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00000.002 ms; 047 iters.] [2.6554e-05 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00000.002 ms; 043 iters.] [1.8630e-05 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/web-Stanford.mtx ...
+Loading graph /home/subhajit/data/web-Stanford.mtx ...
 order: 281903 size: 2312497 {}
 order: 281903 size: 2312669 {} (selfLoopDeadEnds)
 order: 281903 size: 2312669 {} (transposeWithDegree)
-[00456.610 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00460.883 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00295.372 ms; 053 iters.] [3.8999e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00389.972 ms; 080 iters.] [4.7366e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00334.875 ms; 064 iters.] [6.1831e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[03349.248 ms; 060 iters.] [5.2520e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00358.016 ms; 044 iters.] [3.6049e-05 err.] pagerankMonolithicSeqL2Norm
-[00215.174 ms; 040 iters.] [5.7197e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00305.441 ms; 067 iters.] [8.0376e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00298.175 ms; 051 iters.] [8.2951e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[03260.907 ms; 046 iters.] [8.5727e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00330.234 ms; 041 iters.] [6.1639e-05 err.] pageranMonolithicSeqLiNorm
-[00159.812 ms; 023 iters.] [2.6169e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00241.810 ms; 046 iters.] [1.3656e-01 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00194.687 ms; 029 iters.] [1.2830e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[03194.736 ms; 024 iters.] [8.3605e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00413.684 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00411.674 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00276.888 ms; 053 iters.] [3.8999e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00366.951 ms; 080 iters.] [4.7366e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00327.648 ms; 064 iters.] [6.1831e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[03298.053 ms; 060 iters.] [5.2520e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00290.005 ms; 044 iters.] [3.6049e-05 err.] pagerankMonolithicSeqL2Norm
+[00205.307 ms; 040 iters.] [5.7197e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00292.671 ms; 067 iters.] [8.0376e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00258.842 ms; 051 iters.] [8.2951e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[03219.876 ms; 046 iters.] [8.5727e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00268.528 ms; 041 iters.] [6.1639e-05 err.] pageranMonolithicSeqLiNorm
+[00146.722 ms; 023 iters.] [2.6169e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00225.055 ms; 046 iters.] [1.3656e-01 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00182.648 ms; 029 iters.] [1.2830e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[03147.628 ms; 024 iters.] [8.3605e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/web-BerkStan.mtx ...
+Loading graph /home/subhajit/data/web-BerkStan.mtx ...
 order: 685230 size: 7600595 {}
 order: 685230 size: 7605339 {} (selfLoopDeadEnds)
 order: 685230 size: 7605339 {} (transposeWithDegree)
-[01073.424 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[01083.834 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00905.375 ms; 051 iters.] [3.6856e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[01142.107 ms; 073 iters.] [4.7008e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00999.122 ms; 059 iters.] [5.1484e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[28586.014 ms; 055 iters.] [4.9593e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00725.997 ms; 043 iters.] [4.9584e-05 err.] pagerankMonolithicSeqL2Norm
-[00707.624 ms; 039 iters.] [4.6779e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00891.683 ms; 060 iters.] [8.8750e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00760.356 ms; 045 iters.] [1.0908e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[28583.838 ms; 042 iters.] [8.2305e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00620.353 ms; 037 iters.] [1.4794e-04 err.] pageranMonolithicSeqLiNorm
-[00454.282 ms; 022 iters.] [1.2638e-01 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00630.795 ms; 039 iters.] [2.6409e-01 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00474.264 ms; 024 iters.] [1.9758e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[28194.455 ms; 025 iters.] [4.1690e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00965.974 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00967.699 ms; 064 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00833.021 ms; 051 iters.] [3.6856e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[01064.367 ms; 073 iters.] [4.7008e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00938.051 ms; 059 iters.] [5.1484e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[28186.123 ms; 055 iters.] [4.9593e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00650.237 ms; 043 iters.] [4.9584e-05 err.] pagerankMonolithicSeqL2Norm
+[00632.386 ms; 039 iters.] [4.6779e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00842.684 ms; 060 iters.] [8.8750e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00702.811 ms; 045 iters.] [1.0908e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[27737.346 ms; 042 iters.] [8.2305e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00538.678 ms; 037 iters.] [1.4794e-04 err.] pageranMonolithicSeqLiNorm
+[00399.650 ms; 022 iters.] [1.2638e-01 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00559.737 ms; 039 iters.] [2.6409e-01 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00421.661 ms; 024 iters.] [1.9758e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[27290.303 ms; 025 iters.] [4.1690e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/web-Google.mtx ...
+Loading graph /home/subhajit/data/web-Google.mtx ...
 order: 916428 size: 5105039 {}
 order: 916428 size: 5282013 {} (selfLoopDeadEnds)
 order: 916428 size: 5282013 {} (transposeWithDegree)
-[01832.885 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[01802.486 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00882.253 ms; 041 iters.] [3.7451e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[01288.964 ms; 069 iters.] [4.2468e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00983.229 ms; 049 iters.] [4.3886e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[235882.594 ms; 045 iters.] [4.3752e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[01172.437 ms; 040 iters.] [6.8726e-05 err.] pagerankMonolithicSeqL2Norm
-[00652.787 ms; 030 iters.] [1.2067e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[01046.382 ms; 057 iters.] [2.2721e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00762.558 ms; 037 iters.] [2.3221e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[235472.672 ms; 034 iters.] [1.9173e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[01048.790 ms; 036 iters.] [1.5079e-04 err.] pageranMonolithicSeqLiNorm
-[00394.529 ms; 015 iters.] [1.0464e+00 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00599.993 ms; 030 iters.] [1.1985e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00389.351 ms; 013 iters.] [4.0782e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[235273.156 ms; 015 iters.] [1.0519e+00 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[02126.096 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[01882.046 ms; 062 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00904.381 ms; 041 iters.] [3.7451e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[01428.904 ms; 069 iters.] [4.2468e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[01058.172 ms; 049 iters.] [4.3886e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[234860.000 ms; 045 iters.] [4.3752e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[01008.559 ms; 040 iters.] [6.8726e-05 err.] pagerankMonolithicSeqL2Norm
+[00613.094 ms; 030 iters.] [1.2067e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00946.067 ms; 057 iters.] [2.2721e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00706.450 ms; 037 iters.] [2.3221e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[235908.812 ms; 034 iters.] [1.9173e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[01016.034 ms; 036 iters.] [1.5079e-04 err.] pageranMonolithicSeqLiNorm
+[00408.864 ms; 015 iters.] [1.0464e+00 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00546.092 ms; 030 iters.] [1.1985e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00378.358 ms; 013 iters.] [4.0782e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[236509.641 ms; 015 iters.] [1.0519e+00 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/web-NotreDame.mtx ...
+Loading graph /home/subhajit/data/web-NotreDame.mtx ...
 order: 325729 size: 1497134 {}
 order: 325729 size: 1684922 {} (selfLoopDeadEnds)
 order: 325729 size: 1684922 {} (transposeWithDegree)
-[00220.779 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00217.754 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00247.253 ms; 049 iters.] [4.4235e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00545.462 ms; 117 iters.] [5.2725e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00307.430 ms; 063 iters.] [6.1036e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[56705.605 ms; 060 iters.] [4.7916e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00162.714 ms; 039 iters.] [1.3626e-05 err.] pagerankMonolithicSeqL2Norm
-[00253.191 ms; 046 iters.] [1.1059e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00618.517 ms; 113 iters.] [1.8873e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00331.269 ms; 059 iters.] [2.4125e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[56686.457 ms; 056 iters.] [1.2604e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00152.017 ms; 036 iters.] [2.6848e-05 err.] pageranMonolithicSeqLiNorm
-[00052.117 ms; 008 iters.] [8.6432e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00282.903 ms; 059 iters.] [1.0731e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00011.985 ms; 001 iters.] [7.4614e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[56442.895 ms; 007 iters.] [3.0579e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00226.526 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00222.959 ms; 053 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00236.170 ms; 049 iters.] [4.4235e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00509.376 ms; 117 iters.] [5.2725e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00295.099 ms; 063 iters.] [6.1036e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[56771.816 ms; 060 iters.] [4.7916e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00161.781 ms; 039 iters.] [1.3626e-05 err.] pagerankMonolithicSeqL2Norm
+[00235.261 ms; 046 iters.] [1.1059e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00539.235 ms; 113 iters.] [1.8873e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00294.252 ms; 059 iters.] [2.4125e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[56903.535 ms; 056 iters.] [1.2604e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00145.734 ms; 036 iters.] [2.6848e-05 err.] pageranMonolithicSeqLiNorm
+[00050.094 ms; 008 iters.] [8.6432e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00262.803 ms; 059 iters.] [1.0731e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00011.908 ms; 001 iters.] [7.4614e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[56590.430 ms; 007 iters.] [3.0579e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/soc-Slashdot0811.mtx ...
+Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
 order: 77360 size: 905468 {}
 order: 77360 size: 905512 {} (selfLoopDeadEnds)
 order: 77360 size: 905512 {} (transposeWithDegree)
-[00100.420 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00101.424 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00096.486 ms; 053 iters.] [4.3227e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00118.116 ms; 067 iters.] [6.4981e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00131.586 ms; 071 iters.] [1.0653e-05 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00851.954 ms; 054 iters.] [5.1640e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00056.404 ms; 030 iters.] [3.7249e-04 err.] pagerankMonolithicSeqL2Norm
-[00052.397 ms; 029 iters.] [3.8498e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00073.930 ms; 043 iters.] [4.8031e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00087.467 ms; 048 iters.] [3.9629e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00811.767 ms; 030 iters.] [4.5341e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00040.081 ms; 022 iters.] [1.4508e-03 err.] pageranMonolithicSeqLiNorm
-[00033.950 ms; 017 iters.] [2.1403e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00050.969 ms; 029 iters.] [4.0359e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00065.812 ms; 033 iters.] [3.5472e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00783.784 ms; 017 iters.] [4.1028e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00100.040 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00099.190 ms; 056 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00094.982 ms; 053 iters.] [4.3227e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00114.315 ms; 067 iters.] [6.4981e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00132.935 ms; 071 iters.] [1.0653e-05 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00850.873 ms; 054 iters.] [5.1640e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00053.636 ms; 030 iters.] [3.7249e-04 err.] pagerankMonolithicSeqL2Norm
+[00051.240 ms; 029 iters.] [3.8498e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00072.192 ms; 043 iters.] [4.8031e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00086.277 ms; 048 iters.] [3.9629e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00807.493 ms; 030 iters.] [4.5341e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00038.940 ms; 022 iters.] [1.4508e-03 err.] pageranMonolithicSeqLiNorm
+[00032.932 ms; 017 iters.] [2.1403e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00049.144 ms; 029 iters.] [4.0359e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00063.752 ms; 033 iters.] [3.5472e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00787.280 ms; 017 iters.] [4.1028e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/soc-Slashdot0902.mtx ...
+Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
 order: 82168 size: 948464 {}
 order: 82168 size: 952191 {} (selfLoopDeadEnds)
 order: 82168 size: 952191 {} (transposeWithDegree)
-[00121.761 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00110.923 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00109.621 ms; 056 iters.] [3.7190e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00128.422 ms; 070 iters.] [6.2593e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00128.990 ms; 065 iters.] [7.9224e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[01331.002 ms; 057 iters.] [3.7162e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00075.489 ms; 039 iters.] [1.3743e-04 err.] pagerankMonolithicSeqL2Norm
-[00073.902 ms; 035 iters.] [3.6096e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00096.195 ms; 049 iters.] [4.0203e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00087.163 ms; 044 iters.] [3.6325e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[01299.408 ms; 036 iters.] [4.2473e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00071.161 ms; 037 iters.] [2.0114e-04 err.] pageranMonolithicSeqLiNorm
-[00040.323 ms; 019 iters.] [3.7863e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00058.354 ms; 032 iters.] [6.1916e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00060.900 ms; 028 iters.] [3.0096e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[01265.078 ms; 019 iters.] [6.3273e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00107.276 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00107.229 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00105.126 ms; 056 iters.] [3.7190e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00122.103 ms; 070 iters.] [6.2593e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00123.606 ms; 065 iters.] [7.9224e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[01315.592 ms; 057 iters.] [3.7162e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00072.422 ms; 039 iters.] [1.3743e-04 err.] pagerankMonolithicSeqL2Norm
+[00065.405 ms; 035 iters.] [3.6096e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00086.344 ms; 049 iters.] [4.0203e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00083.905 ms; 044 iters.] [3.6325e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[01276.148 ms; 036 iters.] [4.2473e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00068.184 ms; 037 iters.] [2.0114e-04 err.] pageranMonolithicSeqLiNorm
+[00038.949 ms; 019 iters.] [3.7863e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00055.678 ms; 032 iters.] [6.1916e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00057.745 ms; 028 iters.] [3.0096e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[01249.826 ms; 019 iters.] [6.3273e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/soc-Epinions1.mtx ...
+Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
 order: 75888 size: 508837 {}
 order: 75888 size: 524384 {} (selfLoopDeadEnds)
 order: 75888 size: 524384 {} (transposeWithDegree)
-[00086.308 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00085.703 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00075.394 ms; 042 iters.] [5.0352e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00095.428 ms; 061 iters.] [3.6074e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00081.329 ms; 046 iters.] [5.7410e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[02208.258 ms; 045 iters.] [5.0253e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00060.778 ms; 041 iters.] [7.4360e-05 err.] pagerankMonolithicSeqL2Norm
-[00062.236 ms; 034 iters.] [9.0762e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00085.741 ms; 052 iters.] [9.4730e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00066.845 ms; 037 iters.] [8.6160e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[02176.096 ms; 036 iters.] [9.0027e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00050.069 ms; 034 iters.] [2.6806e-04 err.] pageranMonolithicSeqLiNorm
-[00029.972 ms; 014 iters.] [5.6304e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00048.425 ms; 031 iters.] [9.4964e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00036.757 ms; 017 iters.] [9.8105e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[02150.691 ms; 015 iters.] [9.1710e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00083.687 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00083.624 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00072.039 ms; 042 iters.] [5.0352e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00089.535 ms; 061 iters.] [3.6074e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00078.303 ms; 046 iters.] [5.7410e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[02185.600 ms; 045 iters.] [5.0253e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00058.651 ms; 041 iters.] [7.4360e-05 err.] pagerankMonolithicSeqL2Norm
+[00056.989 ms; 034 iters.] [9.0762e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00076.475 ms; 052 iters.] [9.4730e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00062.701 ms; 037 iters.] [8.6160e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[02166.103 ms; 036 iters.] [9.0027e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00048.266 ms; 034 iters.] [2.6806e-04 err.] pageranMonolithicSeqLiNorm
+[00029.273 ms; 014 iters.] [5.6304e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00045.791 ms; 031 iters.] [9.4964e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00036.096 ms; 017 iters.] [9.8105e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[02139.249 ms; 015 iters.] [9.1710e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/coAuthorsDBLP.mtx ...
+Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
 order: 299067 size: 1955352 {}
 order: 299067 size: 1955352 {} (selfLoopDeadEnds)
 order: 299067 size: 1955352 {} (transposeWithDegree)
-[00318.769 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00306.668 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00286.180 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00279.027 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00469.618 ms; 074 iters.] [6.8572e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00288.255 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00148.791 ms; 022 iters.] [4.7959e-04 err.] pagerankMonolithicSeqL2Norm
-[00138.185 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00139.876 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00241.364 ms; 038 iters.] [1.7678e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00141.834 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00119.517 ms; 018 iters.] [1.1653e-03 err.] pageranMonolithicSeqLiNorm
-[00113.975 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00113.464 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00120.532 ms; 019 iters.] [3.8754e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00113.473 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00267.764 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00262.374 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00252.346 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00253.314 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00421.146 ms; 074 iters.] [6.8572e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00252.853 ms; 045 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00129.187 ms; 022 iters.] [4.7959e-04 err.] pagerankMonolithicSeqL2Norm
+[00124.335 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00124.054 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00214.507 ms; 038 iters.] [1.7678e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00124.497 ms; 022 iters.] [4.7959e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00104.669 ms; 018 iters.] [1.1653e-03 err.] pageranMonolithicSeqLiNorm
+[00107.286 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00100.695 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00106.611 ms; 019 iters.] [3.8754e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00101.021 ms; 018 iters.] [1.1653e-03 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/coAuthorsCiteseer.mtx ...
+Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
 order: 227320 size: 1628268 {}
 order: 227320 size: 1628268 {} (selfLoopDeadEnds)
 order: 227320 size: 1628268 {} (transposeWithDegree)
-[00242.426 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[00242.112 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[00229.771 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[00225.720 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[00349.857 ms; 074 iters.] [6.8708e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[00226.962 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[00113.319 ms; 023 iters.] [5.0506e-04 err.] pagerankMonolithicSeqL2Norm
-[00109.241 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[00109.280 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[00183.241 ms; 039 iters.] [1.5024e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[00108.763 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00079.214 ms; 016 iters.] [2.1820e-03 err.] pageranMonolithicSeqLiNorm
-[00076.971 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00076.155 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00145.053 ms; 031 iters.] [5.5131e-03 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00076.109 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[00210.348 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[00210.598 ms; 048 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[00205.972 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[00205.621 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[00315.900 ms; 074 iters.] [6.8708e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[00206.007 ms; 048 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00107.096 ms; 023 iters.] [5.0506e-04 err.] pagerankMonolithicSeqL2Norm
+[00099.955 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00099.001 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[00167.813 ms; 039 iters.] [1.5024e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00098.626 ms; 023 iters.] [5.0506e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00070.373 ms; 016 iters.] [2.1820e-03 err.] pageranMonolithicSeqLiNorm
+[00068.302 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00068.249 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00132.515 ms; 031 iters.] [5.5131e-03 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00068.594 ms; 016 iters.] [2.1820e-03 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/soc-LiveJournal1.mtx ...
+Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 order: 4847571 size: 68993773 {}
 order: 4847571 size: 69532892 {} (selfLoopDeadEnds)
 order: 4847571 size: 69532892 {} (transposeWithDegree)
-[25270.244 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[24831.123 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[19366.889 ms; 047 iters.] [4.7412e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[23130.172 ms; 068 iters.] [5.5037e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[25021.562 ms; 060 iters.] [6.8912e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[4063212.000 ms; 046 iters.] [3.6138e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[13065.828 ms; 031 iters.] [5.8270e-04 err.] pagerankMonolithicSeqL2Norm
-[09000.682 ms; 026 iters.] [6.5001e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[11569.876 ms; 040 iters.] [2.6013e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[12631.401 ms; 033 iters.] [2.5403e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[4057882.250 ms; 026 iters.] [6.5132e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[11326.687 ms; 028 iters.] [1.0223e-03 err.] pageranMonolithicSeqLiNorm
-[05921.693 ms; 012 iters.] [4.0536e-01 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[07283.950 ms; 023 iters.] [3.3613e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[07811.980 ms; 016 iters.] [2.9495e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[4057177.000 ms; 012 iters.] [5.0445e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[16490.383 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[20166.049 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[13918.812 ms; 047 iters.] [4.7412e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[18718.344 ms; 068 iters.] [5.5037e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[19958.445 ms; 060 iters.] [6.8912e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[3975256.500 ms; 046 iters.] [3.6138e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[08906.611 ms; 031 iters.] [5.8270e-04 err.] pagerankMonolithicSeqL2Norm
+[05795.453 ms; 026 iters.] [6.5001e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[08436.659 ms; 040 iters.] [2.6013e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[09092.374 ms; 033 iters.] [2.5403e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[3995367.500 ms; 026 iters.] [6.5132e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[09070.559 ms; 028 iters.] [1.0223e-03 err.] pageranMonolithicSeqLiNorm
+[05317.957 ms; 012 iters.] [4.0536e-01 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[06176.273 ms; 023 iters.] [3.3613e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[05958.874 ms; 016 iters.] [2.9495e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[4025104.000 ms; 012 iters.] [5.0445e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/coPapersCiteseer.mtx ...
+Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
 order: 434102 size: 32073440 {}
 order: 434102 size: 32073440 {} (selfLoopDeadEnds)
 order: 434102 size: 32073440 {} (transposeWithDegree)
-[02872.274 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[02824.053 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[02855.010 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[02747.557 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[04160.690 ms; 074 iters.] [5.7432e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[02814.309 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[01163.219 ms; 020 iters.] [1.5957e-03 err.] pagerankMonolithicSeqL2Norm
-[01115.044 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[01125.430 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[01998.013 ms; 036 iters.] [2.4462e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[01096.536 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00272.298 ms; 005 iters.] [4.6208e-02 err.] pageranMonolithicSeqLiNorm
-[00294.687 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00276.058 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00552.739 ms; 010 iters.] [1.6735e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00277.254 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[02396.209 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[02400.186 ms; 051 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[02395.994 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[02396.703 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[03527.231 ms; 074 iters.] [5.7432e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[02399.270 ms; 051 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00943.798 ms; 020 iters.] [1.5957e-03 err.] pagerankMonolithicSeqL2Norm
+[00938.866 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00942.374 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[01693.817 ms; 036 iters.] [2.4462e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00942.461 ms; 020 iters.] [1.5957e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00236.296 ms; 005 iters.] [4.6208e-02 err.] pageranMonolithicSeqLiNorm
+[00235.820 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00235.977 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00471.195 ms; 010 iters.] [1.6735e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00236.180 ms; 005 iters.] [4.6208e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/coPapersDBLP.mtx ...
+Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
 order: 540486 size: 30491458 {}
 order: 540486 size: 30491458 {} (selfLoopDeadEnds)
 order: 540486 size: 30491458 {} (transposeWithDegree)
-[02874.410 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[02983.453 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[02923.876 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[02932.841 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[04300.707 ms; 074 iters.] [5.5575e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
-[02860.280 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
-[01131.436 ms; 019 iters.] [1.8788e-03 err.] pagerankMonolithicSeqL2Norm
-[01103.144 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
-[01159.751 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
-[02177.595 ms; 035 iters.] [2.8776e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
-[01109.130 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
-[00414.273 ms; 007 iters.] [2.9598e-02 err.] pageranMonolithicSeqLiNorm
-[00430.912 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
-[00414.995 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
-[00882.355 ms; 015 iters.] [7.4250e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
-[00420.366 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+[02297.009 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[02301.760 ms; 049 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[02296.897 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[02300.374 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[03470.522 ms; 074 iters.] [5.5575e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[02298.492 ms; 049 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[00893.872 ms; 019 iters.] [1.8788e-03 err.] pagerankMonolithicSeqL2Norm
+[00938.143 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[00886.065 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[01642.179 ms; 035 iters.] [2.8776e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[00891.888 ms; 019 iters.] [1.8788e-03 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00329.311 ms; 007 iters.] [2.9598e-02 err.] pageranMonolithicSeqLiNorm
+[00329.384 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00329.292 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00703.550 ms; 015 iters.] [7.4250e-02 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00328.768 ms; 007 iters.] [2.9598e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
 
-Loading graph /kaggle/input/graphs/indochina-2004.mtx ...
+Loading graph /home/subhajit/data/indochina-2004.mtx ...
 order: 7414866 size: 194109311 {}
 order: 7414866 size: 195418438 {} (selfLoopDeadEnds)
 order: 7414866 size: 195418438 {} (transposeWithDegree)
-[21924.639 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
-[21826.939 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
-[16152.371 ms; 052 iters.] [3.3223e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
-[31467.996 ms; 093 iters.] [5.5292e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
-[22530.805 ms; 060 iters.] [5.9059e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[20219.053 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[20076.428 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[15382.783 ms; 052 iters.] [3.3223e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[29444.977 ms; 093 iters.] [5.5292e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[21251.436 ms; 060 iters.] [5.9059e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[14212661.000 ms; 058 iters.] [3.9855e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[12179.335 ms; 036 iters.] [1.0360e-04 err.] pagerankMonolithicSeqL2Norm
+[10532.988 ms; 039 iters.] [7.4552e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[23379.211 ms; 078 iters.] [2.2837e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[15324.735 ms; 045 iters.] [3.3354e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[14052704.000 ms; 045 iters.] [8.1620e-05 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[10315.712 ms; 031 iters.] [2.7957e-04 err.] pageranMonolithicSeqLiNorm
+[04662.069 ms; 013 iters.] [2.1771e-01 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[10788.583 ms; 042 iters.] [9.3274e+00 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00970.258 ms; 001 iters.] [7.5863e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[13943902.000 ms; 013 iters.] [2.9312e-01 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+
+Loading graph /home/subhajit/data/italy_osm.mtx ...
+order: 6686493 size: 14027956 {}
+order: 6686493 size: 14027956 {} (selfLoopDeadEnds)
+order: 6686493 size: 14027956 {} (transposeWithDegree)
+[04099.060 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[04119.749 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[03412.537 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[03381.265 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[03943.344 ms; 074 iters.] [5.1547e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[03399.272 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[01339.381 ms; 020 iters.] [6.6253e-04 err.] pagerankMonolithicSeqL2Norm
+[01090.253 ms; 020 iters.] [6.6253e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[01089.584 ms; 020 iters.] [6.6253e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[01421.905 ms; 026 iters.] [1.2618e-02 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[01098.603 ms; 020 iters.] [6.6253e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00079.498 ms; 001 iters.] [3.7756e-02 err.] pageranMonolithicSeqLiNorm
+[00065.138 ms; 001 iters.] [3.7756e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00065.042 ms; 001 iters.] [3.7756e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00065.137 ms; 001 iters.] [7.5164e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00067.541 ms; 001 iters.] [3.7756e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+
+Loading graph /home/subhajit/data/great-britain_osm.mtx ...
+order: 7733822 size: 16313034 {}
+order: 7733822 size: 16313034 {} (selfLoopDeadEnds)
+order: 7733822 size: 16313034 {} (transposeWithDegree)
+[06494.527 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[06537.381 ms; 067 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[04987.257 ms; 067 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[04982.902 ms; 067 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[05529.540 ms; 074 iters.] [4.9613e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[04997.234 ms; 067 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[02257.113 ms; 023 iters.] [8.0939e-04 err.] pagerankMonolithicSeqL2Norm
+[01721.938 ms; 023 iters.] [8.0939e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[01742.167 ms; 023 iters.] [8.0939e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[01891.191 ms; 025 iters.] [1.4828e-02 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[01743.227 ms; 023 iters.] [8.0939e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00110.561 ms; 001 iters.] [7.8761e-02 err.] pageranMonolithicSeqLiNorm
+[00087.183 ms; 001 iters.] [7.8761e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00087.400 ms; 001 iters.] [7.8761e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00087.340 ms; 001 iters.] [7.4324e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00090.180 ms; 001 iters.] [7.8761e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+
+Loading graph /home/subhajit/data/germany_osm.mtx ...
+order: 11548845 size: 24738362 {}
+order: 11548845 size: 24738362 {} (selfLoopDeadEnds)
+order: 11548845 size: 24738362 {} (transposeWithDegree)
+[10144.223 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[10232.188 ms; 065 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[06921.097 ms; 065 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[06867.070 ms; 065 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[07852.149 ms; 074 iters.] [5.2256e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[06868.720 ms; 065 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[03306.554 ms; 021 iters.] [9.3146e-04 err.] pagerankMonolithicSeqL2Norm
+[02265.873 ms; 021 iters.] [9.3146e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[02309.422 ms; 021 iters.] [9.3146e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[02566.721 ms; 024 iters.] [1.7783e-02 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[02267.471 ms; 021 iters.] [9.3146e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00172.571 ms; 001 iters.] [6.8314e-02 err.] pageranMonolithicSeqLiNorm
+[00124.066 ms; 001 iters.] [6.8314e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00123.565 ms; 001 iters.] [6.8314e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00138.342 ms; 001 iters.] [7.2406e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00128.073 ms; 001 iters.] [6.8314e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]
+
+Loading graph /home/subhajit/data/asia_osm.mtx ...
+order: 11950757 size: 25423206 {}
+order: 11950757 size: 25423206 {} (selfLoopDeadEnds)
+order: 11950757 size: 25423206 {} (transposeWithDegree)
+[07496.710 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeq
+[07504.934 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithicSeqL1Norm
+[06045.579 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=default]
+[06003.520 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=component]
+[07075.544 ms; 074 iters.] [5.2719e-06 err.] pagerankLevelwiseSeqL1Norm [initialization=blockgraph]
+[05986.031 ms; 063 iters.] [0.0000e+00 err.] pagerankLevelwiseSeqL1Norm [initialization=remaining]
+[02293.762 ms; 019 iters.] [8.3822e-04 err.] pagerankMonolithicSeqL2Norm
+[01846.470 ms; 019 iters.] [8.3822e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=default]
+[01847.480 ms; 019 iters.] [8.3822e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=component]
+[02326.104 ms; 024 iters.] [1.8057e-02 err.] pagerankLevelwiseSeqL2Norm [initialization=blockgraph]
+[01852.905 ms; 019 iters.] [8.3822e-04 err.] pagerankLevelwiseSeqL2Norm [initialization=remaining]
+[00138.640 ms; 001 iters.] [4.3444e-02 err.] pageranMonolithicSeqLiNorm
+[00112.838 ms; 001 iters.] [4.3444e-02 err.] pageranLevelwiseSeqLiNorm [initialization=default]
+[00115.442 ms; 001 iters.] [4.3444e-02 err.] pageranLevelwiseSeqLiNorm [initialization=component]
+[00112.844 ms; 001 iters.] [7.2424e-01 err.] pageranLevelwiseSeqLiNorm [initialization=blockgraph]
+[00117.555 ms; 001 iters.] [4.3444e-02 err.] pageranLevelwiseSeqLiNorm [initialization=remaining]

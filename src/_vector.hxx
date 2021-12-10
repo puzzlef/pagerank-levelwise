@@ -1,8 +1,11 @@
 #pragma once
 #include <cmath>
+#include <array>
 #include <vector>
 #include <algorithm>
+#include "_openmp.hxx"
 
+using std::array;
 using std::vector;
 using std::copy;
 using std::swap;
@@ -57,13 +60,18 @@ size_t size3d(const vector3d<T>& x) {
 // Ref: https://stackoverflow.com/a/22183350/1413259
 
 template <class T>
-void reorder(vector<T>& x, vector<int> is) {
+void reorderDirty(vector<T>& x, vector<int>& is) {
   for(int i=0, N=x.size(); i<N; i++) {
     while(is[i] != is[is[i]]) {
       swap(x[is[i]], x[is[is[i]]]);
       swap(  is[i],    is[is[i]]);
     }
   }
+}
+
+template <class T>
+void reorder(vector<T>& x, vector<int> is) {
+  reorderDirty(x, is);
 }
 
 
@@ -111,7 +119,7 @@ void append(vector<T>& a, I ib, I ie) {
 }
 
 template <class T, class J>
-void append(vector<T>& a, J&& vs) {
+void append(vector<T>& a, const J& vs) {
   append(a, vs.begin(), vs.end());
 }
 
@@ -121,8 +129,8 @@ void append(vector<T>& a, J&& vs) {
 // JOIN
 // ----
 
-template <class T, class F>
-void joinIf(vector2d<T>& a, const vector2d<T>& xs, F fn) {
+template <class J, class F, class T>
+void joinIf(vector2d<T>& a, const J& xs, F fn) {
   for (const auto& x : xs) {
     auto& b = a.back();
     if (a.empty() || !fn(b, x)) a.push_back(x);
@@ -130,33 +138,37 @@ void joinIf(vector2d<T>& a, const vector2d<T>& xs, F fn) {
   }
 }
 
-template <class T, class F>
-auto joinIf(const vector2d<T>& xs, F fn) {
+template <class J, class F>
+auto joinIf(const J& xs, F fn) {
+  using T = typename J::value_type::value_type;
   vector2d<T> a; joinIf(a, xs, fn);
   return a;
 }
 
 
-template <class T>
-void joinUntilSize(vector2d<T>& a, const vector2d<T>& xs, int N) {
-  joinIf(a, xs, [&](const auto& b, const auto& x) { return b.size()<N; });
+template <class J, class T>
+void joinUntilSize(vector2d<T>& a, const J& xs, int S) {
+  auto fn = [&](const auto& b, const auto& x) { return b.size()<S; };
+  joinIf(a, xs, fn);
 }
 
-template <class T>
-auto joinUntilSize(const vector2d<T>& xs, int N) {
-  vector2d<T> a; joinUntilSize(a, xs, N);
+template <class J>
+auto joinUntilSize(const J& xs, int S) {
+  using T = typename J::value_type::value_type;
+  vector2d<T> a; joinUntilSize(a, xs, S);
   return a;
 }
 
 
-template <class T>
-void join(vector<T>& a, const vector2d<T>& xs) {
+template <class J, class T>
+void join(vector<T>& a, const J& xs) {
   for (const auto& x : xs)
     a.insert(a.end(), x.begin(), x.end());
 }
 
-template <class T>
-auto join(const vector2d<T>& xs) {
+template <class J>
+auto join(const J& xs) {
+  using T = typename J::value_type::value_type;
   vector<T> a; join(a, xs);
   return a;
 }
@@ -168,7 +180,7 @@ auto join(const vector2d<T>& xs) {
 // -------
 
 template <class T, class J, class F>
-void joinAtIf(vector2d<T>& a, const vector2d<T>& xs, J&& is, F fn) {
+void joinAtIf(vector2d<T>& a, const vector2d<T>& xs, const J& is, F fn) {
   for (int i : is) {
     auto& b = a.back();
     if (a.empty() || !fn(b, xs[i])) a.push_back(xs[i]);
@@ -177,32 +189,32 @@ void joinAtIf(vector2d<T>& a, const vector2d<T>& xs, J&& is, F fn) {
 }
 
 template <class T, class J, class F>
-auto joinAtIf(const vector2d<T>& xs, J&& is, F fn) {
+auto joinAtIf(const vector2d<T>& xs, const J& is, F fn) {
   vector2d<T> a; joinAtIf(a, xs, is, fn);
   return a;
 }
 
 
 template <class T, class J>
-void joinAtUntilSize(vector2d<T>& a, const vector2d<T>& xs, J&& is, int N) {
+void joinAtUntilSize(vector2d<T>& a, const vector2d<T>& xs, const J& is, int N) {
   joinAtIf(a, xs, is, [&](const auto& b, const auto& x) { return b.size()<N; });
 }
 
 template <class T, class J>
-auto joinAtUntilSize(const vector2d<T>& xs, J&& is, int N) {
+auto joinAtUntilSize(const vector2d<T>& xs, const J& is, int N) {
   vector2d<T> a; joinAtUntilSize(a, xs, is, N);
   return a;
 }
 
 
 template <class T, class J>
-void joinAt(vector<T>& a, const vector2d<T>& xs, J&& is) {
+void joinAt(vector<T>& a, const vector2d<T>& xs, const J& is) {
   for (int i : is)
     a.insert(a.end(), xs[i].begin(), xs[i].end());
 }
 
 template <class T, class J>
-auto joinAt(const vector2d<T>& xs, J&& is) {
+auto joinAt(const vector2d<T>& xs, const J& is) {
   vector<T> a; joinAt(a, xs, is);
   return a;
 }
@@ -214,14 +226,14 @@ auto joinAt(const vector2d<T>& xs, J&& is) {
 // ------
 
 template <class T, class U, class J>
-void gather(T *a, const U *x, J&& is) {
+void gather(T *a, const U *x, const J& is) {
   int j = 0;
   for (int i : is)
     a[j++] = x[i];
 }
 
 template <class T, class U, class J>
-void gather(vector<T>& a, const vector<U>& x, J&& is) {
+void gather(vector<T>& a, const vector<U>& x, const J& is) {
   gather(a.data(), x.data(), is);
 }
 
@@ -232,14 +244,14 @@ void gather(vector<T>& a, const vector<U>& x, J&& is) {
 // -------
 
 template <class T, class U, class J>
-void scatter(T *a, const U *x, J&& is) {
+void scatter(T *a, const U *x, const J& is) {
   int j = 0;
   for (int i : is)
     a[i] = x[j++];
 }
 
 template <class T, class U, class J>
-void scatter(vector<T>& a, const vector<U>& x, J&& is) {
+void scatter(vector<T>& a, const vector<U>& x, const J& is) {
   scatter(a.data(), x.data(), is);
 }
 
@@ -268,7 +280,8 @@ void copy(vector<T>& a, const vector<T>& x, int i, int N) {
 
 template <class T, class U>
 void copyOmp(T *a, U *x, int N) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { copy(a, x, N); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = x[i];
 }
@@ -308,7 +321,8 @@ void fill(vector<T>& a, int i, int N, const U& v) {
 
 template <class T, class U>
 void fillOmp(T *a, int N, const U& v) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { fill(a, N, v); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = v;
 }
@@ -330,18 +344,18 @@ void fillOmp(vector<T>& a, int i, int N, const U& v) {
 // -------
 
 template <class T, class U, class J>
-void fillAt(T *a, const U& v, J&& is) {
+void fillAt(T *a, const U& v, const J& is) {
   for (int i : is)
     a[i] = v;
 }
 
 template <class T, class U, class J>
-void fillAt(vector<T>& a, const U& v, J&& is) {
+void fillAt(vector<T>& a, const U& v, const J& is) {
   fillAt(a.data(), v, is);
 }
 
 template <class T, class U, class J>
-void fillAt(vector<T>& a, int i, const U& v, J&& is) {
+void fillAt(vector<T>& a, int i, const U& v, const J& is) {
   fillAt(a.data()+i, v, is);
 }
 
@@ -371,7 +385,8 @@ U sum(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U sumOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return sum(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a += x[i];
   return a;
@@ -405,6 +420,12 @@ U sumAbs(const vector<T>& x, U a=U()) {
   return sumAbs(x.data(), int(x.size()), a);
 }
 
+// NOTE: ADDITIONAL HELPER
+template <class T, size_t N, class U=T>
+U sumAbs(const array<T, N>& x, U a=U()) {
+  return sumAbs(x.data(), int(N), a);
+}
+
 template <class T, class U=T>
 U sumAbs(const vector<T>& x, int i, int N, U a=U()) {
   return sumAbs(x.data()+i, N, a);
@@ -413,7 +434,8 @@ U sumAbs(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U sumAbsOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return sumAbs(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a += abs(x[i]);
   return a;
@@ -455,7 +477,8 @@ U sumSqr(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U sumSqrOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return sumSqr(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a += x[i]*x[i];
   return a;
@@ -478,19 +501,19 @@ U sumSqrOmp(const vector<T>& x, int i, int N, U a=U()) {
 // ------
 
 template <class T, class J, class U=T>
-U sumAt(const T *x, J&& is, U a=U()) {
+U sumAt(const T *x, const J& is, U a=U()) {
   for (int i : is)
     a += x[i];
   return a;
 }
 
 template <class T, class J, class U=T>
-U sumAt(const vector<T>& x, J&& is, U a=U()) {
+U sumAt(const vector<T>& x, const J& is, U a=U()) {
   return sumAt(x.data(), is, a);
 }
 
 template <class T, class J, class U=T>
-U sumAt(const vector<T>& x, int i, J&& is, U a=U()) {
+U sumAt(const vector<T>& x, int i, const J& is, U a=U()) {
   return sumAt(x.data()+i, is, a);
 }
 
@@ -519,7 +542,8 @@ void addValue(vector<T>& a, int i, int N, const U& v) {
 
 template <class T, class U>
 void addValueOmp(T *a, int N, const U& v) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { addValue(a, N, v); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] += v;
 }
@@ -541,18 +565,18 @@ void addValueOmp(vector<T>& a, int i, int N, const U& v) {
 // ------------
 
 template <class T, class U, class J>
-void addValueAt(T *a, const U& v, J&& is) {
+void addValueAt(T *a, const U& v, const J& is) {
   for (int i : is)
     a[i] += v;
 }
 
 template <class T, class U, class J>
-void addValueAt(vector<T>& a, const U& v, J&& is) {
+void addValueAt(vector<T>& a, const U& v, const J& is) {
   addValueAt(a.data(), v, is);
 }
 
 template <class T, class U, class J>
-void addValueAt(vector<T>& a, int i, const U& v, J&& is) {
+void addValueAt(vector<T>& a, int i, const U& v, const J& is) {
   addValueAt(a.data()+i, v, is);
 }
 
@@ -582,7 +606,8 @@ U max(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U maxOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return max(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a = max(a, x[i]);
   return a;
@@ -624,7 +649,8 @@ U maxAbs(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U maxAbsOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return maxAbs(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a = max(a, abs(x[i]));
   return a;
@@ -647,19 +673,19 @@ U maxAbsOmp(const vector<T>& x, int i, int N, U a=U()) {
 // ------
 
 template <class T, class J, class U=T>
-U maxAt(const T *x, J&& is, U a=U()) {
+U maxAt(const T *x, const J& is, U a=U()) {
   for (int i : is)
     a = max(a, x[i]);
   return a;
 }
 
 template <class T, class J, class U=T>
-U maxAt(const vector<T>& x, J&& is, U a=U()) {
+U maxAt(const vector<T>& x, const J& is, U a=U()) {
   return maxAt(x.data(), is, a);
 }
 
 template <class T, class J, class U=T>
-U maxAt(const vector<T>& x, int i, J&& is, U a=U()) {
+U maxAt(const vector<T>& x, int i, const J& is, U a=U()) {
   return maxAt(x.data()+i, is, a);
 }
 
@@ -688,7 +714,8 @@ void maxValue(vector<T>& a, int i, int N, const U& v) {
 
 template <class T, class U>
 void maxValueOmp(T *a, int N, const U& v) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { maxValue(a, N, v); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = max(a[i], v);
 }
@@ -710,18 +737,18 @@ void maxValueOmp(vector<T>& a, int i, int N, const U& v) {
 // ------------
 
 template <class T, class U, class J>
-void maxValueAt(T *a, const U& v, J&& is) {
+void maxValueAt(T *a, const U& v, const J& is) {
   for (int i : is)
     a[i] = max(a[i], v);
 }
 
 template <class T, class U, class J>
-void maxValueAt(vector<T>& a, const U& v, J&& is) {
+void maxValueAt(vector<T>& a, const U& v, const J& is) {
   maxValueAt(a.data(), v, is);
 }
 
 template <class T, class U, class J>
-void maxValueAt(vector<T>& a, int i, const U& v, J&& is) {
+void maxValueAt(vector<T>& a, int i, const U& v, const J& is) {
   maxValueAt(a.data()+i, v, is);
 }
 
@@ -751,7 +778,8 @@ U min(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U minOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return min(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a = min(a, x[i]);
   return a;
@@ -793,7 +821,8 @@ U minAbs(const vector<T>& x, int i, int N, U a=U()) {
 
 template <class T, class U=T>
 U minAbsOmp(const T *x, int N, U a=U()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return minAbs(x, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a = min(a, abs(x[i]));
   return a;
@@ -816,19 +845,19 @@ U minAbsOmp(const vector<T>& x, int i, int N, U a=U()) {
 // ------
 
 template <class T, class J, class U=T>
-U minAt(const T *x, J&& is, U a=U()) {
+U minAt(const T *x, const J& is, U a=U()) {
   for (int i : is)
     a = min(a, x[i]);
   return a;
 }
 
 template <class T, class J, class U=T>
-U minAt(const vector<T>& x, J&& is, U a=U()) {
+U minAt(const vector<T>& x, const J& is, U a=U()) {
   return minAt(x.data(), is, a);
 }
 
 template <class T, class J, class U=T>
-U minAt(const vector<T>& x, int i, J&& is, U a=U()) {
+U minAt(const vector<T>& x, int i, const J& is, U a=U()) {
   return minAt(x.data()+i, is, a);
 }
 
@@ -857,7 +886,8 @@ void minValue(vector<T>& a, int i, int N, const U& v) {
 
 template <class T, class U>
 void minValueOmp(T *a, int N, const U& v) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { minValue(a, N, v); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = min(a[i], v);
 }
@@ -879,18 +909,18 @@ void minValueOmp(vector<T>& a, int i, int N, const U& v) {
 // ------------
 
 template <class T, class U, class J>
-void minValueAt(T *a, const U& v, J&& is) {
+void minValueAt(T *a, const U& v, const J& is) {
   for (int i : is)
     a[i] = min(a[i], v);
 }
 
 template <class T, class U, class J>
-void minValueAt(vector<T>& a, const U& v, J&& is) {
+void minValueAt(vector<T>& a, const U& v, const J& is) {
   minValueAt(a.data(), v, is);
 }
 
 template <class T, class U, class J>
-void minValueAt(vector<T>& a, int i, const U& v, J&& is) {
+void minValueAt(vector<T>& a, int i, const U& v, const J& is) {
   minValueAt(a.data()+i, v, is);
 }
 
@@ -920,7 +950,8 @@ V l1Norm(const vector<T>& x, const vector<U>& y, int i, int N, V a=V()) {
 
 template <class T, class U, class V=T>
 V l1NormOmp(const T *x, const U *y, int N, V a=V()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return l1Norm(x, y, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a += abs(x[i] - y[i]);
   return a;
@@ -962,7 +993,8 @@ V l2Norm(const vector<T>& x, const vector<U>& y, int i, int N, V a=V()) {
 
 template <class T, class U, class V=T>
 V l2NormOmp(const T *x, const U *y, int N, V a=V()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return l2Norm(x, y, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a += (x[i] - y[i]) * (x[i] - y[i]);
   return sqrt(a);
@@ -1004,7 +1036,8 @@ V liNorm(const vector<T>& x, const vector<U>& y, int i, int N, V a=V()) {
 
 template <class T, class U, class V=T>
 V liNormOmp(const T *x, const U *y, int N, V a=V()) {
-  #pragma omp parallel for schedule(static,4096) reduction(+:a)
+  if (N<SIZE_MIN_OMPR) return liNorm(x, y, N, a);
+  #pragma omp parallel for num_threads(32) schedule(auto) reduction(+:a)
   for (int i=0; i<N; i++)
     a = max(a, abs(x[i] - y[i]));
   return a;
@@ -1045,7 +1078,8 @@ void multiply(vector<T>& a, const vector<U>& x, const vector<V>& y, int i, int N
 
 template <class T, class U, class V>
 void multiplyOmp(T *a, const U *x, const V *y, int N) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { multiply(a, x, y, N); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = x[i] * y[i];
 }
@@ -1085,7 +1119,8 @@ void multiplyValue(vector<T>& a, const vector<U>& x, const V& v, int i, int N) {
 
 template <class T, class U, class V>
 void multiplyValueOmp(T *a, const U *x, const V& v, int N) {
-  #pragma omp parallel for schedule(static,4096)
+  if (N<SIZE_MIN_OMPM) { multiplyValue(a, x, v, N); return; }
+  #pragma omp parallel for num_threads(32) schedule(auto)
   for (int i=0; i<N; i++)
     a[i] = T(x[i] * v);
 }

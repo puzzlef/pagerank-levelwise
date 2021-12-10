@@ -16,7 +16,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   vector<float> *init = nullptr;
 
   // Find pagerank using L1-norm for convergence check.
-  auto a1 = pagerankMonolithicSeq(xt, init, {repeat, L1});
+  auto a1 = pagerankMonolithicSeq(x, xt, init, {repeat, L1});
   auto e1 = l1Norm(a1.ranks, a1.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL1Norm\n", a1.time, a1.iterations, e1);
   for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {
@@ -26,7 +26,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   }
 
   // Find pagerank using L2-norm for convergence check.
-  auto a3 = pagerankMonolithicSeq(xt, init, {repeat, L2});
+  auto a3 = pagerankMonolithicSeq(x, xt, init, {repeat, L2});
   auto e3 = l1Norm(a3.ranks, a1.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL2Norm\n", a3.time, a3.iterations, e3);
   for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {
@@ -36,7 +36,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   }
 
   // Find pagerank using Li-norm for convergence check.
-  auto a5 = pagerankMonolithicSeq(xt, init, {repeat, Li});
+  auto a5 = pagerankMonolithicSeq(x, xt, init, {repeat, Li});
   auto e5 = l1Norm(a5.ranks, a1.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqLiNorm\n", a5.time, a5.iterations, e5);
   for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {

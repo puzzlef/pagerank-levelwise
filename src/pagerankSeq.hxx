@@ -13,37 +13,6 @@ using std::swap;
 
 
 
-// PAGERANK-COMPONENTS
-// -------------------
-
-template <class G, class H, class T>
-auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
-  if (!o.splitComponents) return vector2d<int> {vertices(xt)};
-  if (!o.sortComponents)  return components(x, xt);
-  return sortedComponents(x, xt);
-}
-
-
-
-
-// PAGERANK-DYNAMIC-VERTICES
-// -------------------------
-
-template <class G, class H, class T>
-auto pagerankDynamicVertices(const G& x, const H& xt, const G& y, const H& yt, const PagerankOptions<T>& o) {
-  if (!o.splitComponents) return dynamicVertices(x, xt, y, yt);
-  auto cs = components(y, yt);
-  auto b  = blockgraph(y, cs);
-  if (o.sortComponents) sortComponents(cs, b);
-  auto [is, n] = dynamicComponentIndices(x, xt, y, yt, cs, b);
-  auto ks = joinAt(cs, sliceIter(is, 0, n)); int nv = ks.size();
-  joinAt(ks, cs, sliceIter(is, n));
-  return make_pair(ks, nv);
-}
-
-
-
-
 // PAGERANK-FACTOR
 // ---------------
 // For contribution factors of vertices (unchanging).
@@ -123,8 +92,8 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
     if (q) copy(r, qc);    // copy old ranks (qc), if given
     else fill(r, T(1)/N);
     copy(a, r);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });      // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(a, r, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF); });  // calculate ranks of vertices
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });  // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(a, r, c, f, vfrom, efrom, i, ns, N, p, E, L, EF); });     // calculate ranks of vertices
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

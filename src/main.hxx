@@ -14,4 +14,4 @@
 #include "selfLoop.hxx"
 #include "pagerank.hxx"
 #include "pagerankMonolithicSeq.hxx"
-#include "pagerankLevelwiseSeq.hxx"
+#include "pagerankComponentwiseSeq.hxx"

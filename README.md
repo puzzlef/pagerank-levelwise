@@ -89,10 +89,17 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/d7a2KUv.png)][sheets]
-[![](https://i.imgur.com/N5GTokT.png)][sheets]
-[![](https://i.imgur.com/a02NaHs.png)][sheets]
-[![](https://i.imgur.com/6BqYmGp.png)][sheets]
+[![](https://i.imgur.com/gyof9Vr.png)][sheetp]
+[![](https://i.imgur.com/wpl0t6f.png)][sheetp]
+[![](https://i.imgur.com/JNeQkto.png)][sheetp]
+
+[![](https://i.imgur.com/FbcT8rn.png)][sheetp]
+[![](https://i.imgur.com/vr9zzEM.png)][sheetp]
+[![](https://i.imgur.com/ztuBnte.png)][sheetp]
+
+[![](https://i.imgur.com/xPH4Jcp.gif)][sheetp]
+[![](https://i.imgur.com/18dZouw.gif)][sheetp]
+[![](https://i.imgur.com/kGrNCvT.gif)][sheetp]
 
 <br>
 <br>
@@ -100,7 +107,8 @@ $ ...
 
 ## References
 
-- [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
+- [STIC-D: Algorithmic Techniques For Efficient Parallel Pagerank Computation on Real-World Graphs](https://gist.github.com/wolfram77/bb09968cc0e592583c4b180243697d5a)
+- [Adjusting PageRank parameters and Comparing results](https://arxiv.org/abs/2108.02997)
 - [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
 
@@ -110,9 +118,8 @@ $ ...
 [![](https://i.imgur.com/5gcO8cg.jpg)](https://www.youtube.com/watch?v=4Xw0MrllRfQ)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
-[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+[Prof. Kishore Kothapalli]: https://www.iiit.ac.in/people/faculty/kkishore/
+[SuiteSparse Matrix Collection]: https://sparse.tamu.edu
 ["graphs"]: https://github.com/puzzlef/graphs
 [monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-componentwise
 [componentwise]: https://github.com/puzzlef/pagerank-monolithic-vs-componentwise
@@ -120,3 +127,4 @@ $ ...
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/KgBUFkTrHGB4WBfs9
 [sheets]: https://docs.google.com/spreadsheets/d/10KhCjLln713-qWsQMURTQKmQsniTO0xwGzNeQkuV3sE/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTyTClcJr6diQdv_cp_8w6gyXEgyrJ5gkWq5dRv7Q8V11tMoUbyyahjRk1glZ6yWS5YeTkzVSG0CuzC/pubhtml

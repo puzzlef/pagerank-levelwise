@@ -15,7 +15,7 @@ Except for `soc-LiveJournal1` and `coPapersCiteseer`, in all cases **skipping**
 the two). The improvement is most prominent in case of *road networks* and
 certain *web graphs*.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. This experiment was done with guidance
@@ -79,7 +79,8 @@ $ ...
 ["graphs"]: https://github.com/puzzlef/graphs
 [monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 [levelwise]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[gist]: https://gist.github.com/wolfram77/ad6d5a10b252600239faa8a90d8c564f
 [charts]: https://photos.app.goo.gl/9QnAES4iRXg5pDd17
 [sheets]: https://docs.google.com/spreadsheets/d/1EoVQpZ-lTAHOHNKhpD-1wi3G8-m0ojdA0Qt1qoNCLu4/edit?usp=sharing

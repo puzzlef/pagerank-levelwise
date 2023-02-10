@@ -1,18 +1,21 @@
-Comparing various **min. component sizes** for topologically-ordered components
-(**levelwise**) PageRank ([pull], [CSR]).
+Checking the performance benefit of [levelwise] PageRank when **teleport**
+**calculation** is **skipped** ([pull], [CSR]).
 
 This experiment was for comparing performance between:
-1. Find **levelwise** pagerank using **min. component size** from `1` - `1E+7`.
+1. Find [monolithic] pagerank.
+2. Find [monolithic] pagerank, **skipping teleport**.
+3. Find [levelwise] pagerank.
+4. Find [levelwise] pagerank, **skipping teleport**.
 
-Each **min. component size** was attempted on different types of graphs,
-running each size 5 times per graph to get a good time measure. **Levelwise**
-pagerank is the [STIC-D algorithm], without **ICD** optimizations (using
-single-thread). Although there is no clear winner, it appears a
-**min. component size** of `50` would be a good choice. Note that *levelwise*
-approach does not make use of *SIMD instructions* which are available on all
-modern hardware.
+Each approache was attempted on different types of graphs, running each
+approach 5 times per graph to get a good time measure. **Levelwise** pagerank
+is the [STIC-D algorithm], without **ICD** optimizations (using single-thread).
+Except for `soc-LiveJournal1` and `coPapersCiteseer`, in all cases **skipping**
+**teleport calculations** is **slightly faster** (could be a random issue for
+the two). The improvement is most prominent in case of *road networks* and
+certain *web graphs*.
 
-All outputs are saved in [gist] and a small part of the output is listed
+All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. This experiment was done with guidance
@@ -26,63 +29,33 @@ $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
 
-# Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
-# order: 5 size: 6 {}
-# order: 5 size: 7 {} (loopDeadEnds)
-# order: 5 size: 7 {} (transposeWithDegree)
-# [00000.000 ms; 004 iters.] [0.0000e+00 err.] pagerankMonolithic
-# [00000.002 ms; 018 iters.] [1.1921e-06 err.] pagerankLevelwise [1e+00 min-component-size]
-#
-# Loading graph /home/subhajit/data/min-2SCC.mtx ...
-# order: 8 size: 12 {}
-# order: 8 size: 12 {} (loopDeadEnds)
-# order: 8 size: 12 {} (transposeWithDegree)
-# [00000.003 ms; 040 iters.] [0.0000e+00 err.] pagerankMonolithic
-# [00000.005 ms; 047 iters.] [2.6524e-06 err.] pagerankLevelwise [1e+00 min-component-size]
-# [00000.003 ms; 040 iters.] [8.5682e-07 err.] pagerankLevelwise [5e+00 min-component-size]
-#
-# Loading graph /home/subhajit/data/min-4SCC.mtx ...
-# order: 21 size: 35 {}
-# order: 21 size: 35 {} (loopDeadEnds)
-# order: 21 size: 35 {} (transposeWithDegree)
-# [00000.009 ms; 045 iters.] [0.0000e+00 err.] pagerankMonolithic
-# [00000.013 ms; 053 iters.] [2.7735e-06 err.] pagerankLevelwise [1e+00 min-component-size]
-# [00000.012 ms; 058 iters.] [4.0643e-06 err.] pagerankLevelwise [5e+00 min-component-size]
-# [00000.010 ms; 051 iters.] [2.7083e-06 err.] pagerankLevelwise [1e+01 min-component-size]
-#
-# Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
-# order: 6 size: 10 {}
-# order: 6 size: 11 {} (loopDeadEnds)
-# order: 6 size: 11 {} (transposeWithDegree)
-# [00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankMonolithic
-# [00000.002 ms; 049 iters.] [3.0585e-06 err.] pagerankLevelwise [1e+00 min-component-size]
-# [00000.001 ms; 027 iters.] [1.4976e-06 err.] pagerankLevelwise [5e+00 min-component-size]
+# ...
 #
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312669 {} (loopDeadEnds)
 # order: 281903 size: 2312669 {} (transposeWithDegree)
-# [00738.952 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithic
-# [00528.433 ms; 061 iters.] [5.8785e-06 err.] pagerankLevelwise [1e+00 min-component-size]
-# [00458.537 ms; 056 iters.] [4.6830e-06 err.] pagerankLevelwise [5e+00 min-component-size]
-# [00470.989 ms; 056 iters.] [4.7403e-06 err.] pagerankLevelwise [1e+01 min-component-size]
-# [00487.671 ms; 058 iters.] [4.3744e-06 err.] pagerankLevelwise [5e+01 min-component-size]
-# [00540.446 ms; 065 iters.] [6.0055e-06 err.] pagerankLevelwise [1e+02 min-component-size]
-# [00470.985 ms; 061 iters.] [4.8291e-06 err.] pagerankLevelwise [5e+02 min-component-size]
-# [00534.583 ms; 067 iters.] [5.3440e-06 err.] pagerankLevelwise [1e+03 min-component-size]
-# [00506.471 ms; 069 iters.] [5.2159e-06 err.] pagerankLevelwise [5e+03 min-component-size]
-# [00359.162 ms; 069 iters.] [4.8319e-06 err.] pagerankLevelwise [1e+04 min-component-size]
-# [00323.512 ms; 068 iters.] [4.4184e-06 err.] pagerankLevelwise [5e+04 min-component-size]
-# [00297.972 ms; 064 iters.] [2.4454e-06 err.] pagerankLevelwise [1e+05 min-component-size]
+# [00431.040 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [00420.998 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithic [skip-tele]
+# [00269.015 ms; 055 iters.] [3.9399e-06 err.] pagerankLevelwise
+# [00250.271 ms; 055 iters.] [3.9399e-06 err.] pagerankLevelwise [skip-tele]
+#
+# ...
+#
+# Loading graph /home/subhajit/data/indochina-2004.mtx ...
+# order: 7414866 size: 194109311 {}
+# order: 7414866 size: 195418438 {} (loopDeadEnds)
+# order: 7414866 size: 195418438 {} (transposeWithDegree)
+# [19029.875 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [18562.752 ms; 059 iters.] [0.0000e+00 err.] pagerankMonolithic [skip-tele]
+# [14780.369 ms; 056 iters.] [3.4176e-06 err.] pagerankLevelwise
+# [14373.581 ms; 056 iters.] [3.4176e-06 err.] pagerankLevelwise [skip-tele]
+#
 # ...
 ```
 
-<br>
-
-[![](https://i.imgur.com/awWEd8m.png)][sheets]
-[![](https://i.imgur.com/I0tdoJv.png)][sheets]
-[![](https://i.imgur.com/GcUmIGy.png)][sheets]
-[![](https://i.imgur.com/wHMdTfB.png)][sheets]
+[![](https://i.imgur.com/9WLLXVu.gif)][sheets]
+[![](https://i.imgur.com/X6iObce.gif)][sheets]
 
 <br>
 <br>
@@ -97,15 +70,16 @@ $ ...
 <br>
 <br>
 
-[![](https://i.imgur.com/1VFZdqh.jpg)](https://www.youtube.com/watch?v=vbXTZlJ5fHU)
+[![](https://i.postimg.cc/PJbvkh18/aaa.jpg)](https://www.youtube.com/watch?v=SoiKp2oSUl0)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
 [Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
+[monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
+[levelwise]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[gist]: https://gist.github.com/wolfram77/855b407beeeb955c6789087c3d2ccfb8
-[charts]: https://photos.app.goo.gl/KveUUSpamrPKPmvY6
-[sheets]: https://docs.google.com/spreadsheets/d/1cdH3LURJo4KfflTF0grHtICUsaEmDHxKGy4Vti4eZc8/edit?usp=sharing
+[charts]: https://photos.app.goo.gl/9QnAES4iRXg5pDd17
+[sheets]: https://docs.google.com/spreadsheets/d/1EoVQpZ-lTAHOHNKhpD-1wi3G8-m0ojdA0Qt1qoNCLu4/edit?usp=sharing

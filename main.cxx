@@ -12,19 +12,28 @@ using namespace std;
 
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
+  bool skipTeleport = true;
   vector<float> *init = nullptr;
 
-  // Find pagerank using a single thread.
+  // Find monolithic pagerank.
   auto a1 = pagerankMonolithic(xt, init, {repeat});
-  auto e1 = absError(a1.ranks, a1.ranks);
+  auto e1 = l1Norm(a1.ranks, a1.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithic\n", a1.time, a1.iterations, e1);
 
-  // Find pagerank component-wise in topologically-ordered fashion (levelwise).
-  for (int C=1, i=0; C<x.order(); C*=i&1? 2:5, i++) {
-    auto a2 = pagerankLevelwise(x, xt, init, {repeat, C});
-    auto e2 = absError(a2.ranks, a1.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwise [%.0e min-component-size]\n", a2.time, a2.iterations, e2, (double) C);
-  }
+  // Find monolithic pagerank, skipping teleport.
+  auto a2 = pagerankMonolithic(xt, init, {repeat, skipTeleport});
+  auto e2 = l1Norm(a2.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithic [skip-tele]\n", a2.time, a2.iterations, e2);
+
+  // Find levelwise pagerank.
+  auto a3 = pagerankLevelwise(x, xt, init, {repeat});
+  auto e3 = l1Norm(a3.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwise\n", a3.time, a3.iterations, e3);
+
+  // Find levelwise pagerank, skipping teleport.
+  auto a4 = pagerankLevelwise(x, xt, init, {repeat, skipTeleport});
+  auto e4 = l1Norm(a4.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwise [skip-tele]\n", a4.time, a4.iterations, e4);
 }
 
 

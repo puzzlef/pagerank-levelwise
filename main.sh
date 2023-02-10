@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src="pagerank-levelwise-adjust-component-size"
+src="pagerank-levelwise-skip-teleport"
 out="/home/resources/Documents/subhajit/$src.log"
 ulimit -s unlimited
 printf "" > "$out"

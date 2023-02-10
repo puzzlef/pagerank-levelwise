@@ -4,7 +4,7 @@ const path = require('path');
 
 const RGRAPH = /^Loading graph .*\/(.*?)\.mtx \.\.\./m;
 const RORDER = /^order: (\d+) size: (\d+) \{\}/m;
-const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[(.+?) min-component-size\])?/m;
+const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (.+)/m;
 
 
 
@@ -14,7 +14,7 @@ const RRESLT = /^\[(.+?) ms; (\d+) iters\.\] \[(.+?) err\.\] (\w+)(?: \[(.+?) mi
 
 function readFile(pth) {
   var d = fs.readFileSync(pth, 'utf8');
-  return d.replace(/\r?\n/g, '\n');;
+  return d.replace(/\r?\n/g, '\n');
 }
 
 function writeFile(pth, d) {
@@ -54,7 +54,7 @@ function readLogLine(ln, data, state) {
     state.size  = parseFloat(size);
   }
   else if (RRESLT.test(ln)) {
-    var [, time, iterations, error, technique, min_component_size] = RRESLT.exec(ln);
+    var [, time, iterations, error, technique] = RRESLT.exec(ln);
     data.get(state.graph).push({
       graph: state.graph,
       order: state.order,
@@ -62,8 +62,7 @@ function readLogLine(ln, data, state) {
       time:       parseFloat(time),
       iterations: parseFloat(iterations),
       error:      parseFloat(error),
-      technique:  technique,
-      min_component_size: parseFloat(min_component_size||'0')
+      technique:  technique
     });
   }
   return state;

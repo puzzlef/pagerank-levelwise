@@ -12,7 +12,7 @@ single-thread). Although there is no clear winner, it appears a
 approach does not make use of *SIMD instructions* which are available on all
 modern hardware.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. This experiment was done with guidance
@@ -104,7 +104,8 @@ $ ...
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[gist]: https://gist.github.com/wolfram77/855b407beeeb955c6789087c3d2ccfb8
 [charts]: https://photos.app.goo.gl/KveUUSpamrPKPmvY6
 [sheets]: https://docs.google.com/spreadsheets/d/1cdH3LURJo4KfflTF0grHtICUsaEmDHxKGy4Vti4eZc8/edit?usp=sharing

@@ -3,6 +3,7 @@
 #include "_main.hxx"
 #include "vertices.hxx"
 #include "dfs.hxx"
+#include "topologicalSort.hxx"
 
 using std::vector;
 
@@ -14,10 +15,10 @@ using std::vector;
 
 template <class G, class H>
 auto components(const G& x, const H& xt) {
-  vector<vector<int>> a;
+  vector2d<int> a;
+  vector<int> vs;
   // original dfs
   auto vis = createContainer(x, bool());
-  vector<int> vs;
   for (int u : x.vertices())
     if (!vis[u]) dfsEndLoop(vs, vis, x, u);
   // transpose dfs
@@ -39,12 +40,86 @@ auto components(const G& x, const H& xt) {
 // Get component id of each vertex.
 
 template <class G>
-auto componentIds(const G& x, const vector<vector<int>>& comps) {
+auto componentIds(const G& x, const vector2d<int>& cs) {
   auto a = createContainer(x, int()); int i = 0;
-  for (const auto& comp : comps) {
-    for (int u : comp)
+  for (const auto& c : cs) {
+    for (int u : c)
       a[u] = i;
     i++;
   }
+  return a;
+}
+
+
+
+
+// BLOCKGRAPH
+// ----------
+
+template <class H, class G>
+void blockgraph(H& a, const G& x, const vector2d<int>& cs) {
+  auto c = componentIds(x, cs);
+  for (int u : x.vertices()) {
+    a.addVertex(c[u]);
+    for (int v : x.edges(u))
+      if (c[u] != c[v]) a.addEdge(c[u], c[v]);
+  }
+}
+
+template <class G>
+auto blockgraph(const G& x, const vector2d<int>& cs) {
+  G a; blockgraph(a, x, cs);
+  return a;
+}
+
+
+
+
+// SORTED-COMPONENTS
+// -----------------
+
+template <class G>
+void sortComponents(vector2d<int>& cs, const G& b) {
+  auto bks = topologicalSort(b);
+  reorderDirty(cs, bks);
+}
+
+template <class G, class H>
+auto sortedComponents(const G& x, const H& xt) {
+  auto cs = components(x, xt);
+  auto b  = blockgraph(x, cs);
+  sortComponents(cs, b);
+  return cs;
+}
+
+
+
+
+// COMPONENTS-EQUAL
+// ----------------
+
+template <class G>
+bool componentsEqual(const G& x, const vector<int>& xc, const G& y, const vector<int>& yc) {
+  if (xc != yc) return false;
+  for (int i=0, I=xc.size(); i<I; i++)
+    if (!verticesEqual(x, xc[i], y, yc[i])) return false;
+  return true;
+}
+
+template <class G, class H>
+bool componentsEqual(const G& x, const H& xt, const vector<int>& xc, const G& y, const H& yt, const vector<int>& yc) {
+  return componentsEqual(x, xc, y, yc) && componentsEqual(xt, xc, yt, yc);
+}
+
+
+
+
+// COMPONENTS-HASH
+// ---------------
+
+auto componentsHash(const vector2d<int>& cs) {
+  vector<size_t> a;
+  for (const auto& c : cs)
+    a.push_back(hashValue(c));
   return a;
 }

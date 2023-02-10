@@ -12,18 +12,37 @@ using namespace std;
 
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
+  enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
   vector<float> *init = nullptr;
 
-  // Find pagerank using a single thread.
-  auto a1 = pagerankMonolithic(xt, init, {repeat});
-  auto e1 = absError(a1.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithic\n", a1.time, a1.iterations, e1);
+  // Find pagerank using L1-norm for convergence check.
+  auto a1 = pagerankMonolithicSeq(x, xt, init, {repeat, L1});
+  auto e1 = l1Norm(a1.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL1Norm\n", a1.time, a1.iterations, e1);
+  for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {
+    auto a2 = pagerankComponentwiseSeq(x, xt, init, {repeat, L1, MC});
+    auto e2 = l1Norm(a2.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankComponentwiseSeqL1Norm [min-compute=%d]\n", a2.time, a2.iterations, e2, MC);
+  }
 
-  // Find pagerank component-wise in topologically-ordered fashion (levelwise).
-  for (int C=1, i=0; C<x.order(); C*=i&1? 2:5, i++) {
-    auto a2 = pagerankLevelwise(x, xt, init, {repeat, C});
-    auto e2 = absError(a2.ranks, a1.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankLevelwise [%.0e min-component-size]\n", a2.time, a2.iterations, e2, (double) C);
+  // Find pagerank using L2-norm for convergence check.
+  auto a3 = pagerankMonolithicSeq(x, xt, init, {repeat, L2});
+  auto e3 = l1Norm(a3.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqL2Norm\n", a3.time, a3.iterations, e3);
+  for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {
+    auto a4 = pagerankComponentwiseSeq(x, xt, init, {repeat, L2, MC});
+    auto e4 = l1Norm(a4.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankComponentwiseSeqL2Norm [min-compute=%d]\n", a4.time, a4.iterations, e4, MC);
+  }
+
+  // Find pagerank using Li-norm for convergence check.
+  auto a5 = pagerankMonolithicSeq(x, xt, init, {repeat, Li});
+  auto e5 = l1Norm(a5.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankMonolithicSeqLiNorm\n", a5.time, a5.iterations, e5);
+  for (int MC=1, i=0; MC<=5e+7; MC*=i&1? 2:5, i++) {
+    auto a6 = pagerankComponentwiseSeq(x, xt, init, {repeat, Li, MC});
+    auto e6 = l1Norm(a6.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankComponentwiseSeqLiNorm [min-compute=%d]\n", a6.time, a6.iterations, e6, MC);
   }
 }
 
@@ -33,7 +52,10 @@ int main(int argc, char **argv) {
   int repeat = argc>2? stoi(argv[2]) : 5;
   printf("Loading graph %s ...\n", file);
   auto x  = readMtx(file); println(x);
-  loopDeadEnds(x); print(x); printf(" (loopDeadEnds)\n");
+  // Handle dead ends with loop strategy (alternatives: loop-all, remove).
+  selfLoopTo(x, [&](int u) { return isDeadEnd(x, u); });
+  print(x); printf(" (selfLoopDeadEnds)\n");
+  // Transpose graph after handling dead ends.
   auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
   runPagerank(x, xt, repeat);
   printf("\n");

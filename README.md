@@ -14,7 +14,7 @@ winner, it appears a **min. compute size** of `10` would be a good choice.
 Note that *componentwise* approach does not make use of *SIMD instructions* which
 are available on all modern hardware.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. This experiment was done with guidance
@@ -123,8 +123,9 @@ $ ...
 ["graphs"]: https://github.com/puzzlef/graphs
 [monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-componentwise
 [componentwise]: https://github.com/puzzlef/pagerank-monolithic-vs-componentwise
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[gist]: https://gist.github.com/wolfram77/38e85d2a52591fffd7c2e878bcf794e5
 [charts]: https://photos.app.goo.gl/KgBUFkTrHGB4WBfs9
 [sheets]: https://docs.google.com/spreadsheets/d/10KhCjLln713-qWsQMURTQKmQsniTO0xwGzNeQkuV3sE/edit?usp=sharing
 [sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTyTClcJr6diQdv_cp_8w6gyXEgyrJ5gkWq5dRv7Q8V11tMoUbyyahjRk1glZ6yWS5YeTkzVSG0CuzC/pubhtml

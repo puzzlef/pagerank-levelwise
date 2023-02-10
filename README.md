@@ -43,7 +43,7 @@ redirected to a *log file*, which is then processed with a *script* to
 generate a *CSV file*, with each *row* representing the details of a *single*
 *test case*.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. The input data used for this experiment is available at ["graphs"]. This
 experiment was done with guidance from [Prof. Kishore Kothapalli].
 
@@ -132,9 +132,10 @@ $ ...
 
 [Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[tolerance function]: https://github.com/puzzlef/pagerank-adjust-tolerance-function
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[tolerance function]: https://github.com/puzzlef/pagerank
 [L1 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L154
 [L2 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L149
 [L∞ norm]: https://stackoverflow.com/a/29321153/1413259
+[gist]: https://gist.github.com/wolfram77/c6d3e0397b7fde95d7a929a0a1c563f6

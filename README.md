@@ -12,7 +12,7 @@ On average, **levelwise** pagerank is **faster** than the *monolithic* approach.
 Note that neither approach makes use of *SIMD instructions* which are available
 on all modern hardware.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. For previous experiments, see [branches].
@@ -71,10 +71,11 @@ $ ...
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[skip-teleport]: https://github.com/puzzlef/pagerank-levelwise-skip-teleport
-[compute-10]: https://github.com/puzzlef/pagerank-levelwise-adjust-compute-size
-[branches]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise/branches
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[skip-teleport]: https://github.com/puzzlef/pagerank-levelwise
+[compute-10]: https://github.com/puzzlef/pagerank-levelwise
+[branches]: https://github.com/puzzlef/pagerank-levelwise/branches
+[gist]: https://gist.github.com/wolfram77/ab9ab9db11f9ebe28310efe06131fbd1
 [charts]: https://photos.app.goo.gl/9wFk82NncJ7gUhxC9
 [sheets]: https://docs.google.com/spreadsheets/d/1qVLU0PTUl-PglezkSmPe7PwQHOvCgBGTSTclfg71B5Q/edit?usp=sharing

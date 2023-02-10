@@ -45,7 +45,7 @@ increases *iterations* needed by `170-180%` (`2.7-2.8x`), and using a *damping*
 that a random surfer follows links with *higher probability* (and jumps
 to a random page with lower probability).
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection].
@@ -152,8 +152,9 @@ $ ...
 
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
+[gist]: https://gist.github.com/wolfram77/99ef2865eea9d483eb50ba5ce1a4b750
 [charts]: https://photos.app.goo.gl/crWMPqmbV6JTHVGR7
 [sheets]: https://docs.google.com/spreadsheets/d/1PqGsHP9Tz3yIu__Pepxh1ZWeVy-dqEz_3_LSdUobIYk/edit?usp=sharing
 [sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSBRQZbwZnLYp5rYaTGYaV3rOhEwBty8m0DhdSryT0yhe7o6T3LeHYApUJZL-R5WYcvdiPd0MuuS-Ai/pubhtml

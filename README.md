@@ -1,127 +1,57 @@
-Comparing approaches for Levelwise PageRank.
+Performance of standard (**monolithic**) vs topologically-ordered components
+(**levelwise**) PageRank ([pull], [CSR], [skip-teleport], [compute-10]).
 
-[Levelwise PageRank] is the [STIC-D algorithm], without **ICD** optimizations
-(using a single-thread here). We use a rank [pull] based approach, and perform
-the computation upon the [CSR] representation of a graph. If the size of a
-component is fewer than 50 vertices, we combine multiple components together
-([comp-50]).
+This experiment was for comparing performance between:
+1. Find pagerank with standard algorithm (**monolithic**).
+2. Find pagerank in topologically-ordered components fashion (**levelwise**).
 
-We attempt each experiment (mentioned below) on different types of graphs,
-running each approach 5 times per graph to get a good time measure. The input
-data used for each experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection]. Experiments were done with guidance from
-[Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
+Both approaches were attempted on different types of graphs, running each
+approach 5 times per graph to get a good time measure. **Levelwise** pagerank
+is the [STIC-D algorithm], without **ICD** optimizations (using single-thread).
+On average, **levelwise** pagerank is **faster** than the *monolithic* approach.
+Note that neither approach makes use of *SIMD instructions* which are available
+on all modern hardware.
 
-<br>
-
-
-### Adjust damping factor
-
-Adjustment of the *damping factor α* is a delicate balancing act. For smaller
-values of *α*, the convergence is fast, but the *link structure* *of the graph*
-used to determine ranks is less true. Slightly different values for *α* can
-produce *very different* rank vectors. Moreover, as α → 1, convergence *slows
-down drastically*, and *sensitivity issues* begin to surface.
-
-For this experiment ([adjust-damping-factor]), the **damping factor** `α` (which
-is usually `0.85`) is **varied** from `0.50` to `1.00` in steps of `0.05`. This
-is in order to compare the performance variation with each *damping factor*. The
-calculated error is the *L1 norm* with respect to default PageRank (`α = 0.85`).
-Since *Levelwise PageRank* requires the *absence of dead ends* (teleport-based
-dead end handling strategy does not work), before performing any PageRank
-computation, **self-loops** are added to *dead ends*. **Monolithic PageRank**
-computation is also performed, which is used for performance comparison and
-error measurement.
-
-Results indicate that **increasing the damping factor α beyond** `0.85`
-**significantly increases convergence time** , and lowering it below `0.85`
-decreases convergence time. As the *damping factor* `α` increases *linearly*,
-the iterations needed for PageRank computation *increases almost*
-*exponentially*. On average, using a *damping factor* `α = 0.95` increases
-*iterations* needed by `170-180%` (`2.7-2.8x`), and using a *damping* *factor*
-`α = 0.75` *decreases* it by `40%` (`0.6x`), compared to *damping factor* `α =
-0.85`. Note that a higher *damping factor* implies that a random surfer follows
-links with *higher probability* (and jumps to a random page with lower
-probability).
-
-[adjust-damping-factor]: https://github.com/puzzlef/pagerank-componentwise/tree/adjust-damping-factor
+All outputs are saved in [out](out/) and a small part of the output is listed
+here. Some [charts] are also included below, generated from [sheets]. The input
+data used for this experiment is available at ["graphs"] (for small ones), and
+the [SuiteSparse Matrix Collection]. For previous experiments, see [branches].
+This experiment was done with guidance from [Prof. Dip Sankar Banerjee] and
+[Prof. Kishore Kothapalli].
 
 <br>
 
+```bash
+$ g++ -O3 main.cxx
+$ ./a.out ~/data/min-1DeadEnd.mtx
+$ ./a.out ~/data/min-2SCC.mtx
+$ ...
 
-### Adjust tolerance function
+# ...
+#
+# Loading graph /home/subhajit/data/web-Stanford.mtx ...
+# order: 281903 size: 2312497 {}
+# order: 281903 size: 2312669 {} (loopDeadEnds)
+# order: 281903 size: 2312669 {} (transposeWithDegree)
+# [00395.793 ms; 063 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [00244.404 ms; 054 iters.] [4.3718e-06 err.] pagerankLevelwise
+#
+# ...
+#
+# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+# order: 4847571 size: 68993773 {}
+# order: 4847571 size: 69532892 {} (loopDeadEnds)
+# order: 4847571 size: 69532892 {} (transposeWithDegree)
+# [12915.615 ms; 058 iters.] [0.0000e+00 err.] pagerankMonolithic
+# [10037.996 ms; 048 iters.] [4.7744e-06 err.] pagerankLevelwise
+#
+# ...
+```
 
-It is observed that a number of *error functions* are in use for checking
-convergence of PageRank computation. Although [L1 norm] is commonly used
-for convergence check, it appears [nvGraph] uses [L2 norm] instead. Another
-person in stackoverflow seems to suggest the use of *per-vertex tolerance*
-*comparison*, which is essentially the [L∞ norm]. The **L1 norm** `||E||₁`
-between two *(rank) vectors* `r` and `s` is calculated as `Σ|rₙ - sₙ|`, or
-as the *sum* of *absolute errors*. The **L2 norm** `||E||₂` is calculated
-as `√Σ|rₙ - sₙ|2`, or as the *square-root* of the *sum* of *squared errors*
-(*euclidean distance* between the two vectors). The **L∞ norm** `||E||ᵢ`
-is calculated as `max(|rₙ - sₙ|)`, or as the *maximum* of *absolute errors*.
-
-This experiment ([adjust-tolerance-function]) was for comparing the performance
-between PageRank computation with *L1, L2* and *L∞ norms* as convergence check,
-for *damping factor `α = 0.85`, and *tolerance* `τ = 10⁻⁶`. Since *Levelwise*
-*PageRank* requires the *absence of dead ends* (teleport-based dead end handling
-strategy does not work), before performing any PageRank computation,
-**self-loops** are added to *dead ends*. **Monolithic PageRank** computation is
-also performed, which is used for performance comparison and error measurement.
-
-From the results it is clear that PageRank computation with **L∞ norm as**
-**convergence check is the fastest** , quickly followed by *L2 norm*, and finally
-*L1 norm*. Thus, when comparing two or more approaches for an iterative
-algorithm, it is important to ensure that all of them use the same error
-function as convergence check (and the same parameter values). This would help
-ensure a level ground for a good relative performance comparison. It is also
-observed that *Levelwise PageRank* comverges faster than *Monolithic PageRank*
-in most cases. Also note that PageRank computation with **L∞ norm** as
-convergence check **completes in a single iteration for all the road**
-**networks** *(ending with _osm)*. This is likely because it is calculated as
-`||E||ᵢ = max(|rₙ - sₙ|)`, and depending upon the *order (number of vertices)*
-`N` of the graph (those graphs are quite large), the maximum rank change for any
-single vertex does not exceed the *tolerance* `τ` value of `10⁻⁶`.
-
-[adjust-tolerance-function]: https://github.com/puzzlef/pagerank-componentwise/tree/adjust-tolerance-function
+[![](https://i.imgur.com/TqrzS48.gif)][sheets]
+[![](https://i.imgur.com/bROelWZ.gif)][sheets]
 
 <br>
-
-
-### Adjust component size
-
-This experiment ([adjust-component-size]) was for comparing performance minimum
-component size from `1` - `1E+7` (smaller components are combined together).
-From the results we observe that although there is no clear winner, it appears a
-**min. component size** of `50` would be a good choice.
-
-[adjust-component-size]: https://github.com/puzzlef/pagerank-componentwise/tree/adjust-component-size
-
-<br>
-
-
-### Skip teleport
-
-In this experiment ([skip-teleport]), we check the performance benefit of
-Levelwise PageRank when *teleport* calculation is *skipped*. Results show that
-except for `soc-LiveJournal1` and `coPapersCiteseer`, in all cases *skipping*
-teleport calculations is *slightly faster*. The improvement is most prominent in
-case of *road networks* and certain *web graphs*.
-
-[skip-teleport]: https://github.com/puzzlef/pagerank-componentwise/tree/skip-teleport
-
-<br>
-
-
-### Other experiments
-
-- [adjust-tolerance-function-analysis](https://github.com/puzzlef/pagerank-componentwise/tree/adjust-tolerance-function-analysis)
-- [adjust-tolerance-analysis](https://github.com/puzzlef/pagerank-componentwise/tree/adjust-tolerance-analysis)
-- [adjust-compute-size](https://github.com/puzzlef/pagerank-componentwise/tree/adjust-compute-size)
-- [adjust-monolithic-iterations](https://github.com/puzzlef/pagerank-componentwise/tree/adjust-monolithic-iterations)
-- [perform-initialization](https://github.com/puzzlef/pagerank-componentwise/tree/perform-initialization)
-
 <br>
 
 
@@ -130,21 +60,21 @@ case of *road networks* and certain *web graphs*.
 - [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
 - [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
-- [Merge git repo into branch of another repo](https://stackoverflow.com/a/21353836/1413259)
 
 <br>
 <br>
 
-
-[![](https://img.youtube.com/vi/vbXTZlJ5fHU/maxresdefault.jpg)](https://www.youtube.com/watch?v=vbXTZlJ5fHU)
-
+[![](https://i.imgur.com/ewKOeWS.jpg)](https://www.youtube.com/watch?v=eBW0s125f-Y)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
-[Prof. Kishore Kothapalli]: https://faculty.iiit.ac.in/~kkishore/
-[Levelwise PageRank]: https://ieeexplore.ieee.org/abstract/document/9835216
-[STIC-D algorithm]: https://dl.acm.org/doi/abs/10.1145/2833312.2833322
-[SuiteSparse Matrix Collection]: https://sparse.tamu.edu/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
+[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
+[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank
-[CSR]: https://github.com/puzzlef/pagerank
-[comp-50]: https://github.com/puzzlef/pagerank-levelwise
+[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
+[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[skip-teleport]: https://github.com/puzzlef/pagerank-levelwise-skip-teleport
+[compute-10]: https://github.com/puzzlef/pagerank-levelwise-adjust-compute-size
+[branches]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise/branches
+[charts]: https://photos.app.goo.gl/9wFk82NncJ7gUhxC9
+[sheets]: https://docs.google.com/spreadsheets/d/1qVLU0PTUl-PglezkSmPe7PwQHOvCgBGTSTclfg71B5Q/edit?usp=sharing

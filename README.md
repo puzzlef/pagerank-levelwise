@@ -62,7 +62,7 @@ as `||E||ᵢ = max(|rₙ - sₙ|)`, and depending upon the *order (number of*
 rank change for any single vertex does not exceed the *tolerance* `τ`
 value of `10⁻⁶`.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection].
@@ -141,6 +141,7 @@ $ ...
 [L1 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L154
 [L2 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L149
 [L∞ norm]: https://stackoverflow.com/a/29321153/1413259
+[gist]: https://gist.github.com/wolfram77/def57e45052a8cbb38dc7db183e7ca0a
 [charts]: https://photos.app.goo.gl/oVojYnFDJ6TwXftq5
 [sheets]: https://docs.google.com/spreadsheets/d/1JSmTIvhGadE4NAHQtLkwzDhJIhGkvlFKyRMr8uua8lo/edit?usp=sharing
 [sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTkVlY-Ur_q_wM6bgxXIxv9Vf_IGW4PJ8eIOYf0lCgDSwo71eXhkyi4LlokdUd81m10TWu8vDwd8lYj/pubhtml

@@ -101,7 +101,7 @@ than *L2 norm*. This ratio is calculated in a manner similar to that of
 *tolerance* `τ` specific means with *L∞ norm* as baseline for various
 *tolerance* `τ` values is shown below as well.
 
-All outputs are saved in [out](out/) and a small part of the output is listed
+All outputs are saved in [gist] and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
 the [SuiteSparse Matrix Collection]. This experiment was done with guidance
@@ -214,13 +214,14 @@ $ ...
 [Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[pull]: https://github.com/puzzlef/pagerank-push-vs-pull
-[CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
+[pull]: https://github.com/puzzlef/pagerank
+[CSR]: https://github.com/puzzlef/pagerank
 [tolerance function]: https://github.com/puzzlef/pagerank-adjust-tolerance-function
 [nvGraph]: https://github.com/rapidsai/nvgraph
 [L1 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L154
 [L2 norm]: https://github.com/rapidsai/nvgraph/blob/main/cpp/src/pagerank.cu#L149
 [L∞ norm]: https://stackoverflow.com/a/29321153/1413259
+[gist]: https://gist.github.com/wolfram77/ca43a0f0f1a6814d2cacdaa703e4c1da
 [charts]: https://photos.app.goo.gl/stdoXDUhRcDvZqZb6
 [sheets]: https://docs.google.com/spreadsheets/d/1V-tanVXCIBemrC0jRtech5nA4sYUviwvUFC4G16oFKM/edit?usp=sharing
 [sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vR2A2aGvONm_i4p_pun7jlKb8H2fIcYpMuXgV7BhbNAUbEeiHlTxKFWMgkE6_2LCznleVEWsjdsEqfy/pubhtml

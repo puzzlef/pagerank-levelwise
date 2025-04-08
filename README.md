@@ -150,7 +150,7 @@ between Monolithic and Levelwise PageRank. On average, results indicate that
 
 
 [![](https://img.youtube.com/vi/vbXTZlJ5fHU/maxresdefault.jpg)](https://www.youtube.com/watch?v=vbXTZlJ5fHU)
-
+![](https://ga-beacon.deno.dev/G-KD28SG54JQ:hbAybl6nQFOtmVxW4if3xw/github.com/puzzlef/pagerank-levelwise)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
 [Prof. Kishore Kothapalli]: https://faculty.iiit.ac.in/~kkishore/
